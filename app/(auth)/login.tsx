@@ -12,6 +12,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  View,
 } from 'react-native';
 
 export default function LoginScreen() {
@@ -92,7 +93,7 @@ export default function LoginScreen() {
     >
       <ThemedView style={styles.content}>
         <ThemedText type="title" style={styles.title}>
-          로그인
+          Kokoro
         </ThemedText>
 
         <TextInput
@@ -146,25 +147,29 @@ export default function LoginScreen() {
           secureTextEntry
         />
 
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: tintColor }]}
-          onPress={handleLogin}
-          disabled={isLoading}
-        >
-          <ThemedText style={[styles.buttonText, { color: '#fff' }]}>
-            {isLoading ? '로그인 중...' : '로그인'}
-          </ThemedText>
-        </TouchableOpacity>
+        <View className="flex">
 
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: tintColor }]}
-          onPress={handleGoogleLogin}
-          disabled={isLoading}
-        >
-          <ThemedText style={[styles.buttonText, { color: '#fff' }]}>
-            {isLoading ? '구글 로그인 중...' : '구글 로그인'}
-          </ThemedText>
-        </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: tintColor }]}
+            onPress={handleLogin}
+            disabled={isLoading}
+          >
+            <ThemedText className="text-black" style={styles.buttonText}>
+              {isLoading ? '로그인 중...' : '로그인'}
+            </ThemedText>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: tintColor }]}
+            onPress={handleGoogleLogin}
+            disabled={isLoading}
+          >
+            <ThemedText style={[styles.buttonText, { color: '#fff' }]}>
+              {isLoading ? '구글 로그인 중...' : '구글 로그인'}
+            </ThemedText>
+          </TouchableOpacity>
+        </View>
 
         <ThemedView style={styles.footer}>
           <ThemedText>계정이 없으신가요? </ThemedText>
