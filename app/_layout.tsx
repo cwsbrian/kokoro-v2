@@ -6,6 +6,9 @@ import 'react-native-reanimated';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { AuthProvider } from '@/contexts/auth-context';
 
+import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
+import '@/global.css';
+
 export const unstable_settings = {
   anchor: '(tabs)',
 };
@@ -14,7 +17,9 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <AuthProvider>
+    
+    <GluestackUIProvider mode="dark">
+      <AuthProvider>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -25,5 +30,7 @@ export default function RootLayout() {
         <StatusBar style="auto" />
       </ThemeProvider>
     </AuthProvider>
+    </GluestackUIProvider>
+  
   );
 }
