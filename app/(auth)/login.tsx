@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import {
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-  Alert,
-} from 'react-native';
-import { Link, router } from 'expo-router';
-
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { useAuth } from '@/contexts/auth-context';
 import { useThemeColor } from '@/hooks/use-theme-color';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { Link, router } from 'expo-router';
+import { useEffect, useState } from 'react';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -60,6 +60,20 @@ export default function LoginScreen() {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const response = await GoogleSignin.signIn();
+      console.log(response);
+      
+    } catch (error: any) {
+      Alert.alert('구글 로그인 실패', error.message);
+    }
+  };
+
+  useEffect(() => {
+    GoogleSignin.configure();
+  }), [];
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -128,6 +142,16 @@ export default function LoginScreen() {
         >
           <ThemedText style={[styles.buttonText, { color: '#fff' }]}>
             {isLoading ? '로그인 중...' : '로그인'}
+          </ThemedText>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: tintColor }]}
+          onPress={handleGoogleLogin}
+          disabled={isLoading}
+        >
+          <ThemedText style={[styles.buttonText, { color: '#fff' }]}>
+            {isLoading ? '구글 로그인 중...' : '구글 로그인'}
           </ThemedText>
         </TouchableOpacity>
 
