@@ -18,7 +18,7 @@ export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { signIn } = useAuth();
+  const { signIn, signInWithGoogle } = useAuth();
 
   const backgroundColor = useThemeColor(
     { light: '#fff', dark: '#151718' },
@@ -63,17 +63,28 @@ export default function LoginScreen() {
   const handleGoogleLogin = async () => {
     try {
       await GoogleSignin.hasPlayServices();
-      const response = await GoogleSignin.signIn();
-      console.log(response);
+      const userInfo = await GoogleSignin.signIn();
       
+      const tokens = await GoogleSignin.getTokens();
+      console.log('Google tokens:', tokens);
+      console.log('User info:', userInfo);
+      
+      if (tokens.idToken) {
+        await signInWithGoogle(tokens.idToken);
+        router.replace('/(tabs)');
+      } else {
+        Alert.alert('구글 로그인 실패', 'ID 토큰을 가져올 수 없습니다.');
+      }
     } catch (error: any) {
       Alert.alert('구글 로그인 실패', error.message);
     }
   };
 
   useEffect(() => {
-    GoogleSignin.configure();
-  }), [];
+    GoogleSignin.configure({
+      webClientId: process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID,
+    });
+  }, []);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
