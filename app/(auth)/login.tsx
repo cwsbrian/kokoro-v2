@@ -11,8 +11,7 @@ import {
   Platform,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
-  View,
+  TouchableOpacity
 } from 'react-native';
 
 export default function LoginScreen() {
@@ -146,10 +145,6 @@ export default function LoginScreen() {
           onChangeText={setPassword}
           secureTextEntry
         />
-
-        <View className="flex">
-
-
           <TouchableOpacity
             style={[styles.button, { backgroundColor: tintColor }]}
             onPress={handleLogin}
@@ -169,7 +164,6 @@ export default function LoginScreen() {
               {isLoading ? '구글 로그인 중...' : '구글 로그인'}
             </ThemedText>
           </TouchableOpacity>
-        </View>
 
         <ThemedView style={styles.footer}>
           <ThemedText>계정이 없으신가요? </ThemedText>
