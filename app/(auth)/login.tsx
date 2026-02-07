@@ -1,7 +1,7 @@
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { Box } from '@/components/ui/box';
+import { Heading } from '@/components/ui/heading';
+import { Text } from '@/components/ui/text';
 import { useAuth } from '@/contexts/auth-context';
-import { useThemeColor } from '@/hooks/use-theme-color';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { Link, router } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -9,9 +9,8 @@ import {
   Alert,
   KeyboardAvoidingView,
   Platform,
-  StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 
 export default function LoginScreen() {
@@ -19,19 +18,6 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { signIn, signInWithGoogle } = useAuth();
-
-  const backgroundColor = useThemeColor(
-    { light: '#fff', dark: '#151718' },
-    'background'
-  );
-  const textColor = useThemeColor(
-    { light: '#11181C', dark: '#ECEDEE' },
-    'text'
-  );
-  const tintColor = useThemeColor(
-    { light: '#0a7ea4', dark: '#fff' },
-    'tint'
-  );
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -64,11 +50,11 @@ export default function LoginScreen() {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      
+
       const tokens = await GoogleSignin.getTokens();
       console.log('Google tokens:', tokens);
       console.log('User info:', userInfo);
-      
+
       if (tokens.idToken) {
         await signInWithGoogle(tokens.idToken);
         router.replace('/(tabs)');
@@ -85,36 +71,21 @@ export default function LoginScreen() {
       webClientId: process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID,
     });
   }, []);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={[styles.container, { backgroundColor }]}
+      className="flex-1 bg-background-0"
     >
-      <ThemedView style={styles.content}>
-        <ThemedText type="title" style={styles.title}>
+      <Box className="flex-1 justify-center px-6 gap-4">
+        <Heading size="3xl" className="text-center mb-8">
           Kokoro
-        </ThemedText>
+        </Heading>
 
         <TextInput
-          style={[
-            styles.input,
-            {
-              backgroundColor: useThemeColor(
-                { light: '#f5f5f5', dark: '#2a2a2a' },
-                'background'
-              ),
-              color: textColor,
-              borderColor: useThemeColor(
-                { light: '#e0e0e0', dark: '#3a3a3a' },
-                'icon'
-              ),
-            },
-          ]}
+          className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="이메일"
-          placeholderTextColor={useThemeColor(
-            { light: '#687076', dark: '#9BA1A6' },
-            'icon'
-          )}
+          placeholderTextColor="text-typography-400"
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -122,101 +93,43 @@ export default function LoginScreen() {
         />
 
         <TextInput
-          style={[
-            styles.input,
-            {
-              backgroundColor: useThemeColor(
-                { light: '#f5f5f5', dark: '#2a2a2a' },
-                'background'
-              ),
-              color: textColor,
-              borderColor: useThemeColor(
-                { light: '#e0e0e0', dark: '#3a3a3a' },
-                'icon'
-              ),
-            },
-          ]}
+          className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="비밀번호"
-          placeholderTextColor={useThemeColor(
-            { light: '#687076', dark: '#9BA1A6' },
-            'icon'
-          )}
+          placeholderTextColor="text-typography-400"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: tintColor }]}
-            onPress={handleLogin}
-            disabled={isLoading}
-          >
-            <ThemedText className="text-black" style={styles.buttonText}>
-              {isLoading ? '로그인 중...' : '로그인'}
-            </ThemedText>
-          </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: tintColor }]}
-            onPress={handleGoogleLogin}
-            disabled={isLoading}
-          >
-            <ThemedText style={[styles.buttonText, { color: '#fff' }]}>
-              {isLoading ? '구글 로그인 중...' : '구글 로그인'}
-            </ThemedText>
-          </TouchableOpacity>
+        <TouchableOpacity
+          className="h-12 rounded-lg justify-center items-center mt-2 bg-primary-500"
+          onPress={handleLogin}
+          disabled={isLoading}
+        >
+          <Text className="text-white text-base font-semibold">
+            {isLoading ? '로그인 중...' : '로그인'}
+          </Text>
+        </TouchableOpacity>
 
-        <ThemedView style={styles.footer}>
-          <ThemedText>계정이 없으신가요? </ThemedText>
+        <TouchableOpacity
+          className="h-12 rounded-lg justify-center items-center mt-2 bg-primary-500"
+          onPress={handleGoogleLogin}
+          disabled={isLoading}
+        >
+          <Text className="text-white text-base font-semibold">
+            {isLoading ? '구글 로그인 중...' : '구글 로그인'}
+          </Text>
+        </TouchableOpacity>
+
+        <Box className="flex-row justify-center mt-6">
+          <Text>계정이 없으신가요? </Text>
           <Link href="/register" asChild>
             <TouchableOpacity>
-              <ThemedText style={[styles.link, { color: tintColor }]}
-                >회원가입</ThemedText>
+              <Text className="text-primary-500 font-semibold">회원가입</Text>
             </TouchableOpacity>
           </Link>
-        </ThemedView>
-      </ThemedView>
+        </Box>
+      </Box>
     </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 24,
-    gap: 16,
-  },
-  title: {
-    textAlign: 'center',
-    marginBottom: 32,
-  },
-  input: {
-    height: 48,
-    borderRadius: 8,
-    borderWidth: 1,
-    paddingHorizontal: 16,
-    fontSize: 16,
-  },
-  button: {
-    height: 48,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 8,
-  },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 24,
-  },
-  link: {
-    fontWeight: '600',
-  },
-});

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-  StyleSheet,
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
@@ -9,10 +8,10 @@ import {
 } from 'react-native';
 import { Link, router } from 'expo-router';
 
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { Box } from '@/components/ui/box';
+import { Heading } from '@/components/ui/heading';
+import { Text } from '@/components/ui/text';
 import { useAuth } from '@/contexts/auth-context';
-import { useThemeColor } from '@/hooks/use-theme-color';
 
 export default function RegisterScreen() {
   const [email, setEmail] = useState('');
@@ -20,19 +19,6 @@ export default function RegisterScreen() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { signUp } = useAuth();
-
-  const backgroundColor = useThemeColor(
-    { light: '#fff', dark: '#151718' },
-    'background'
-  );
-  const textColor = useThemeColor(
-    { light: '#11181C', dark: '#ECEDEE' },
-    'text'
-  );
-  const tintColor = useThemeColor(
-    { light: '#0a7ea4', dark: '#fff' },
-    'tint'
-  );
 
   const handleRegister = async () => {
     if (!email || !password || !confirmPassword) {
@@ -74,33 +60,17 @@ export default function RegisterScreen() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={[styles.container, { backgroundColor }]}
+      className="flex-1 bg-background-0"
     >
-      <ThemedView style={styles.content}>
-        <ThemedText type="title" style={styles.title}>
+      <Box className="flex-1 justify-center px-6 gap-4">
+        <Heading size="3xl" className="text-center mb-8">
           회원가입
-        </ThemedText>
+        </Heading>
 
         <TextInput
-          style={[
-            styles.input,
-            {
-              backgroundColor: useThemeColor(
-                { light: '#f5f5f5', dark: '#2a2a2a' },
-                'background'
-              ),
-              color: textColor,
-              borderColor: useThemeColor(
-                { light: '#e0e0e0', dark: '#3a3a3a' },
-                'icon'
-              ),
-            },
-          ]}
+          className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="이메일"
-          placeholderTextColor={useThemeColor(
-            { light: '#687076', dark: '#9BA1A6' },
-            'icon'
-          )}
+          placeholderTextColor="text-typography-400"
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -108,118 +78,42 @@ export default function RegisterScreen() {
         />
 
         <TextInput
-          style={[
-            styles.input,
-            {
-              backgroundColor: useThemeColor(
-                { light: '#f5f5f5', dark: '#2a2a2a' },
-                'background'
-              ),
-              color: textColor,
-              borderColor: useThemeColor(
-                { light: '#e0e0e0', dark: '#3a3a3a' },
-                'icon'
-              ),
-            },
-          ]}
+          className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="비밀번호 (6자 이상)"
-          placeholderTextColor={useThemeColor(
-            { light: '#687076', dark: '#9BA1A6' },
-            'icon'
-          )}
+          placeholderTextColor="text-typography-400"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
 
         <TextInput
-          style={[
-            styles.input,
-            {
-              backgroundColor: useThemeColor(
-                { light: '#f5f5f5', dark: '#2a2a2a' },
-                'background'
-              ),
-              color: textColor,
-              borderColor: useThemeColor(
-                { light: '#e0e0e0', dark: '#3a3a3a' },
-                'icon'
-              ),
-            },
-          ]}
+          className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="비밀번호 확인"
-          placeholderTextColor={useThemeColor(
-            { light: '#687076', dark: '#9BA1A6' },
-            'icon'
-          )}
+          placeholderTextColor="text-typography-400"
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           secureTextEntry
         />
 
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: tintColor }]}
+          className="h-12 rounded-lg justify-center items-center mt-2 bg-primary-500"
           onPress={handleRegister}
           disabled={isLoading}
         >
-          <ThemedText style={[styles.buttonText, { color: '#fff' }]}>
+          <Text className="text-white text-base font-semibold">
             {isLoading ? '회원가입 중...' : '회원가입'}
-          </ThemedText>
+          </Text>
         </TouchableOpacity>
 
-        <ThemedView style={styles.footer}>
-          <ThemedText>이미 계정이 있으신가요? </ThemedText>
+        <Box className="flex-row justify-center mt-6">
+          <Text>이미 계정이 있으신가요? </Text>
           <Link href="/login" asChild>
             <TouchableOpacity>
-              <ThemedText style={[styles.link, { color: tintColor }]}>
-                로그인
-              </ThemedText>
+              <Text className="text-primary-500 font-semibold">로그인</Text>
             </TouchableOpacity>
           </Link>
-        </ThemedView>
-      </ThemedView>
+        </Box>
+      </Box>
     </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 24,
-    gap: 16,
-  },
-  title: {
-    textAlign: 'center',
-    marginBottom: 32,
-  },
-  input: {
-    height: 48,
-    borderRadius: 8,
-    borderWidth: 1,
-    paddingHorizontal: 16,
-    fontSize: 16,
-  },
-  button: {
-    height: 48,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 8,
-  },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 24,
-  },
-  link: {
-    fontWeight: '600',
-  },
-});

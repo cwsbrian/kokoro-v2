@@ -1,11 +1,12 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { Platform, TouchableOpacity, Alert } from 'react-native';
+import { Link, router } from 'expo-router';
 
 import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link, router } from 'expo-router';
+import { Box } from '@/components/ui/box';
+import { Heading } from '@/components/ui/heading';
+import { Text } from '@/components/ui/text';
 import { useAuth } from '@/contexts/auth-context';
 
 export default function HomeScreen() {
@@ -15,7 +16,7 @@ export default function HomeScreen() {
     try {
       await logout();
       router.replace('/login');
-    } catch (error) {
+    } catch {
       Alert.alert('오류', '로그아웃에 실패했습니다.');
     }
   };
@@ -26,36 +27,36 @@ export default function HomeScreen() {
       headerImage={
         <Image
           source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          className="h-[178px] w-[290px] absolute bottom-0 left-0"
         />
       }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+      <Box className="flex-row items-center gap-2">
+        <Heading size="3xl">Welcome!</Heading>
         <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.userContainer}>
-        <ThemedText type="subtitle">로그인 정보</ThemedText>
-        <ThemedText>{user?.email}</ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
+      </Box>
+      <Box className="gap-2 mb-4 p-4 rounded-lg bg-background-50">
+        <Heading size="lg">로그인 정보</Heading>
+        <Text>{user?.email}</Text>
+      </Box>
+      <Box className="gap-2 mb-2">
+        <Heading size="lg">Step 1: Try it</Heading>
+        <Text>
+          Edit <Text bold>app/(tabs)/index.tsx</Text> to see changes.
           Press{' '}
-          <ThemedText type="defaultSemiBold">
+          <Text bold>
             {Platform.select({
               ios: 'cmd + d',
               android: 'cmd + m',
               web: 'F12',
             })}
-          </ThemedText>{' '}
+          </Text>{' '}
           to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
+        </Text>
+      </Box>
+      <Box className="gap-2 mb-2">
         <Link href="/modal">
           <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+            <Heading size="lg">Step 2: Explore</Heading>
           </Link.Trigger>
           <Link.Preview />
           <Link.Menu>
@@ -76,65 +77,28 @@ export default function HomeScreen() {
           </Link.Menu>
         </Link>
 
-        <ThemedText>
+        <Text>
           {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
+        </Text>
+      </Box>
+      <Box className="gap-2 mb-2">
+        <Heading size="lg">Step 3: Get a fresh start</Heading>
+        <Text>
           {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.logoutContainer}>
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-          <ThemedText style={styles.logoutButtonText}>로그아웃</ThemedText>
+          <Text bold>npm run reset-project</Text> to get a fresh{' '}
+          <Text bold>app</Text> directory. This will move the current{' '}
+          <Text bold>app</Text> to{' '}
+          <Text bold>app-example</Text>.
+        </Text>
+      </Box>
+      <Box className="mt-6 items-center">
+        <TouchableOpacity 
+          className="bg-error-500 px-8 py-3 rounded-lg"
+          onPress={handleLogout}
+        >
+          <Text className="text-white text-base font-semibold">로그아웃</Text>
         </TouchableOpacity>
-      </ThemedView>
+      </Box>
     </ParallaxScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  userContainer: {
-    gap: 8,
-    marginBottom: 16,
-    padding: 16,
-    borderRadius: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  logoutContainer: {
-    marginTop: 24,
-    alignItems: 'center',
-  },
-  logoutButton: {
-    backgroundColor: '#FF3B30',
-    paddingHorizontal: 32,
-    paddingVertical: 12,
-    borderRadius: 8,
-  },
-  logoutButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
