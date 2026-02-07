@@ -2,6 +2,7 @@ import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
 import { Text } from '@/components/ui/text';
 import { useAuth } from '@/contexts/auth-context';
+import { FontAwesome } from '@expo/vector-icons';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { Link, router } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -10,7 +11,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native';
 
 export default function LoginScreen() {
@@ -85,7 +86,7 @@ export default function LoginScreen() {
         <TextInput
           className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="이메일"
-          placeholderTextColor="text-typography-400"
+          placeholderTextColor="#9CA3AF"
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -95,14 +96,14 @@ export default function LoginScreen() {
         <TextInput
           className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="비밀번호"
-          placeholderTextColor="text-typography-400"
+          placeholderTextColor="#9CA3AF"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
 
         <TouchableOpacity
-          className="h-12 rounded-lg justify-center items-center mt-2 bg-primary-500"
+          className="h-12 rounded-lg justify-center items-center mt-2 bg-primary-500 "
           onPress={handleLogin}
           disabled={isLoading}
         >
@@ -112,12 +113,13 @@ export default function LoginScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          className="h-12 rounded-lg justify-center items-center mt-2 bg-primary-500"
+          className="h-12 rounded-lg justify-center items-center mt-2 bg-white dark:bg-gray-900 border border-outline-300 dark:border-gray-800 flex-row gap-3 shadow-sm"
           onPress={handleGoogleLogin}
           disabled={isLoading}
         >
-          <Text className="text-white text-base font-semibold">
-            {isLoading ? '구글 로그인 중...' : '구글 로그인'}
+          <FontAwesome name="google" size={20} color="#DB4437" />
+          <Text className="text-gray-900 dark:text-white text-base font-semibold">
+            {isLoading ? '구글 로그인 중...' : 'Google로 계속하기'}
           </Text>
         </TouchableOpacity>
 
