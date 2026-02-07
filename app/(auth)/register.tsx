@@ -4,13 +4,13 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
-  Alert,
 } from 'react-native';
 import { Link, router } from 'expo-router';
 
 import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
 import { Text } from '@/components/ui/text';
+import { useToast, Toast, ToastTitle, ToastDescription } from '@/components/ui/toast';
 import { useAuth } from '@/contexts/auth-context';
 
 export default function RegisterScreen() {
@@ -19,29 +19,61 @@ export default function RegisterScreen() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { signUp } = useAuth();
+  const toast = useToast();
 
   const handleRegister = async () => {
     if (!email || !password || !confirmPassword) {
-      Alert.alert('오류', '모든 필드를 입력해주세요.');
+      toast.show({
+        placement: 'top',
+        render: () => (
+          <Toast action="error" variant="outline">
+            <ToastTitle>오류</ToastTitle>
+            <ToastDescription>모든 필드를 입력해주세요.</ToastDescription>
+          </Toast>
+        ),
+      });
       return;
     }
 
     if (password.length < 6) {
-      Alert.alert('오류', '비밀번호는 6자 이상이어야 합니다.');
+      toast.show({
+        placement: 'top',
+        render: () => (
+          <Toast action="error" variant="outline">
+            <ToastTitle>오류</ToastTitle>
+            <ToastDescription>비밀번호는 6자 이상이어야 합니다.</ToastDescription>
+          </Toast>
+        ),
+      });
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert('오류', '비밀번호가 일치하지 않습니다.');
+      toast.show({
+        placement: 'top',
+        render: () => (
+          <Toast action="error" variant="outline">
+            <ToastTitle>오류</ToastTitle>
+            <ToastDescription>비밀번호가 일치하지 않습니다.</ToastDescription>
+          </Toast>
+        ),
+      });
       return;
     }
 
     setIsLoading(true);
     try {
       await signUp(email, password);
-      Alert.alert('성공', '회원가입이 완료되었습니다!', [
-        { text: '확인', onPress: () => router.replace('/login') },
-      ]);
+      toast.show({
+        placement: 'top',
+        render: () => (
+          <Toast action="success" variant="outline">
+            <ToastTitle>성공</ToastTitle>
+            <ToastDescription>회원가입이 완료되었습니다!</ToastDescription>
+          </Toast>
+        ),
+      });
+      router.replace('/login');
     } catch (error: any) {
       let errorMessage = '회원가입에 실패했습니다.';
       if (error.code === 'auth/email-already-in-use') {
@@ -51,7 +83,15 @@ export default function RegisterScreen() {
       } else if (error.code === 'auth/weak-password') {
         errorMessage = '비밀번호가 너무 약합니다. 6자 이상 입력해주세요.';
       }
-      Alert.alert('회원가입 실패', errorMessage);
+      toast.show({
+        placement: 'top',
+        render: () => (
+          <Toast action="error" variant="outline">
+            <ToastTitle>회원가입 실패</ToastTitle>
+            <ToastDescription>{errorMessage}</ToastDescription>
+          </Toast>
+        ),
+      });
     } finally {
       setIsLoading(false);
     }
@@ -70,7 +110,7 @@ export default function RegisterScreen() {
         <TextInput
           className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="이메일"
-          placeholderTextColor="text-typography-400"
+          placeholderTextColor="#9CA3AF"
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -80,7 +120,7 @@ export default function RegisterScreen() {
         <TextInput
           className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="비밀번호 (6자 이상)"
-          placeholderTextColor="text-typography-400"
+          placeholderTextColor="#9CA3AF"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -89,7 +129,7 @@ export default function RegisterScreen() {
         <TextInput
           className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="비밀번호 확인"
-          placeholderTextColor="text-typography-400"
+          placeholderTextColor="#9CA3AF"
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           secureTextEntry

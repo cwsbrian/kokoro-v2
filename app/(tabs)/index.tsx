@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { Platform, TouchableOpacity, Alert } from 'react-native';
+import { Platform, TouchableOpacity } from 'react-native';
 import { Link, router } from 'expo-router';
 
 import { HelloWave } from '@/components/hello-wave';
@@ -7,17 +7,27 @@ import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
 import { Text } from '@/components/ui/text';
+import { useToast, Toast, ToastTitle, ToastDescription } from '@/components/ui/toast';
 import { useAuth } from '@/contexts/auth-context';
 
 export default function HomeScreen() {
   const { user, logout } = useAuth();
+  const toast = useToast();
 
   const handleLogout = async () => {
     try {
       await logout();
       router.replace('/login');
     } catch {
-      Alert.alert('오류', '로그아웃에 실패했습니다.');
+      toast.show({
+        placement: 'top',
+        render: () => (
+          <Toast action="error" variant="outline">
+            <ToastTitle>오류</ToastTitle>
+            <ToastDescription>로그아웃에 실패했습니다.</ToastDescription>
+          </Toast>
+        ),
+      });
     }
   };
 

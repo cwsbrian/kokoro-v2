@@ -1,13 +1,13 @@
 import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
 import { Text } from '@/components/ui/text';
+import { useToast, Toast, ToastTitle, ToastDescription } from '@/components/ui/toast';
 import { useAuth } from '@/contexts/auth-context';
 import { FontAwesome } from '@expo/vector-icons';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { Link, router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   TextInput,
@@ -19,10 +19,19 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { signIn, signInWithGoogle } = useAuth();
+  const toast = useToast();
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('오류', '이메일과 비밀번호를 입력해주세요.');
+      toast.show({
+        placement: 'top',
+        render: () => (
+          <Toast action="error" variant="outline">
+            <ToastTitle>오류</ToastTitle>
+            <ToastDescription>이메일과 비밀번호를 입력해주세요.</ToastDescription>
+          </Toast>
+        ),
+      });
       return;
     }
 
@@ -41,7 +50,15 @@ export default function LoginScreen() {
       } else if (error.code === 'auth/invalid-credential') {
         errorMessage = '이메일 또는 비밀번호가 올바르지 않습니다.';
       }
-      Alert.alert('로그인 실패', errorMessage);
+      toast.show({
+        placement: 'top',
+        render: () => (
+          <Toast action="error" variant="outline">
+            <ToastTitle>로그인 실패</ToastTitle>
+            <ToastDescription>{errorMessage}</ToastDescription>
+          </Toast>
+        ),
+      });
     } finally {
       setIsLoading(false);
     }
@@ -60,10 +77,26 @@ export default function LoginScreen() {
         await signInWithGoogle(tokens.idToken);
         router.replace('/(tabs)');
       } else {
-        Alert.alert('구글 로그인 실패', 'ID 토큰을 가져올 수 없습니다.');
+        toast.show({
+          placement: 'top',
+          render: () => (
+            <Toast action="error" variant="outline">
+              <ToastTitle>구글 로그인 실패</ToastTitle>
+              <ToastDescription>ID 토큰을 가져올 수 없습니다.</ToastDescription>
+            </Toast>
+          ),
+        });
       }
     } catch (error: any) {
-      Alert.alert('구글 로그인 실패', error.message);
+      toast.show({
+        placement: 'top',
+        render: () => (
+          <Toast action="error" variant="outline">
+            <ToastTitle>구글 로그인 실패</ToastTitle>
+            <ToastDescription>{error.message}</ToastDescription>
+          </Toast>
+        ),
+      });
     }
   };
 
