@@ -1,7 +1,7 @@
 import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
 import { Text } from '@/components/ui/text';
-import { useToast, Toast, ToastTitle, ToastDescription } from '@/components/ui/toast';
+import { Toast, ToastDescription, ToastTitle, useToast } from '@/components/ui/toast';
 import { useAuth } from '@/contexts/auth-context';
 import { FontAwesome } from '@expo/vector-icons';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -112,9 +112,14 @@ export default function LoginScreen() {
       className="flex-1 bg-background-0"
     >
       <Box className="flex-1 justify-center px-6 gap-4">
-        <Heading size="3xl" className="text-center mb-8">
-          Kokoro
-        </Heading>
+        <Box className="items-center mb-8">
+          <Heading size="3xl" className="text-center">
+            Kokoro
+          </Heading>
+          <Text className="text-typography-500 text-sm mt-2 text-center italic">
+            한 편의 시로 그려내는 당신이라는 세계
+          </Text>
+        </Box>
 
         <TextInput
           className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
