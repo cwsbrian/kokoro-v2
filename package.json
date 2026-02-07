@@ -17,6 +17,7 @@
     "@gluestack-ui/utils": "^3.0.15",
     "@gorhom/bottom-sheet": "^5.2.8",
     "@legendapp/motion": "^2.5.3",
+    "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-native-google-signin/google-signin": "^16.1.1",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.6.3",

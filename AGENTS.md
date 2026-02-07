@@ -2,10 +2,6 @@
 
 This document provides guidelines for AI agents working in this React Native Expo codebase.
 
-## Project Overview
-
-React Native Expo mobile app using TypeScript with file-based routing via expo-router.
-
 ## Global Skills Reference
 
 This repository has access to global skills configured at `~/.config/opencode/skills/`:
@@ -14,6 +10,10 @@ This repository has access to global skills configured at `~/.config/opencode/sk
 - **react-best-practices** - General React optimization patterns
 
 These skills cover: list performance, animations, navigation, state management, React Compiler compatibility, and UI patterns. Load them when working on React Native features.
+
+## Project Overview
+
+React Native Expo mobile app using TypeScript with file-based routing via expo-router, gluestack-ui for components, and NativeWind for styling.
 
 ## Build/Lint Commands
 
@@ -33,7 +33,7 @@ npm run lint
 npm run reset-project
 ```
 
-**Note:** This project does not currently have tests configured. If adding tests, follow Jest patterns common in React Native projects.
+**Note:** This project does not have tests configured. If adding tests, use Jest with React Native Testing Library.
 
 ## Code Style Guidelines
 
@@ -80,31 +80,10 @@ import { ThemedView } from '@/components/themed-view';
 - Types: PascalCase with `Props` suffix for component props (e.g., `ThemedTextProps`)
 - Constants: PascalCase for object exports (e.g., `Colors`, `Fonts`)
 
-### Component Patterns
-
-**Functional Components:**
-```typescript
-export type ThemedTextProps = TextProps & {
-  lightColor?: string;
-  darkColor?: string;
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
-};
-
-export function ThemedText({
-  style,
-  lightColor,
-  darkColor,
-  type = 'default',
-  ...rest
-}: ThemedTextProps) {
-  // Implementation
-}
-```
-
-**Styles:**
-- Use `StyleSheet.create()` for all styles
-- Define styles at bottom of file
-- Use theme-aware colors via `useThemeColor` hook
+**UI Components:**
+- Use gluestack-ui components from `@/components/ui/*` (Box, Button, Text, etc.)
+- Style with NativeWind utility classes (e.g., `className="flex-1 bg-primary-500"`)
+- Prefer composition over custom styled components
 
 ### Platform-Specific Code
 - Use `.ios.tsx`, `.android.tsx`, `.web.ts` extensions for platform variants
@@ -133,16 +112,21 @@ export function ThemedText({
 
 ### Key Dependencies
 - expo-router: File-based routing
+- @gluestack-ui/core: UI component library with NativeWind styling
+- nativewind: Tailwind CSS for React Native
 - expo-image: Image component
 - react-native-reanimated: Animations
 - react-native-gesture-handler: Gestures
 - @expo/vector-icons: Icon library
+- firebase: Authentication
 
 ### Directory Structure
 ```
 app/            # Routes and layouts
 components/     # Reusable components
-  ui/           # UI primitives
+  ui/           # gluestack-ui primitives
+contexts/       # React contexts (AuthProvider)
+lib/            # External service configs (firebase)
 hooks/          # Custom hooks
 constants/      # Constants and theme
 assets/         # Static assets
