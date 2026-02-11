@@ -1,0 +1,2891 @@
+{
+  "version": "2.7",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "gmpYX",
+      "x": 916,
+      "y": 37,
+      "name": "Onboarding Slide 1",
+      "width": 375,
+      "height": 812,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "WyRQk",
+          "name": "bg1",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "#FFFFFF",
+          "layout": "vertical",
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "BCmrP",
+              "name": "skipContainer",
+              "width": "fill_container",
+              "height": 80,
+              "layout": "vertical",
+              "padding": [
+                40,
+                32,
+                0,
+                32
+              ],
+              "justifyContent": "center",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lDRiq",
+                  "name": "skipTextNew",
+                  "fill": "#999999",
+                  "content": "SKIP",
+                  "textAlign": "right",
+                  "textAlignVertical": "bottom",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "tadd6",
+              "name": "content1",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "padding": [
+                60,
+                32,
+                59,
+                32
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "E4UPf",
+                  "name": "illustration1",
+                  "width": 200,
+                  "height": 200,
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 100,
+                      "id": "x2iqg",
+                      "name": "img1",
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1770674593580.png",
+                        "mode": "fill"
+                      },
+                      "width": 200,
+                      "height": 200
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "TS7Qe",
+                  "name": "title1",
+                  "fill": "#1A1A1A",
+                  "content": "나를 알아가는 여정",
+                  "fontFamily": "Inter",
+                  "fontSize": 28,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "0tvCM",
+                  "name": "indicators1",
+                  "width": "fill_container",
+                  "height": 20,
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 4,
+                      "id": "IEMlm",
+                      "name": "dot1_1",
+                      "fill": "#667EEA",
+                      "width": 24,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 4,
+                      "id": "gYset",
+                      "name": "dot1_2",
+                      "fill": "#E0E0E0",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 4,
+                      "id": "bRwvo",
+                      "name": "dot1_3",
+                      "fill": "#E0E0E0",
+                      "width": 8,
+                      "height": 8
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "vBY7Z",
+                  "name": "desc1",
+                  "fill": "#666666",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "시 카드를 통해 끊임없이 던져지는 철학적 질문들. 공감하거나 비공감하는 순간, 당신의 생각을 재점검하고 자신에 대해 더 깊이 알아가는 여정이 시작됩니다. 단순한 성향 테스트가 아닌, 나 자신을 탐구하는 성찰의 시간을 경험핵보세요.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "jfnQ0",
+                  "name": "nextBtnContainer",
+                  "width": "fill_container",
+                  "height": 48,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jxXwB",
+                      "name": "nextBtnText",
+                      "fill": "#667EEA",
+                      "content": "다음 →",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "SxCKZ",
+      "x": 1391,
+      "y": 0,
+      "name": "Poem Card Container",
+      "clip": true,
+      "width": 400,
+      "height": 700,
+      "fill": "#FAF8F5",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "TnvZd",
+          "x": 0,
+          "y": 0,
+          "name": "Background Image",
+          "metadata": {
+            "type": "unsplash",
+            "username": "masoodaslami",
+            "link": "https://unsplash.com/@masoodaslami",
+            "author": "Masood Aslami"
+          },
+          "width": 400,
+          "height": 700,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "https://images.unsplash.com/photo-1641390499936-e43c37272e63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA2NzY5ODZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mode": "fill"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "YRR8o",
+              "x": 0,
+              "y": 0,
+              "name": "Overlay",
+              "width": 400,
+              "height": 700,
+              "fill": "#1C1C1C80",
+              "layout": "none"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NFYui",
+          "x": 40,
+          "y": 175,
+          "name": "Poem Card",
+          "width": 320,
+          "height": "fit_content(380)",
+          "fill": "#1C1C1CCC",
+          "cornerRadius": 20,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "f0IpZ",
+              "x": 32,
+              "y": 100,
+              "name": "poemType",
+              "fill": "#FFFFFF60",
+              "content": "Haiku",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "h3CWg",
+              "x": 32,
+              "y": 140,
+              "name": "poemText",
+              "fill": "#FFFFFF",
+              "content": "묵묵히 응시하는\n거울 속의 나에게,\n누가 답할까.",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "300"
+            },
+            {
+              "type": "text",
+              "id": "QZBuZ",
+              "x": 32,
+              "y": 32,
+              "name": "quoteMark1",
+              "fill": "#FFFFFF40",
+              "content": "❝",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "300"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "gwRyL",
+      "x": 1811,
+      "y": 0,
+      "name": "Poem Card 2",
+      "clip": true,
+      "width": 400,
+      "height": 700,
+      "fill": "#FAF8F5",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "N4UhY",
+          "x": 260,
+          "y": 36,
+          "name": "Result Button",
+          "width": 80,
+          "height": 28,
+          "fill": "#FFFFFF20",
+          "cornerRadius": 14,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "gdnB1",
+              "name": "resultButtonText2",
+              "fill": "#FFFFFF50",
+              "content": "결과 보기",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NDBLi",
+          "x": 0,
+          "y": 0,
+          "name": "Background Image 2",
+          "metadata": {
+            "type": "unsplash",
+            "username": "lx1",
+            "link": "https://unsplash.com/@lx1",
+            "author": "Lx1"
+          },
+          "width": 400,
+          "height": 700,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "https://images.unsplash.com/photo-1760142299874-666efab92770?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA2NzcwMDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mode": "fill"
+          },
+          "children": [
+            {
+              "type": "frame",
+              "id": "Ol8oT",
+              "name": "Overlay 2",
+              "width": 400,
+              "height": 700,
+              "fill": "#1E3A5F60"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "8oSCk",
+          "x": 40,
+          "y": 175,
+          "name": "Poem Card 2",
+          "width": 320,
+          "height": "fit_content(380)",
+          "fill": "#1c1c1ccc",
+          "cornerRadius": 20,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "3SYoR",
+              "x": 32,
+              "y": 100,
+              "name": "poemType2",
+              "fill": "#FFFFFF60",
+              "content": "Senryu",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "vBdXN",
+              "x": 32,
+              "y": 140,
+              "name": "poemText2",
+              "fill": "#FFFFFF",
+              "content": "붐비는 전철,\n모두가 다른\n종착역을 꿈꾼다.",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "300"
+            },
+            {
+              "type": "text",
+              "id": "o17gT",
+              "x": 32,
+              "y": 32,
+              "name": "quoteMark2",
+              "fill": "#FFFFFF40",
+              "content": "❝",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "300"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hyv0F",
+          "x": 40,
+          "y": 175,
+          "name": "Green Overlay",
+          "width": 320,
+          "height": 380,
+          "fill": "#3D6B4FCC",
+          "cornerRadius": 20,
+          "layout": "none"
+        },
+        {
+          "type": "text",
+          "id": "IN5mn",
+          "x": 160,
+          "y": 310,
+          "name": "checkIcon",
+          "fill": "#FFFFFF",
+          "content": "✓",
+          "fontFamily": "Inter",
+          "fontSize": 100,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "vxJAN",
+          "x": 40,
+          "y": 40,
+          "name": "progressText2",
+          "fill": "#FFFFFF",
+          "content": "1/20",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "O6N8u",
+      "x": 2231,
+      "y": 0,
+      "name": "Poem Card 3",
+      "clip": true,
+      "width": 400,
+      "height": 700,
+      "fill": "#FAF8F5",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "QLqsq",
+          "x": 0,
+          "y": 0,
+          "name": "Background Image 3",
+          "metadata": {
+            "type": "unsplash",
+            "username": "theprototype",
+            "link": "https://unsplash.com/@theprototype",
+            "author": "The Prototype"
+          },
+          "width": 400,
+          "height": 700,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "https://images.unsplash.com/photo-1762626073183-0d98a5a23e9d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA2NzcwMjR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mode": "fill"
+          },
+          "children": [
+            {
+              "type": "frame",
+              "id": "RBrhm",
+              "name": "Overlay 3",
+              "width": 400,
+              "height": 700,
+              "fill": "#1E3A5F70",
+              "layout": "none"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "lPpJ9",
+          "x": 40,
+          "y": 175,
+          "name": "Poem Card 3",
+          "width": 320,
+          "height": "fit_content(409)",
+          "fill": "#1c1c1ccc",
+          "cornerRadius": 20,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "p4pJh",
+              "x": 32,
+              "y": 100,
+              "name": "poemType3",
+              "fill": "#FFFFFF60",
+              "content": "Single-Line Poem",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "6Sh6L",
+              "x": 32,
+              "y": 140,
+              "name": "poemText3",
+              "fill": "#FFFFFF",
+              "content": "완벽히 닫힌 문 앞에서,\n왜 자꾸만\n뒤돌아보는가.",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "300"
+            },
+            {
+              "type": "rectangle",
+              "id": "sYuCz",
+              "x": 40,
+              "y": 248,
+              "fill": "#CCCCCC",
+              "width": 1,
+              "height": 1
+            },
+            {
+              "type": "text",
+              "id": "lwSuM",
+              "x": 32,
+              "y": 32,
+              "name": "quoteMark3",
+              "fill": "#FFFFFF40",
+              "content": "❝",
+              "fontFamily": "Afacad Flux",
+              "fontSize": 48,
+              "fontWeight": "300"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5D3PN",
+          "x": 40,
+          "y": 175,
+          "name": "Red Overlay",
+          "width": 320,
+          "height": 409,
+          "fill": "#8B4049CC",
+          "cornerRadius": 20,
+          "layout": "none"
+        },
+        {
+          "type": "text",
+          "id": "7d6Kx",
+          "x": 160,
+          "y": 310,
+          "name": "xIcon",
+          "fill": "#FFFFFF",
+          "content": "×",
+          "fontFamily": "Inter",
+          "fontSize": 100,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "gORvX",
+          "x": 40,
+          "y": 40,
+          "name": "progressText3",
+          "fill": "#FFFFFF",
+          "content": "1/20",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "500"
+        },
+        {
+          "type": "frame",
+          "id": "YN9jg",
+          "x": 280.0427704246649,
+          "y": 39.87839227764853,
+          "name": "Result Button",
+          "rotation": -0.17428327398382346,
+          "width": 80,
+          "height": 28,
+          "fill": "#FFFFFF20",
+          "cornerRadius": 14,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "7052B",
+              "name": "resultButtonText3",
+              "fill": "#FFFFFF50",
+              "content": "결과 보기",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "JrXsk",
+      "x": 2651,
+      "y": 0,
+      "name": "Poem Card 4",
+      "clip": true,
+      "width": 400,
+      "height": 700,
+      "fill": "#FAF8F5",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "UONm2",
+          "x": 0,
+          "y": 0,
+          "name": "Background Image 4",
+          "metadata": {
+            "type": "unsplash",
+            "username": "junelmujar",
+            "link": "https://unsplash.com/@junelmujar",
+            "author": "Junel Mujar"
+          },
+          "width": 400,
+          "height": 700,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "https://images.unsplash.com/photo-1724195712640-165c37fed09c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzA2NzcwMjV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mode": "fill"
+          },
+          "children": [
+            {
+              "type": "frame",
+              "id": "Eo5H6",
+              "name": "Overlay 4",
+              "width": 400,
+              "height": 700,
+              "fill": "#8B404950",
+              "layout": "none"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OqPwX",
+          "x": 40,
+          "y": 175,
+          "name": "Poem Card 4",
+          "width": 320,
+          "height": "fit_content(380)",
+          "fill": "#1C1C1CCC",
+          "cornerRadius": 20,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "jGIJO",
+              "x": 32,
+              "y": 100,
+              "name": "poemType4",
+              "fill": "#FFFFFF60",
+              "content": "Haiku",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "X9NiV",
+              "x": 32,
+              "y": 140,
+              "name": "poemText4",
+              "fill": "#FFFFFF",
+              "content": "꽃잎이 떨어지는 순간,\n비로소 세상의\n무심함을 깨닫는다.",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 24,
+              "fontWeight": "300"
+            },
+            {
+              "type": "text",
+              "id": "wJto2",
+              "x": 32,
+              "y": 32,
+              "name": "quoteMark4",
+              "fill": "#FFFFFF40",
+              "content": "❝",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "300"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "resultScreen1",
+      "x": 3071,
+      "y": 0,
+      "name": "Result Screen - Outer-Harmony-Feeling-Fixed",
+      "clip": true,
+      "width": 400,
+      "height": 812,
+      "fill": "#F8F6F3",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "resultHeader1",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 60,
+          "padding": [
+            20,
+            20,
+            0,
+            20
+          ],
+          "layout": "vertical",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "resultTitle1",
+              "name": "pageTitle",
+              "fill": "#1A1A1A",
+              "content": "나의 성향 결과",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600",
+              "textAlign": "center"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "characterContainer1",
+          "name": "Character Container",
+          "width": "fill_container",
+          "height": 280,
+          "layout": "vertical",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "characterBg1",
+              "name": "Character Background",
+              "width": 200,
+              "height": 200,
+              "cornerRadius": 100,
+              "fill": "#E8D5C4",
+              "layout": "vertical",
+              "alignItems": "center",
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "characterEmoji1",
+                  "name": "Character Emoji",
+                  "fill": "#1A1A1A",
+                  "content": "🌅",
+                  "fontSize": 80
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "characterName1",
+              "name": "Character Name",
+              "fill": "#667EEA",
+              "content": "조화로운 외향적 공감 리더",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "marginTop": 16
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "typeBadgeContainer1",
+          "name": "Type Badges",
+          "width": "fill_container",
+          "height": 40,
+          "gap": 8,
+          "layout": "horizontal",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "badgeOuter1",
+              "name": "Outer Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#667EEA",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeOuterText1",
+                  "name": "Outer Text",
+                  "fill": "#FFFFFF",
+                  "content": "외향",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeHarmony1",
+              "name": "Harmony Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#10B981",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeHarmonyText1",
+                  "name": "Harmony Text",
+                  "fill": "#FFFFFF",
+                  "content": "조화",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeFeeling1",
+              "name": "Feeling Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#F59E0B",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeFeelingText1",
+                  "name": "Feeling Text",
+                  "fill": "#FFFFFF",
+                  "content": "감정",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeFixed1",
+              "name": "Fixed Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#8B5CF6",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeFixedText1",
+                  "name": "Fixed Text",
+                  "fill": "#FFFFFF",
+                  "content": "체계",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "descriptionContainer1",
+          "name": "Description Container",
+          "width": "fill_container",
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "typeLabel1",
+              "name": "Type Label",
+              "fill": "#666666",
+              "content": "성향 유형",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "typeName1",
+              "name": "Type Name",
+              "fill": "#1A1A1A",
+              "content": "외향적 조화형 감정 체계주의자",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "typeDescription1",
+              "name": "Type Description",
+              "fill": "#4A4A4A",
+              "content": "외향적이면서도 조화로운 관계를 중시하며, 감정과 가치를 바탕으로 체계적으로 행동하는 유형입니다. 타인과의 협력을 통해 목표를 달성하며, 계획적이고 안정적인 환경에서 최고의 성과를 냅니다. 팀워크와 공감 능력이 뛰어나며, 구조화된 환경에서 사람들과 함께 성장하는 것을 선호합니다.",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "lineHeight": 1.6,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "traitsContainer1",
+          "name": "Traits Container",
+          "width": "fill_container",
+          "padding": [
+            0,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "traitsLabel1",
+              "name": "Traits Label",
+              "fill": "#666666",
+              "content": "주요 특성",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "traitsList1",
+              "name": "Traits List",
+              "width": "fill_container",
+              "gap": 8,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "trait1_1",
+                  "name": "Trait 1",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon1_1",
+                      "name": "Trait Icon",
+                      "fill": "#667EEA",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText1_1",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "팀워크와 협업 능력",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait1_2",
+                  "name": "Trait 2",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon1_2",
+                      "name": "Trait Icon",
+                      "fill": "#10B981",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText1_2",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "높은 공감 능력",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait1_3",
+                  "name": "Trait 3",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon1_3",
+                      "name": "Trait Icon",
+                      "fill": "#F59E0B",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText1_3",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "체계적인 계획 수립",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "actionContainer1",
+          "name": "Action Container",
+          "width": "fill_container",
+          "height": 80,
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "gap": 12,
+          "layout": "horizontal",
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "shareBtn1",
+              "name": "Share Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#FFFFFF",
+              "stroke": "#E0E0E0",
+              "strokeWidth": 1,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "shareBtnText1",
+                  "name": "Share Button Text",
+                  "fill": "#1A1A1A",
+                  "content": "공유하기",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "retryBtn1",
+              "name": "Retry Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#667EEA",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "retryBtnText1",
+                  "name": "Retry Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "다시 테스트",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "resultScreen2",
+      "x": 3491,
+      "y": 0,
+      "name": "Result Screen - Outer-Harmony-Feeling-Flow",
+      "clip": true,
+      "width": 400,
+      "height": 812,
+      "fill": "#F5F3F8",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "characterContainer2",
+          "name": "Character Container",
+          "width": "fill_container",
+          "height": 280,
+          "layout": "vertical",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "characterBg2",
+              "name": "Character Background",
+              "width": 200,
+              "height": 200,
+              "cornerRadius": 100,
+              "fill": "#DDD5E8",
+              "layout": "vertical",
+              "alignItems": "center",
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "characterEmoji2",
+                  "name": "Character Emoji",
+                  "fill": "#1A1A1A",
+                  "content": "🎨",
+                  "fontSize": 80
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "characterName2",
+              "name": "Character Name",
+              "fill": "#8B5CF6",
+              "content": "자유로운 외향적 공감 예술가",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "marginTop": 16
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "typeBadgeContainer2",
+          "name": "Type Badges",
+          "width": "fill_container",
+          "height": 40,
+          "gap": 8,
+          "layout": "horizontal",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "badgeOuter2",
+              "name": "Outer Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#667EEA",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeOuterText2",
+                  "name": "Outer Text",
+                  "fill": "#FFFFFF",
+                  "content": "외향",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeHarmony2",
+              "name": "Harmony Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#10B981",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeHarmonyText2",
+                  "name": "Harmony Text",
+                  "fill": "#FFFFFF",
+                  "content": "조화",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeFeeling2",
+              "name": "Feeling Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#F59E0B",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeFeelingText2",
+                  "name": "Feeling Text",
+                  "fill": "#FFFFFF",
+                  "content": "감정",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeFlow2",
+              "name": "Flow Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#EC4899",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeFlowText2",
+                  "name": "Flow Text",
+                  "fill": "#FFFFFF",
+                  "content": "유연",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "descriptionContainer2",
+          "name": "Description Container",
+          "width": "fill_container",
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "typeLabel2",
+              "name": "Type Label",
+              "fill": "#666666",
+              "content": "성향 유형",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "typeName2",
+              "name": "Type Name",
+              "fill": "#1A1A1A",
+              "content": "외향적 조화형 감정 유연주의자",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "typeDescription2",
+              "name": "Type Description",
+              "fill": "#4A4A4A",
+              "content": "외향적이고 조화로운 관계를 중시하며, 감정과 가치를 바탕으로 유연하게 행동하는 유형입니다. 타인과의 협력을 즐기며, 변화하는 상황에 쉽게 적응합니다. 새로운 경험과 가능성을 열어두고, 사람들과 함께하는 과정에서 창의력을 발휘합니다.",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "lineHeight": 1.6,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "traitsContainer2",
+          "name": "Traits Container",
+          "width": "fill_container",
+          "padding": [
+            0,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "traitsLabel2",
+              "name": "Traits Label",
+              "fill": "#666666",
+              "content": "주요 특성",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "traitsList2",
+              "name": "Traits List",
+              "width": "fill_container",
+              "gap": 8,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "trait2_1",
+                  "name": "Trait 1",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon2_1",
+                      "name": "Trait Icon",
+                      "fill": "#667EEA",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText2_1",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "적응력과 유연성",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait2_2",
+                  "name": "Trait 2",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon2_2",
+                      "name": "Trait Icon",
+                      "fill": "#EC4899",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText2_2",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "창의적 문제 해결",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait2_3",
+                  "name": "Trait 3",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon2_3",
+                      "name": "Trait Icon",
+                      "fill": "#F59E0B",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText2_3",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "새로운 경험 추구",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "actionContainer2",
+          "name": "Action Container",
+          "width": "fill_container",
+          "height": 80,
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "gap": 12,
+          "layout": "horizontal",
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "shareBtn2",
+              "name": "Share Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#FFFFFF",
+              "stroke": "#E0E0E0",
+              "strokeWidth": 1,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "shareBtnText2",
+                  "name": "Share Button Text",
+                  "fill": "#1A1A1A",
+                  "content": "공유하기",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "retryBtn2",
+              "name": "Retry Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#8B5CF6",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "retryBtnText2",
+                  "name": "Retry Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "다시 테스트",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "resultScreen3",
+      "x": 3911,
+      "y": 0,
+      "name": "Result Screen - Inner-Solitude-Logic-Fixed",
+      "clip": true,
+      "width": 400,
+      "height": 812,
+      "fill": "#F0F4F8",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "characterContainer3",
+          "name": "Character Container",
+          "width": "fill_container",
+          "height": 280,
+          "layout": "vertical",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "characterBg3",
+              "name": "Character Background",
+              "width": 200,
+              "height": 200,
+              "cornerRadius": 100,
+              "fill": "#C4D4E8",
+              "layout": "vertical",
+              "alignItems": "center",
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "characterEmoji3",
+                  "name": "Character Emoji",
+                  "fill": "#1A1A1A",
+                  "content": "🔬",
+                  "fontSize": 80
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "characterName3",
+              "name": "Character Name",
+              "fill": "#1E3A5F",
+              "content": "깊이 있는 내향적 분석가",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "marginTop": 16
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "typeBadgeContainer3",
+          "name": "Type Badges",
+          "width": "fill_container",
+          "height": 40,
+          "gap": 8,
+          "layout": "horizontal",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "badgeInner3",
+              "name": "Inner Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#64748B",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeInnerText3",
+                  "name": "Inner Text",
+                  "fill": "#FFFFFF",
+                  "content": "내향",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeSolitude3",
+              "name": "Solitude Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#475569",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeSolitudeText3",
+                  "name": "Solitude Text",
+                  "fill": "#FFFFFF",
+                  "content": "독립",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeLogic3",
+              "name": "Logic Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#3B82F6",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeLogicText3",
+                  "name": "Logic Text",
+                  "fill": "#FFFFFF",
+                  "content": "논리",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeFixed3",
+              "name": "Fixed Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#8B5CF6",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeFixedText3",
+                  "name": "Fixed Text",
+                  "fill": "#FFFFFF",
+                  "content": "체계",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "descriptionContainer3",
+          "name": "Description Container",
+          "width": "fill_container",
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "typeLabel3",
+              "name": "Type Label",
+              "fill": "#666666",
+              "content": "성향 유형",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "typeName3",
+              "name": "Type Name",
+              "fill": "#1A1A1A",
+              "content": "내향적 독립형 논리 체계주의자",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "typeDescription3",
+              "name": "Type Description",
+              "fill": "#4A4A4A",
+              "content": "내향적이고 독립적인 활동을 선호하며, 논리와 객관성을 바탕으로 체계적으로 행동하는 유형입니다. 깊이 있는 사고와 논리적 분석을 통해 목표를 달성하며, 구조화된 환경에서 최고의 성과를 냅니다. 독립적이고 체계적인 접근을 통해 문제를 해결합니다.",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "lineHeight": 1.6,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "traitsContainer3",
+          "name": "Traits Container",
+          "width": "fill_container",
+          "padding": [
+            0,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "traitsLabel3",
+              "name": "Traits Label",
+              "fill": "#666666",
+              "content": "주요 특성",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "traitsList3",
+              "name": "Traits List",
+              "width": "fill_container",
+              "gap": 8,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "trait3_1",
+                  "name": "Trait 1",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon3_1",
+                      "name": "Trait Icon",
+                      "fill": "#3B82F6",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText3_1",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "논리적 사고와 분석",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait3_2",
+                  "name": "Trait 2",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon3_2",
+                      "name": "Trait Icon",
+                      "fill": "#475569",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText3_2",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "독립적 문제 해결",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait3_3",
+                  "name": "Trait 3",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon3_3",
+                      "name": "Trait Icon",
+                      "fill": "#8B5CF6",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText3_3",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "체계적인 계획 수립",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "actionContainer3",
+          "name": "Action Container",
+          "width": "fill_container",
+          "height": 80,
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "gap": 12,
+          "layout": "horizontal",
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "shareBtn3",
+              "name": "Share Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#FFFFFF",
+              "stroke": "#E0E0E0",
+              "strokeWidth": 1,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "shareBtnText3",
+                  "name": "Share Button Text",
+                  "fill": "#1A1A1A",
+                  "content": "공유하기",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "retryBtn3",
+              "name": "Retry Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#1E3A5F",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "retryBtnText3",
+                  "name": "Retry Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "다시 테스트",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "resultScreen4",
+      "x": 4331,
+      "y": 0,
+      "name": "Result Screen - Outer-Solitude-Logic-Flow",
+      "clip": true,
+      "width": 400,
+      "height": 812,
+      "fill": "#F5F7FA",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "characterContainer4",
+          "name": "Character Container",
+          "width": "fill_container",
+          "height": 280,
+          "layout": "vertical",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "characterBg4",
+              "name": "Character Background",
+              "width": 200,
+              "height": 200,
+              "cornerRadius": 100,
+              "fill": "#D4E4F7",
+              "layout": "vertical",
+              "alignItems": "center",
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "characterEmoji4",
+                  "name": "Character Emoji",
+                  "fill": "#1A1A1A",
+                  "content": "🚀",
+                  "fontSize": 80
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "characterName4",
+              "name": "Character Name",
+              "fill": "#3B82F6",
+              "content": "독립적인 외향적 혁신가",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "marginTop": 16
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "typeBadgeContainer4",
+          "name": "Type Badges",
+          "width": "fill_container",
+          "height": 40,
+          "gap": 8,
+          "layout": "horizontal",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "badgeOuter4",
+              "name": "Outer Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#667EEA",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeOuterText4",
+                  "name": "Outer Text",
+                  "fill": "#FFFFFF",
+                  "content": "외향",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeSolitude4",
+              "name": "Solitude Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#475569",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeSolitudeText4",
+                  "name": "Solitude Text",
+                  "fill": "#FFFFFF",
+                  "content": "독립",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeLogic4",
+              "name": "Logic Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#3B82F6",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeLogicText4",
+                  "name": "Logic Text",
+                  "fill": "#FFFFFF",
+                  "content": "논리",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeFlow4",
+              "name": "Flow Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#EC4899",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeFlowText4",
+                  "name": "Flow Text",
+                  "fill": "#FFFFFF",
+                  "content": "유연",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "descriptionContainer4",
+          "name": "Description Container",
+          "width": "fill_container",
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "typeLabel4",
+              "name": "Type Label",
+              "fill": "#666666",
+              "content": "성향 유형",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "typeName4",
+              "name": "Type Name",
+              "fill": "#1A1A1A",
+              "content": "외향적 독립형 논리 유연주의자",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "typeDescription4",
+              "name": "Type Description",
+              "fill": "#4A4A4A",
+              "content": "외향적이지만 독립적인 활동을 선호하며, 논리와 객관성을 바탕으로 유연하게 행동하는 유형입니다. 객관적인 분석을 통해 문제를 해결하며, 변화하는 상황에 논리적으로 대응합니다.",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "lineHeight": 1.6,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "traitsContainer4",
+          "name": "Traits Container",
+          "width": "fill_container",
+          "padding": [
+            0,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "traitsLabel4",
+              "name": "Traits Label",
+              "fill": "#666666",
+              "content": "주요 특성",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "traitsList4",
+              "name": "Traits List",
+              "width": "fill_container",
+              "gap": 8,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "trait4_1",
+                  "name": "Trait 1",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon4_1",
+                      "name": "Trait Icon",
+                      "fill": "#3B82F6",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText4_1",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "독립적 문제 해결",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait4_2",
+                  "name": "Trait 2",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon4_2",
+                      "name": "Trait Icon",
+                      "fill": "#EC4899",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText4_2",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "유연한 적응력",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait4_3",
+                  "name": "Trait 3",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon4_3",
+                      "name": "Trait Icon",
+                      "fill": "#667EEA",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText4_3",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "객관적 분석 능력",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "actionContainer4",
+          "name": "Action Container",
+          "width": "fill_container",
+          "height": 80,
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "gap": 12,
+          "layout": "horizontal",
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "shareBtn4",
+              "name": "Share Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#FFFFFF",
+              "stroke": "#E0E0E0",
+              "strokeWidth": 1,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "shareBtnText4",
+                  "name": "Share Button Text",
+                  "fill": "#1A1A1A",
+                  "content": "공유하기",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "retryBtn4",
+              "name": "Retry Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#3B82F6",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "retryBtnText4",
+                  "name": "Retry Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "다시 테스트",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "resultScreen5",
+      "x": 4751,
+      "y": 0,
+      "name": "Result Screen - Inner-Harmony-Feeling-Flow",
+      "clip": true,
+      "width": 400,
+      "height": 812,
+      "fill": "#FFF5F5",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "characterContainer5",
+          "name": "Character Container",
+          "width": "fill_container",
+          "height": 280,
+          "layout": "vertical",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "characterBg5",
+              "name": "Character Background",
+              "width": 200,
+              "height": 200,
+              "cornerRadius": 100,
+              "fill": "#FCE4E4",
+              "layout": "vertical",
+              "alignItems": "center",
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "characterEmoji5",
+                  "name": "Character Emoji",
+                  "fill": "#1A1A1A",
+                  "content": "🌸",
+                  "fontSize": 80
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "characterName5",
+              "name": "Character Name",
+              "fill": "#EC4899",
+              "content": "따뜻한 내향적 공감 치유사",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "marginTop": 16
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "typeBadgeContainer5",
+          "name": "Type Badges",
+          "width": "fill_container",
+          "height": 40,
+          "gap": 8,
+          "layout": "horizontal",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "badgeInner5",
+              "name": "Inner Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#64748B",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeInnerText5",
+                  "name": "Inner Text",
+                  "fill": "#FFFFFF",
+                  "content": "내향",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeHarmony5",
+              "name": "Harmony Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#10B981",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeHarmonyText5",
+                  "name": "Harmony Text",
+                  "fill": "#FFFFFF",
+                  "content": "조화",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeFeeling5",
+              "name": "Feeling Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#F59E0B",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeFeelingText5",
+                  "name": "Feeling Text",
+                  "fill": "#FFFFFF",
+                  "content": "감정",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "badgeFlow5",
+              "name": "Flow Badge",
+              "width": 70,
+              "height": 28,
+              "cornerRadius": 14,
+              "fill": "#EC4899",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "badgeFlowText5",
+                  "name": "Flow Text",
+                  "fill": "#FFFFFF",
+                  "content": "유연",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "descriptionContainer5",
+          "name": "Description Container",
+          "width": "fill_container",
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "typeLabel5",
+              "name": "Type Label",
+              "fill": "#666666",
+              "content": "성향 유형",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "typeName5",
+              "name": "Type Name",
+              "fill": "#1A1A1A",
+              "content": "내향적 조화형 감정 유연주의자",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "typeDescription5",
+              "name": "Type Description",
+              "fill": "#4A4A4A",
+              "content": "내향적이면서도 조화로운 관계를 중시하며, 감정과 가치를 바탕으로 유연하게 행동하는 유형입니다. 깊이 있는 관계를 형성하며, 변화하는 상황에 감정적으로 대응합니다. 타인과의 조화를 중시하면서도 유연한 환경을 선호합니다.",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "lineHeight": 1.6,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "traitsContainer5",
+          "name": "Traits Container",
+          "width": "fill_container",
+          "padding": [
+            0,
+            24,
+            24,
+            24
+          ],
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "traitsLabel5",
+              "name": "Traits Label",
+              "fill": "#666666",
+              "content": "주요 특성",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "traitsList5",
+              "name": "Traits List",
+              "width": "fill_container",
+              "gap": 8,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "trait5_1",
+                  "name": "Trait 1",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon5_1",
+                      "name": "Trait Icon",
+                      "fill": "#EC4899",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText5_1",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "깊이 있는 공감 능력",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait5_2",
+                  "name": "Trait 2",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon5_2",
+                      "name": "Trait Icon",
+                      "fill": "#10B981",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText5_2",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "유연한 관계 형성",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "trait5_3",
+                  "name": "Trait 3",
+                  "width": "fill_container",
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "fill": "#FFFFFF",
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    12
+                  ],
+                  "layout": "horizontal",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "traitIcon5_3",
+                      "name": "Trait Icon",
+                      "fill": "#F59E0B",
+                      "content": "✦",
+                      "fontSize": 14,
+                      "marginRight": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "traitText5_3",
+                      "name": "Trait Text",
+                      "fill": "#1A1A1A",
+                      "content": "감정적 지혜",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "actionContainer5",
+          "name": "Action Container",
+          "width": "fill_container",
+          "height": 80,
+          "padding": [
+            24,
+            24,
+            24,
+            24
+          ],
+          "gap": 12,
+          "layout": "horizontal",
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "shareBtn5",
+              "name": "Share Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#FFFFFF",
+              "stroke": "#E0E0E0",
+              "strokeWidth": 1,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "shareBtnText5",
+                  "name": "Share Button Text",
+                  "fill": "#1A1A1A",
+                  "content": "공유하기",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "retryBtn5",
+              "name": "Retry Button",
+              "width": 160,
+              "height": 48,
+              "cornerRadius": 24,
+              "fill": "#EC4899",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "retryBtnText5",
+                  "name": "Retry Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "다시 테스트",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
