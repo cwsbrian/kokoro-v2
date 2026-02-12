@@ -27,7 +27,7 @@ export const PoemCardSchema = z.object({
   Poem_ID: z.string().regex(/^P\d+$/),
   Poem_Type: z.enum(['Haiku', 'Senryu', 'Single-Line Poem']),
   Poem_Text_KR: z.string().min(1),
-  Poem_Text_JP: z.string(),
+  Poem_Text_JP: z.string().min(1),
   Kisho_Axis: z.enum(['Ki', 'Shō', 'Ten', 'Ketsu']),
   Kisho_Tag: z.enum(['Inner', 'Outer', 'Harmony', 'Solitude', 'Feeling', 'Logic', 'Flow', 'Fixed']),
   Content_Category: z.string(),
@@ -72,5 +72,14 @@ export const FirestoreUserScoresSchema = z.object({
   MBTI_Total: MBTI_TotalSchema,
   BigFive_Cumulative: BigFive_CumulativeSchema,
   Response_Count: z.number().int().min(0),
-  Last_Updated: z.union([z.date(), z.string(), z.any()]), // Firestore Timestamp
+  Last_Updated: z.preprocess(
+    (val) => {
+      if (val instanceof Date) return val;
+      if (typeof val === 'string') return val;
+      const t = val as { toMillis?: () => number } | undefined;
+      if (t?.toMillis && typeof t.toMillis === 'function') return new Date(t.toMillis());
+      return val;
+    },
+    z.union([z.date(), z.string()])
+  ),
 });

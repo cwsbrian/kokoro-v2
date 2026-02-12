@@ -131,7 +131,6 @@ export function determineMBTIType(preferences: MBTIPreference): MBTITypeResult {
  * 모든 카드의 절대값 합계
  */
 function calculateMaxScore(
-  cumulative: BigFive_Cumulative,
   responseCount: number,
   allCards: PoemCard[]
 ): Record<string, number> {
@@ -173,7 +172,7 @@ export function calculateBigFiveSpectrum(
   responseCount: number,
   allCards: PoemCard[]
 ): BigFiveSpectrum {
-  const maxScores = calculateMaxScore(cumulative, responseCount, allCards);
+  const maxScores = calculateMaxScore(responseCount, allCards);
 
   const spectrum: BigFiveSpectrum = {
     O: 0,

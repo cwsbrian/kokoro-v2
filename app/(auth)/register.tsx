@@ -73,6 +73,7 @@ export default function RegisterScreen() {
           </Toast>
         ),
       });
+      await new Promise((resolve) => setTimeout(resolve, 800));
       router.replace('/login');
     } catch (error: any) {
       let errorMessage = '회원가입에 실패했습니다.';

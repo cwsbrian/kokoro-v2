@@ -43,6 +43,7 @@ export default function HomeScreen() {
   // Firebase user → store (auth state may resolve after first paint)
   useEffect(() => {
     if (user) setUserId(user.uid);
+    else setUserId(null);
   }, [user, setUserId]);
 
   const initializeApp = useCallback(async () => {
@@ -121,9 +122,6 @@ export default function HomeScreen() {
     const result = getAnalysisResult();
     if (result.canShowResults) {
       // router.push('/results');
-    } else {
-      // MRT 미달 시 알림
-      alert(`결과를 보려면 최소 ${MRT - responseCount}번 더 스와이프해주세요.`);
     }
   };
 
@@ -196,7 +194,7 @@ export default function HomeScreen() {
           <View style={styles.headerLeft}>
             {/* <Text style={styles.appTitle}>Kokoro</Text> */}
             <Text style={styles.responseCount}>
-              {responseCount > 20 ? responseCount : responseCount + "/20"} 회
+              {responseCount >= MRT ? responseCount : `${responseCount}/${MRT}`} 회
             </Text>
           </View>
           <View style={styles.headerRight}>

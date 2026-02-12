@@ -20,9 +20,14 @@ export default function Index() {
       setHasSeenOnboarding(false);
       return;
     }
-    AsyncStorage.getItem(ONBOARDING_DONE_KEY).then((value) => {
-      setHasSeenOnboarding(value === 'true');
-    });
+    AsyncStorage.getItem(ONBOARDING_DONE_KEY)
+      .then((value) => {
+        setHasSeenOnboarding(value === 'true');
+      })
+      .catch((err) => {
+        console.error('Failed to read onboarding state:', err);
+        setHasSeenOnboarding(false);
+      });
   }, [user]);
 
   if (isLoading) {

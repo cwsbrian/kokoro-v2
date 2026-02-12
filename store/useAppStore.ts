@@ -29,7 +29,7 @@ interface AppState {
   // Actions
   loadPoems: (poems: PoemCard[]) => void;
   swipeCard: (direction: SwipeDirection) => void;
-  setUserId: (userId: string) => void;
+  setUserId: (userId: string | null) => void;
   loadUserScores: (scores: UserScores) => void;
   resetScores: () => void;
   getCurrentCard: () => PoemCard | null;
@@ -64,6 +64,12 @@ export const useAppStore = create<AppState>((set, get) => ({
       return;
     }
 
+    const nextIndex = state.currentCardIndex + 1;
+    const hasMoreCards = nextIndex < state.poems.length;
+    if (!hasMoreCards) {
+      return;
+    }
+
     // 점수 업데이트
     const newMBTITotal = updateMBTIScore(state.mbtiTotal, currentCard, direction);
     const newBigFiveCumulative = updateBigFiveScore(
@@ -72,20 +78,16 @@ export const useAppStore = create<AppState>((set, get) => ({
       direction
     );
 
-    // 다음 카드로 이동
-    const nextIndex = state.currentCardIndex + 1;
-    const hasMoreCards = nextIndex < state.poems.length;
-
     set({
       mbtiTotal: newMBTITotal,
       bigFiveCumulative: newBigFiveCumulative,
       responseCount: state.responseCount + 1,
-      currentCardIndex: hasMoreCards ? nextIndex : state.currentCardIndex,
+      currentCardIndex: nextIndex,
       lastUpdated: new Date(),
     });
   },
 
-  setUserId: (userId: string) => {
+  setUserId: (userId: string | null) => {
     set({ userId });
   },
 

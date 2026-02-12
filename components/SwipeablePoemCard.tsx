@@ -1,6 +1,6 @@
 import { BlurView } from "expo-blur";
-import React, { useState } from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   interpolate,
@@ -14,8 +14,6 @@ import Animated, {
 } from "react-native-reanimated";
 import type { PoemCard as PoemCardType, SwipeDirection } from '@/types';
 
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
-const SWIPE_THRESHOLD = SCREEN_WIDTH * 0.3;
 const ROTATION_MAX = 10;
 
 interface SwipeablePoemCardProps {
@@ -31,12 +29,19 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
   onSwipe,
   isActive,
 }) => {
+  const { width: screenWidth } = useWindowDimensions();
+  const swipeThreshold = screenWidth * 0.3;
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
   const scale = useSharedValue(isActive ? 1 : 0.95);
   const opacity = useSharedValue(isActive ? 1 : 0.8);
   const [feedbackText, setFeedbackText] = useState<"공감" | "비공감" | "">("");
   const [feedbackColor, setFeedbackColor] = useState("#4CAF50");
+
+  useEffect(() => {
+    scale.value = withTiming(isActive ? 1 : 0.95, { duration: 200 });
+    opacity.value = withTiming(isActive ? 1 : 0.8, { duration: 200 });
+  }, [isActive, scale, opacity]);
 
   const panGesture = Gesture.Pan()
     .enabled(isActive)
@@ -48,7 +53,7 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
       const absX = Math.abs(event.translationX);
       const absY = Math.abs(event.translationY);
 
-      if (absX > SWIPE_THRESHOLD || absY > SWIPE_THRESHOLD) {
+      if (absX > swipeThreshold) {
         const direction: SwipeDirection =
           event.translationX > 0 ? "right" : "left";
 
@@ -57,10 +62,13 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
 
         // 카드를 화면 밖으로 이동 (애니메이션은 백그라운드에서 실행)
         const finalX =
-          event.translationX > 0 ? SCREEN_WIDTH + 100 : -SCREEN_WIDTH - 100;
+          event.translationX > 0 ? screenWidth + 100 : -screenWidth - 100;
         translateX.value = withSpring(finalX, { damping: 15 });
         translateY.value = withSpring(event.translationY * 2, { damping: 15 });
         opacity.value = withTiming(0, { duration: 200 });
+      } else if (absY > swipeThreshold) {
+        translateX.value = withSpring(0, { damping: 15 });
+        translateY.value = withSpring(0, { damping: 15 });
       } else {
         // 원래 위치로 복귀
         translateX.value = withSpring(0, { damping: 15 });
@@ -71,7 +79,7 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
   const cardStyle = useAnimatedStyle(() => {
     const rotation = interpolate(
       translateX.value,
-      [-SCREEN_WIDTH, 0, SCREEN_WIDTH],
+      [-screenWidth, 0, screenWidth],
       [-ROTATION_MAX, 0, ROTATION_MAX],
     );
 
