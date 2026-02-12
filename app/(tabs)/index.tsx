@@ -1,16 +1,10 @@
-import { loadPoemsFromJSON } from "@/data/poemsLoader";
-import { getCurrentUser } from "@/services/authService";
-import {
-  createUserDocument,
-  getUserScores,
-  updateUserScores,
-} from "@/services/firestoreService";
-import { useAppStore } from "@/store/useAppStore";
-import { MRT } from "@/utils/scoreCalculator";
-import { BlurView } from "expo-blur";
-import * as Haptics from "expo-haptics";
-import { useRouter } from "expo-router";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useAuth } from '@/contexts/auth-context';
+import { loadPoemsFromJSON } from '@/data/poemsLoader';
+import { useAppStore } from '@/store/useAppStore';
+import { MRT } from '@/utils/scoreCalculator';
+import { BlurView } from 'expo-blur';
+import * as Haptics from 'expo-haptics';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -19,8 +13,9 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from "react-native";
-import { SwipeablePoemCard } from "../../components/SwipeablePoemCard";
+} from 'react-native';
+
+import { SwipeablePoemCard } from '@/components/SwipeablePoemCard';
 
 // 이미지 URL 생성 함수 (카드 인덱스 기반)
 const getImageUrl = (index: number) => {
@@ -28,7 +23,7 @@ const getImageUrl = (index: number) => {
 };
 
 export default function HomeScreen() {
-  const router = useRouter();
+  const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const preloadedImagesRef = useRef<Set<number>>(new Set());
@@ -37,30 +32,47 @@ export default function HomeScreen() {
     poems,
     currentCardIndex,
     responseCount,
-    userId,
-    mbtiTotal,
-    bigFiveCumulative,
-    lastUpdated,
     loadPoems,
     swipeCard,
     setUserId,
-    loadUserScores,
     getCurrentCard,
     getAnalysisResult,
     shufflePoems,
   } = useAppStore();
 
+  // Firebase user → store (auth state may resolve after first paint)
+  useEffect(() => {
+    if (user) setUserId(user.uid);
+  }, [user, setUserId]);
+
+  const initializeApp = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      // 1. userId는 useAuth().user → useEffect에서 setUserId로 동기화됨
+
+      // 2. 시 카드 로드
+      const loadedPoems = await loadPoemsFromJSON();
+      loadPoems(loadedPoems);
+      shufflePoems();
+
+      // Firestore 동기화는 1단계에서 제외 (옵션 A)
+
+      setIsLoading(false);
+    } catch (err: unknown) {
+      console.error('Initialization error:', err);
+      const errorMessage =
+        err instanceof Error ? err.message : '앱 초기화 중 오류가 발생했습니다.';
+      setError(errorMessage);
+      setIsLoading(false);
+    }
+  }, [loadPoems, shufflePoems]);
+
   // 초기화
   useEffect(() => {
     initializeApp();
-  }, []);
-
-  // 점수 변경 시 Firestore에 저장
-  useEffect(() => {
-    if (userId && responseCount > 0 && lastUpdated) {
-      saveScoresToFirestore();
-    }
-  }, [responseCount, mbtiTotal, bigFiveCumulative]);
+  }, [initializeApp]);
 
   // 이미지 프리로딩 함수
   const preloadImages = useCallback(
@@ -98,66 +110,7 @@ export default function HomeScreen() {
     }
   }, [currentCardIndex, poems.length, preloadImages]);
 
-  const initializeApp = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      // 1. 현재 인증된 사용자 확인
-      const user = getCurrentUser();
-      if (user) {
-        setUserId(user.uid);
-      }
-
-      // 2. 시 카드 로드
-      const loadedPoems = await loadPoemsFromJSON();
-      loadPoems(loadedPoems);
-      shufflePoems();
-
-      // 3. 기존 점수 불러오기 (인증된 사용자인 경우에만)
-      if (user) {
-        try {
-          const existingScores = await getUserScores(user.uid);
-          if (existingScores) {
-            loadUserScores(existingScores);
-          } else {
-            // 초기 문서 생성
-            await createUserDocument(user.uid);
-          }
-        } catch (firestoreError) {
-          console.warn(
-            "Firestore error (continuing without sync):",
-            firestoreError,
-          );
-          // Firestore 실패해도 로컬에서 계속 사용 가능
-        }
-      }
-
-      setIsLoading(false);
-    } catch (err: any) {
-      console.error("Initialization error:", err);
-      const errorMessage = err?.message || "앱 초기화 중 오류가 발생했습니다.";
-      setError(errorMessage);
-      setIsLoading(false);
-    }
-  };
-
-  const saveScoresToFirestore = async () => {
-    if (!userId) return;
-
-    try {
-      await updateUserScores(userId, {
-        MBTI_Total: mbtiTotal,
-        BigFive_Cumulative: bigFiveCumulative,
-        Response_Count: responseCount,
-        Last_Updated: lastUpdated || new Date(),
-      });
-    } catch (err) {
-      console.error("Error saving scores:", err);
-    }
-  };
-
-  const handleSwipe = (direction: "right" | "left") => {
+  const handleSwipe = (direction: 'right' | 'left') => {
     // 햅틱 피드백
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
@@ -179,9 +132,9 @@ export default function HomeScreen() {
   const hasMoreCards = currentCardIndex < poems.length - 1;
 
   // 디버깅: 현재 상태 로그
-  React.useEffect(() => {
+  useEffect(() => {
     if (__DEV__) {
-      console.log("Card state updated:", {
+      console.log('Card state updated:', {
         currentCardIndex,
         hasMoreCards,
         totalPoems: poems.length,
@@ -189,7 +142,7 @@ export default function HomeScreen() {
         nextCardId: poems[currentCardIndex + 1]?.Poem_ID,
       });
     }
-  }, [currentCardIndex, poems.length, currentCard]);
+  }, [currentCardIndex, poems, currentCard, hasMoreCards]);
 
   if (isLoading) {
     return (

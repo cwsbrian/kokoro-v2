@@ -12,7 +12,7 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
-import type { PoemCard as PoemCardType, SwipeDirection } from "../types";
+import type { PoemCard as PoemCardType, SwipeDirection } from '@/types';
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const SWIPE_THRESHOLD = SCREEN_WIDTH * 0.3;
