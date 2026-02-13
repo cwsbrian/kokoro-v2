@@ -27,7 +27,7 @@ export const PoemCardSchema = z.object({
   Poem_ID: z.string().regex(/^P\d+$/),
   Poem_Type: z.enum(['Haiku', 'Senryu', 'Single-Line Poem']),
   Poem_Text_KR: z.string().min(1),
-  Poem_Text_JP: z.string().min(1),
+  Poem_Text_JP: z.string(), // 빈 문자열 허용 (일부 시는 일본어 미번역)
   Kisho_Axis: z.enum(['Ki', 'Shō', 'Ten', 'Ketsu']),
   Kisho_Tag: z.enum(['Inner', 'Outer', 'Harmony', 'Solitude', 'Feeling', 'Logic', 'Flow', 'Fixed']),
   Content_Category: z.string(),
