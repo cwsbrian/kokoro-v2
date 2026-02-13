@@ -2,20 +2,16 @@ import { useAuth } from "@/contexts/auth-context";
 import { loadPoemsFromJSON } from "@/data/poemsLoader";
 import { useAppStore } from "@/store/useAppStore";
 import { MRT } from "@/utils/scoreCalculator";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { BlurView } from "expo-blur";
 import * as Haptics from "expo-haptics";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import {
-  ActivityIndicator,
-  Image,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ActivityIndicator, Image, ImageBackground } from "react-native";
 
 import { SwipeablePoemCard } from "@/components/SwipeablePoemCard";
+import { Box } from "@/components/ui/box";
+import { Pressable } from "@/components/ui/pressable";
+import { Text } from "@/components/ui/text";
 
 // 이미지 URL 생성 함수 (카드 인덱스 기반)
 const getImageUrl = (index: number) => {
@@ -43,6 +39,8 @@ export default function HomeScreen() {
     if (!p?.length || idx < 0 || idx >= p.length) return null;
     return p[idx];
   });
+
+  const tabBarHeight = useBottomTabBarHeight();
 
   // Firebase user → store (auth state may resolve after first paint)
   useEffect(() => {
@@ -146,37 +144,46 @@ export default function HomeScreen() {
 
   if (isLoading) {
     return (
-      <View style={styles.loadingContainer}>
+      <Box className="flex-1 justify-center items-center bg-background-dark">
         <ActivityIndicator size="large" color="#FFFFFF" />
-        <Text style={styles.loadingText}>로딩 중...</Text>
-      </View>
+        <Text className="mt-4 text-base text-typography-0">로딩 중...</Text>
+      </Box>
     );
   }
 
   if (error) {
     return (
-      <View style={styles.errorContainer}>
-        <Text style={styles.errorText}>{error}</Text>
-        <TouchableOpacity style={styles.retryButton} onPress={initializeApp}>
-          <Text style={styles.retryButtonText}>다시 시도</Text>
-        </TouchableOpacity>
-      </View>
+      <Box className="flex-1 justify-center items-center bg-background-dark p-6">
+        <Text className="text-base text-error-500 text-center mb-6">{error}</Text>
+        <Pressable
+          className="bg-success-500 px-6 py-3 rounded-lg"
+          onPress={initializeApp}
+        >
+          <Text className="text-typography-0 text-base font-semibold">
+            다시 시도
+          </Text>
+        </Pressable>
+      </Box>
     );
   }
 
   if (!currentCard) {
     return (
-      <View style={styles.emptyContainer}>
-        <Text style={styles.emptyText}>모든 시 카드를 확인했습니다.</Text>
-        <TouchableOpacity
-          style={styles.restartButton}
+      <Box className="flex-1 justify-center items-center bg-background-dark p-6">
+        <Text className="text-lg text-typography-0 text-center mb-6">
+          모든 시 카드를 확인했습니다.
+        </Text>
+        <Pressable
+          className="bg-success-500 px-6 py-3 rounded-lg"
           onPress={() => {
             shufflePoems();
           }}
         >
-          <Text style={styles.restartButtonText}>다시 시작</Text>
-        </TouchableOpacity>
-      </View>
+          <Text className="text-typography-0 text-base font-semibold">
+            다시 시작
+          </Text>
+        </Pressable>
+      </Box>
     );
   }
 
@@ -186,36 +193,39 @@ export default function HomeScreen() {
   return (
     <ImageBackground
       source={{ uri: currentImageUrl }}
-      style={styles.container}
+      className="flex-1 bg-black"
       resizeMode="cover"
     >
-      <View style={styles.overlay} />
-      <BlurView intensity={20} style={styles.blurOverlay}>
+      <Box className="absolute inset-0 bg-transparent" />
+      <BlurView
+        intensity={20}
+        style={{ flex: 1, paddingBottom: tabBarHeight }}
+      >
         {/* Header */}
-        <View style={styles.header}>
-          <View style={styles.headerLeft}>
-            {/* <Text style={styles.appTitle}>Kokoro</Text> */}
-            <Text style={styles.responseCount}>
+        <Box className="flex-row justify-between items-center px-5 pt-[60px] pb-5">
+          <Box className="flex-row items-center gap-3">
+            <Text className="text-sm text-typography-0 bg-black/50 px-2 py-1 rounded-xl">
               {responseCount >= MRT ? responseCount : `${responseCount}/${MRT}`}{" "}
               회
             </Text>
-          </View>
-          <View style={styles.headerRight}>
-            <TouchableOpacity
-              style={[
-                styles.resultButton,
-                !result.canShowResults && styles.resultButtonDisabled,
-              ]}
+          </Box>
+          <Box className="flex-row items-center gap-3">
+            <Pressable
+              className={`px-4 py-2 rounded-lg ${
+                result.canShowResults ? "bg-success-500" : "bg-black/50 opacity-50"
+              }`}
               onPress={handleViewResults}
               disabled={!result.canShowResults}
             >
-              <Text style={styles.resultButtonText}>결과</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+              <Text className="text-typography-0 text-sm font-semibold">
+                결과
+              </Text>
+            </Pressable>
+          </Box>
+        </Box>
 
         {/* Card Stack */}
-        <View style={styles.cardStack}>
+        <Box className="flex-1 justify-center items-center py-10 relative">
           {/* 현재 카드 */}
           {currentCard && (
             <SwipeablePoemCard
@@ -226,146 +236,8 @@ export default function HomeScreen() {
               isActive={true}
             />
           )}
-        </View>
+        </Box>
       </BlurView>
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#000000",
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.0)",
-  },
-  blurOverlay: {
-    flex: 1,
-    // backgroundColor: 'rgba(0, 0, 0, 0.3)',
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#1A1A1A",
-  },
-  loadingText: {
-    marginTop: 16,
-    fontSize: 16,
-    color: "#FFFFFF",
-  },
-  errorContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#1A1A1A",
-    padding: 24,
-  },
-  errorText: {
-    fontSize: 16,
-    color: "#F44336",
-    textAlign: "center",
-    marginBottom: 24,
-  },
-  retryButton: {
-    backgroundColor: "#4CAF50",
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
-  },
-  retryButtonText: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#1A1A1A",
-    padding: 24,
-  },
-  emptyText: {
-    fontSize: 18,
-    color: "#FFFFFF",
-    textAlign: "center",
-    marginBottom: 24,
-  },
-  restartButton: {
-    backgroundColor: "#4CAF50",
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
-  },
-  restartButtonText: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    paddingTop: 60,
-    paddingBottom: 20,
-  },
-  headerLeft: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-  },
-  appTitle: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: "#FFFFFF",
-  },
-  responseCount: {
-    fontSize: 14,
-    color: "#ffffff",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 12,
-  },
-  headerRight: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-  },
-  userId: {
-    fontSize: 12,
-    color: "#CCCCCC",
-    maxWidth: 80,
-  },
-  resultButton: {
-    backgroundColor: "#4CAF50",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
-  },
-  resultButtonDisabled: {
-    backgroundColor: "#000",
-    opacity: 0.5,
-  },
-  resultButtonText: {
-    color: "#FFFFFF",
-    fontSize: 14,
-    fontWeight: "600",
-  },
-  cardStack: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 40,
-    position: "relative",
-  },
-  nextCardContainer: {
-    position: "absolute",
-    transform: [{ scale: 0.95 }],
-    opacity: 0.8,
-    zIndex: 0,
-  },
-});
