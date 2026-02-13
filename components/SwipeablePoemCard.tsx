@@ -1,7 +1,9 @@
 import { BlurView } from "expo-blur";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native";
+import { Box } from "@/components/ui/box";
+import { Text } from "@/components/ui/text";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   interpolate,
@@ -123,43 +125,48 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
 
   return (
     <GestureDetector gesture={panGesture}>
-      <Animated.View style={[styles.cardContainer, cardStyle]}>
-        <BlurView intensity={80} tint="dark" style={styles.card}>
-          <Animated.View
-            style={[
-              styles.feedbackOverlay,
-              feedbackTextStyle,
-              feedbackType === "like" && styles.feedbackOverlayLike,
-              feedbackType === "dislike" && styles.feedbackOverlayDislike,
-            ]}
-            pointerEvents="none"
-          >
-            {feedbackType !== "" && (
-              <MaterialIcons
-                name={feedbackType === "like" ? "thumb-up" : "thumb-down"}
-                size={64}
-                color="#FFFFFF"
-              />
-            )}
-          </Animated.View>
-          <Text style={styles.poemText}>{card.Poem_Text_KR}</Text>
-          <View style={styles.tagContainer}>
-            <Text style={styles.tagText}>{card.Kisho_Tag}</Text>
-          </View>
-        </BlurView>
-      </Animated.View>
+      <Box className="absolute w-[90%] max-w-[400px] self-center z-[1]">
+        <Animated.View style={[cardStyle, { width: "100%" }]}>
+          <BlurView intensity={80} tint="dark" style={styles.card}>
+            <Animated.View
+              className="absolute inset-0 rounded-[20px] justify-center items-center z-10"
+              style={[
+                feedbackTextStyle,
+                feedbackType === "like" && {
+                  backgroundColor: "rgba(76, 175, 80, 0.5)",
+                },
+                feedbackType === "dislike" && {
+                  backgroundColor: "rgba(244, 67, 54, 0.5)",
+                },
+              ]}
+              pointerEvents="none"
+            >
+              {feedbackType !== "" && (
+                <MaterialIcons
+                  name={feedbackType === "like" ? "thumb-up" : "thumb-down"}
+                  size={64}
+                  color="#FFFFFF"
+                />
+              )}
+            </Animated.View>
+            <Box className="flex-1 justify-center items-center">
+              <Text className="text-2xl font-bold text-typography-0 leading-9 text-center">
+                {card.Poem_Text_KR}
+              </Text>
+            </Box>
+            <Box className="mt-4 pt-4 border-t border-white/20">
+              <Text className="text-sm font-semibold text-white/80 text-center uppercase tracking-wider">
+                {card.Kisho_Tag}
+              </Text>
+            </Box>
+          </BlurView>
+        </Animated.View>
+      </Box>
     </GestureDetector>
   );
 };
 
 const styles = StyleSheet.create({
-  cardContainer: {
-    position: "absolute",
-    width: "90%",
-    maxWidth: 400,
-    alignSelf: "center",
-    zIndex: 1,
-  },
   card: {
     width: "100%",
     aspectRatio: 0.7,
@@ -178,53 +185,5 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 8,
     overflow: "hidden",
-  },
-  feedbackOverlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 10,
-  },
-  feedbackOverlayLike: {
-    backgroundColor: "rgba(76, 175, 80, 0.5)",
-  },
-  feedbackOverlayDislike: {
-    backgroundColor: "rgba(244, 67, 54, 0.5)",
-  },
-  poemText: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: "#FFFFFF",
-    lineHeight: 36,
-    textAlign: "center",
-    flex: 1,
-    textAlignVertical: "center",
-  },
-  poemTextJP: {
-    fontSize: 18,
-    fontWeight: "400",
-    color: "#666666",
-    lineHeight: 28,
-    textAlign: "center",
-    marginTop: 12,
-  },
-  tagContainer: {
-    marginTop: 16,
-    paddingTop: 16,
-    borderTopWidth: 1,
-    borderTopColor: "rgba(255, 255, 255, 0.2)",
-  },
-  tagText: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "rgba(255, 255, 255, 0.8)",
-    textAlign: "center",
-    textTransform: "uppercase",
-    letterSpacing: 1,
   },
 });

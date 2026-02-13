@@ -2,7 +2,8 @@ import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 import { PlatformPressable } from '@react-navigation/elements';
 import * as Haptics from 'expo-haptics';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+
+import { Box } from '@/components/ui/box';
 
 export function HapticTab(props: BottomTabBarButtonProps) {
   return (
@@ -14,21 +15,9 @@ export function HapticTab(props: BottomTabBarButtonProps) {
         }
         props.onPressIn?.(ev);
       }}
-      style={[props.style, styles.tab]}
+      style={props.style}
     >
-      <View style={styles.content}>{props.children}</View>
+      <Box className="flex-1 justify-center items-center">{props.children}</Box>
     </PlatformPressable>
   );
 }
-
-const styles = StyleSheet.create({
-  tab: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  content: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
