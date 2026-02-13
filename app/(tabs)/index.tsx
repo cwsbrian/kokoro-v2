@@ -1,10 +1,10 @@
-import { useAuth } from '@/contexts/auth-context';
-import { loadPoemsFromJSON } from '@/data/poemsLoader';
-import { useAppStore } from '@/store/useAppStore';
-import { MRT } from '@/utils/scoreCalculator';
-import { BlurView } from 'expo-blur';
-import * as Haptics from 'expo-haptics';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useAuth } from "@/contexts/auth-context";
+import { loadPoemsFromJSON } from "@/data/poemsLoader";
+import { useAppStore } from "@/store/useAppStore";
+import { MRT } from "@/utils/scoreCalculator";
+import { BlurView } from "expo-blur";
+import * as Haptics from "expo-haptics";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Image,
@@ -13,9 +13,9 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
+} from "react-native";
 
-import { SwipeablePoemCard } from '@/components/SwipeablePoemCard';
+import { SwipeablePoemCard } from "@/components/SwipeablePoemCard";
 
 // 이미지 URL 생성 함수 (카드 인덱스 기반)
 const getImageUrl = (index: number) => {
@@ -65,9 +65,11 @@ export default function HomeScreen() {
 
       setIsLoading(false);
     } catch (err: unknown) {
-      console.error('Initialization error:', err);
+      console.error("Initialization error:", err);
       const errorMessage =
-        err instanceof Error ? err.message : '앱 초기화 중 오류가 발생했습니다.';
+        err instanceof Error
+          ? err.message
+          : "앱 초기화 중 오류가 발생했습니다.";
       setError(errorMessage);
       setIsLoading(false);
     }
@@ -114,7 +116,7 @@ export default function HomeScreen() {
     }
   }, [currentCardIndex, poems.length, preloadImages]);
 
-  const handleSwipe = (direction: 'right' | 'left') => {
+  const handleSwipe = (direction: "right" | "left") => {
     // 햅틱 피드백
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
@@ -129,19 +131,18 @@ export default function HomeScreen() {
   };
 
   const result = getAnalysisResult();
-  const hasMoreCards = currentCardIndex < poems.length - 1;
 
   // 디버깅: 현재 카드 태그 확인 (Logic만 나오는지 검증용)
   useEffect(() => {
     if (__DEV__ && currentCard) {
-      console.log('Card state updated:', {
+      console.log("Card state updated:", {
         currentCardIndex,
         currentCardId: currentCard.Poem_ID,
         Kisho_Tag: currentCard.Kisho_Tag,
         totalPoems: poems.length,
       });
     }
-  }, [currentCardIndex, poems, currentCard, hasMoreCards]);
+  }, [currentCardIndex, poems, currentCard]);
 
   if (isLoading) {
     return (
@@ -195,7 +196,8 @@ export default function HomeScreen() {
           <View style={styles.headerLeft}>
             {/* <Text style={styles.appTitle}>Kokoro</Text> */}
             <Text style={styles.responseCount}>
-              {responseCount >= MRT ? responseCount : `${responseCount}/${MRT}`} 회
+              {responseCount >= MRT ? responseCount : `${responseCount}/${MRT}`}{" "}
+              회
             </Text>
           </View>
           <View style={styles.headerRight}>

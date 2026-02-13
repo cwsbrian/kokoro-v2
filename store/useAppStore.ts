@@ -76,12 +76,8 @@ export const useAppStore = create<AppState>((set, get) => ({
     }
 
     const nextIndex = state.currentCardIndex + 1;
-    const hasMoreCards = nextIndex < state.poems.length;
-    if (!hasMoreCards) {
-      return;
-    }
 
-    // 점수 업데이트
+    // 점수 업데이트 (마지막 카드 스와이프에도 실행)
     const newMBTITotal = updateMBTIScore(state.mbtiTotal, currentCard, direction);
     const newBigFiveCumulative = updateBigFiveScore(
       state.bigFiveCumulative,
