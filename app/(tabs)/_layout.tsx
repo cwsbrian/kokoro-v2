@@ -62,11 +62,11 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "홈",
+          title: "시",
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
               size={focused ? 28 : 26}
-              name="heart.fill"
+              name="book.fill"
               color={color}
             />
           ),
