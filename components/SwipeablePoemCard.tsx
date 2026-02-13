@@ -1,4 +1,5 @@
 import { BlurView } from "expo-blur";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
@@ -12,7 +13,9 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
-import type { PoemCard as PoemCardType, SwipeDirection } from '@/types';
+import type { PoemCard as PoemCardType, SwipeDirection } from "@/types";
+
+type SwipeFeedback = "like" | "dislike" | "";
 
 const ROTATION_MAX = 10;
 
@@ -35,8 +38,7 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
   const translateY = useSharedValue(0);
   const scale = useSharedValue(isActive ? 1 : 0.95);
   const opacity = useSharedValue(isActive ? 1 : 0.8);
-  const [feedbackText, setFeedbackText] = useState<"공감" | "비공감" | "">("");
-  const [feedbackColor, setFeedbackColor] = useState("#4CAF50");
+  const [feedbackType, setFeedbackType] = useState<SwipeFeedback>("");
 
   useEffect(() => {
     scale.value = withTiming(isActive ? 1 : 0.95, { duration: 200 });
@@ -107,15 +109,14 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
     };
   });
 
-  // 피드백 텍스트 업데이트
+  // 피드백 타입 업데이트 (오버레이 + 아이콘)
   useAnimatedReaction(
     () => translateX.value,
     (value) => {
       if (Math.abs(value) > 50) {
-        runOnJS(setFeedbackText)(value > 0 ? "공감" : "비공감");
-        runOnJS(setFeedbackColor)(value > 0 ? "#4CAF50" : "#F44336");
+        runOnJS(setFeedbackType)(value > 0 ? "like" : "dislike");
       } else {
-        runOnJS(setFeedbackText)("");
+        runOnJS(setFeedbackType)("");
       }
     },
   );
@@ -124,11 +125,21 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
     <GestureDetector gesture={panGesture}>
       <Animated.View style={[styles.cardContainer, cardStyle]}>
         <BlurView intensity={80} tint="dark" style={styles.card}>
-          <Animated.View style={[styles.feedbackContainer, feedbackTextStyle]}>
-            {feedbackText !== "" && (
-              <Text style={[styles.feedbackText, { color: feedbackColor }]}>
-                {feedbackText}
-              </Text>
+          <Animated.View
+            style={[
+              styles.feedbackOverlay,
+              feedbackTextStyle,
+              feedbackType === "like" && styles.feedbackOverlayLike,
+              feedbackType === "dislike" && styles.feedbackOverlayDislike,
+            ]}
+            pointerEvents="none"
+          >
+            {feedbackType !== "" && (
+              <MaterialIcons
+                name={feedbackType === "like" ? "thumb-up" : "thumb-down"}
+                size={64}
+                color="#FFFFFF"
+              />
             )}
           </Animated.View>
           <Text style={styles.poemText}>{card.Poem_Text_KR}</Text>
@@ -168,20 +179,22 @@ const styles = StyleSheet.create({
     elevation: 8,
     overflow: "hidden",
   },
-  feedbackContainer: {
+  feedbackOverlay: {
     position: "absolute",
-    top: 20,
+    top: 0,
     left: 0,
     right: 0,
+    bottom: 0,
+    borderRadius: 20,
+    justifyContent: "center",
     alignItems: "center",
     zIndex: 10,
   },
-  feedbackText: {
-    fontSize: 32,
-    fontWeight: "700",
-    textShadowColor: "rgba(0, 0, 0, 0.3)",
-    textShadowOffset: { width: 0, height: 2 },
-    textShadowRadius: 4,
+  feedbackOverlayLike: {
+    backgroundColor: "rgba(76, 175, 80, 0.5)",
+  },
+  feedbackOverlayDislike: {
+    backgroundColor: "rgba(244, 67, 54, 0.5)",
   },
   poemText: {
     fontSize: 24,

@@ -28,6 +28,8 @@ interface AppState {
 
   // Actions
   loadPoems: (poems: PoemCard[]) => void;
+  /** 로드한 배열을 셔플한 뒤 저장. 초기화 시 한 번만 호출해 타이밍 이슈 방지 */
+  loadAndShufflePoems: (poems: PoemCard[]) => void;
   swipeCard: (direction: SwipeDirection) => void;
   setUserId: (userId: string | null) => void;
   loadUserScores: (scores: UserScores) => void;
@@ -53,6 +55,15 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   loadPoems: (poems: PoemCard[]) => {
     set({ poems, currentCardIndex: 0 });
+  },
+
+  loadAndShufflePoems: (poems: PoemCard[]) => {
+    const shuffled = [...poems];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    set({ poems: shuffled, currentCardIndex: 0 });
   },
 
   swipeCard: (direction: SwipeDirection) => {
@@ -130,8 +141,8 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   shufflePoems: () => {
     const state = get();
+    if (state.poems.length === 0) return;
     const shuffled = [...state.poems];
-    // Fisher-Yates shuffle
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];

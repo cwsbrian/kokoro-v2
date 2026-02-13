@@ -28,17 +28,21 @@ export default function HomeScreen() {
   const [error, setError] = useState<string | null>(null);
   const preloadedImagesRef = useRef<Set<number>>(new Set());
 
-  const {
-    poems,
-    currentCardIndex,
-    responseCount,
-    loadPoems,
-    swipeCard,
-    setUserId,
-    getCurrentCard,
-    getAnalysisResult,
-    shufflePoems,
-  } = useAppStore();
+  const poems = useAppStore((s) => s.poems);
+  const currentCardIndex = useAppStore((s) => s.currentCardIndex);
+  const responseCount = useAppStore((s) => s.responseCount);
+  const loadAndShufflePoems = useAppStore((s) => s.loadAndShufflePoems);
+  const swipeCard = useAppStore((s) => s.swipeCard);
+  const setUserId = useAppStore((s) => s.setUserId);
+  const getAnalysisResult = useAppStore((s) => s.getAnalysisResult);
+  const shufflePoems = useAppStore((s) => s.shufflePoems);
+
+  // selector로 현재 카드 구독 → poems/currentCardIndex 변경 시 올바른 카드 반영
+  const currentCard = useAppStore((state) => {
+    const { poems: p, currentCardIndex: idx } = state;
+    if (!p?.length || idx < 0 || idx >= p.length) return null;
+    return p[idx];
+  });
 
   // Firebase user → store (auth state may resolve after first paint)
   useEffect(() => {
@@ -53,10 +57,9 @@ export default function HomeScreen() {
 
       // 1. userId는 useAuth().user → useEffect에서 setUserId로 동기화됨
 
-      // 2. 시 카드 로드
+      // 2. 시 카드 로드 + 셔플 (한 번에 처리해 스토어 타이밍 이슈 방지)
       const loadedPoems = await loadPoemsFromJSON();
-      loadPoems(loadedPoems);
-      shufflePoems();
+      loadAndShufflePoems(loadedPoems);
 
       // Firestore 동기화는 1단계에서 제외 (옵션 A)
 
@@ -68,7 +71,7 @@ export default function HomeScreen() {
       setError(errorMessage);
       setIsLoading(false);
     }
-  }, [loadPoems, shufflePoems]);
+  }, [loadAndShufflePoems]);
 
   // 초기화
   useEffect(() => {
@@ -125,19 +128,17 @@ export default function HomeScreen() {
     }
   };
 
-  const currentCard = getCurrentCard();
   const result = getAnalysisResult();
   const hasMoreCards = currentCardIndex < poems.length - 1;
 
-  // 디버깅: 현재 상태 로그
+  // 디버깅: 현재 카드 태그 확인 (Logic만 나오는지 검증용)
   useEffect(() => {
-    if (__DEV__) {
+    if (__DEV__ && currentCard) {
       console.log('Card state updated:', {
         currentCardIndex,
-        hasMoreCards,
+        currentCardId: currentCard.Poem_ID,
+        Kisho_Tag: currentCard.Kisho_Tag,
         totalPoems: poems.length,
-        currentCardId: currentCard?.Poem_ID,
-        nextCardId: poems[currentCardIndex + 1]?.Poem_ID,
       });
     }
   }, [currentCardIndex, poems, currentCard, hasMoreCards]);
