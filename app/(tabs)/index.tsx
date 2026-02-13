@@ -2,6 +2,7 @@ import { useAuth } from "@/contexts/auth-context";
 import { loadPoemsFromJSON } from "@/data/poemsLoader";
 import { useAppStore } from "@/store/useAppStore";
 import { MRT } from "@/utils/scoreCalculator";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { BlurView } from "expo-blur";
 import * as Haptics from "expo-haptics";
 import React, { useCallback, useEffect, useRef, useState } from "react";
@@ -43,6 +44,8 @@ export default function HomeScreen() {
     if (!p?.length || idx < 0 || idx >= p.length) return null;
     return p[idx];
   });
+
+  const tabBarHeight = useBottomTabBarHeight();
 
   // Firebase user → store (auth state may resolve after first paint)
   useEffect(() => {
@@ -190,7 +193,7 @@ export default function HomeScreen() {
       resizeMode="cover"
     >
       <View style={styles.overlay} />
-      <BlurView intensity={20} style={styles.blurOverlay}>
+      <BlurView intensity={20} style={[styles.blurOverlay, { paddingBottom: tabBarHeight }]}>
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.headerLeft}>
