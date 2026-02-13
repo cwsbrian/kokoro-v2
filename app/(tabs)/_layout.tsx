@@ -88,7 +88,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="account"
         options={{
-          title: "계정",
+          title: "나",
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
               size={focused ? 28 : 26}
