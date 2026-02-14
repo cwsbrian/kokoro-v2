@@ -1,4 +1,3 @@
-import { MRT } from '@/constants/analysis'
 import type {
   AiAnalysisResult,
   AnalysisResult,
@@ -132,8 +131,9 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   getAnalysisResult: (): AnalysisResult => {
     const state = get()
+    // 결과 버튼: API 호출 후 응답 데이터가 있을 때만 활성화 (횟수 조건 아님)
     return {
-      canShowResults: state.responseCount >= MRT,
+      canShowResults: state.aiAnalysisResult != null,
       aiResult: state.aiAnalysisResult,
     }
   },

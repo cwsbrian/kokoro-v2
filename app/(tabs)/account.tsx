@@ -1,10 +1,11 @@
 import { MRT } from "@/constants/analysis";
+import { storeLink } from "@/constants/app";
 import { triggerAnalysisIfNeeded } from "@/lib/triggerAnalysis";
 import { useAppStore } from "@/store/useAppStore";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView } from "react-native";
+import { Image, ScrollView, Share } from "react-native";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -16,7 +17,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { DimensionsRadar } from "@/components/dimensions-radar";
 import { Box } from "@/components/ui/box";
-import { Button, ButtonText } from "@/components/ui/button";
+import { Button, ButtonIcon, ButtonText } from "@/components/ui/button";
+import { ShareIcon } from "@/components/ui/icon";
 import { Progress, ProgressFilledTrack } from "@/components/ui/progress";
 import { Text } from "@/components/ui/text";
 
@@ -52,6 +54,25 @@ export default function AccountScreen() {
     setAnalysisError(null);
     triggerAnalysisIfNeeded();
   };
+
+  const handleShare = async () => {
+    if (!aiResult) return;
+    const message = [aiResult.label, aiResult.description, "", storeLink].join(
+      "\n",
+    );
+    const hasFileUri =
+      typeof avatarImageDataUrl === "string" &&
+      avatarImageDataUrl.startsWith("file://");
+    try {
+      await Share.share({
+        message,
+        ...(hasFileUri && { url: avatarImageDataUrl }),
+      });
+    } catch {
+      // User dismissed or share failed
+    }
+  };
+
   const progressValue = Math.min(1, responseCount / MRT);
   const paddingBottom = tabBarHeight + 24;
 
@@ -215,6 +236,15 @@ export default function AccountScreen() {
                     {aiResult.description}
                   </Text>
                 </Box>
+
+                <Button
+                  className="mt-4"
+                  size="lg"
+                  onPress={handleShare}
+                >
+                  <ButtonIcon as={ShareIcon} />
+                  <ButtonText>공유하기</ButtonText>
+                </Button>
 
                 {aiResult.keywords?.length ? (
                   <>

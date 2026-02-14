@@ -161,7 +161,7 @@ export default function HomeScreen() {
       <Box className="flex-1 justify-center items-center bg-background-dark p-6">
         <Text className="text-base text-error-500 text-center mb-6">{error}</Text>
         <Pressable
-          className="bg-success-500 px-6 py-3 rounded-lg"
+          className="bg-primary-500 px-6 py-3 rounded-lg"
           onPress={initializeApp}
         >
           <Text className="text-typography-0 text-base font-semibold">
@@ -179,7 +179,7 @@ export default function HomeScreen() {
           모든 시 카드를 확인했습니다.
         </Text>
         <Pressable
-          className="bg-success-500 px-6 py-3 rounded-lg"
+          className="bg-primary-500 px-6 py-3 rounded-lg"
           onPress={() => {
             shufflePoems();
           }}
@@ -217,7 +217,7 @@ export default function HomeScreen() {
           <Box className="flex-row items-center gap-3">
             <Pressable
               className={`px-4 py-2 rounded-lg ${
-                result.canShowResults ? "bg-success-500" : "bg-black/50 opacity-50"
+                result.canShowResults ? "bg-primary-500" : "bg-black/50 opacity-50"
               }`}
               onPress={handleViewResults}
               disabled={!result.canShowResults}

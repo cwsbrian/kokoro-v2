@@ -20,10 +20,11 @@ function TabBarBackgroundPoem() {
 const TAB_BAR_ICON_WHITE = "#FFFFFF";
 const TAB_BAR_INACTIVE_WHITE = "rgba(255, 255, 255, 0.7)";
 
-const DEFAULT_TAB_ACTIVE = "#11181C";
 const DEFAULT_TAB_INACTIVE = "#687076";
-const DEFAULT_TAB_ACTIVE_DARK = "#ECEDEE";
 const DEFAULT_TAB_INACTIVE_DARK = "#9BA1A6";
+
+/** Primary-500 for selected tab (non-home tabs). */
+const PRIMARY_500 = { light: "#DB2777", dark: "#EC4899" };
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
@@ -100,7 +101,7 @@ export default function TabLayout() {
         name="fortune"
         options={{
           title: "운세",
-          tabBarActiveTintColor: isDark ? DEFAULT_TAB_ACTIVE_DARK : DEFAULT_TAB_ACTIVE,
+          tabBarActiveTintColor: PRIMARY_500[isDark ? "dark" : "light"],
           tabBarInactiveTintColor: isDark ? DEFAULT_TAB_INACTIVE_DARK : DEFAULT_TAB_INACTIVE,
           tabBarStyle: defaultTabBarStyle,
           tabBarIcon: ({ color, focused }) => (
@@ -116,7 +117,7 @@ export default function TabLayout() {
         name="account"
         options={{
           title: "나",
-          tabBarActiveTintColor: isDark ? DEFAULT_TAB_ACTIVE_DARK : DEFAULT_TAB_ACTIVE,
+          tabBarActiveTintColor: PRIMARY_500[isDark ? "dark" : "light"],
           tabBarInactiveTintColor: isDark ? DEFAULT_TAB_INACTIVE_DARK : DEFAULT_TAB_INACTIVE,
           tabBarStyle: defaultTabBarStyle,
           tabBarIcon: ({ color, focused }) => (
@@ -132,7 +133,7 @@ export default function TabLayout() {
         name="more"
         options={{
           title: "더보기",
-          tabBarActiveTintColor: isDark ? DEFAULT_TAB_ACTIVE_DARK : DEFAULT_TAB_ACTIVE,
+          tabBarActiveTintColor: PRIMARY_500[isDark ? "dark" : "light"],
           tabBarInactiveTintColor: isDark ? DEFAULT_TAB_INACTIVE_DARK : DEFAULT_TAB_INACTIVE,
           tabBarStyle: defaultTabBarStyle,
           tabBarIcon: ({ color, focused }) => (
