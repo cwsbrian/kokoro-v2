@@ -1,8 +1,10 @@
-import { useAuth } from "@/contexts/auth-context";
-import { loadPoemsFromJSON } from "@/data/poemsLoader";
-import { useAppStore } from "@/store/useAppStore";
-import { MRT } from "@/utils/scoreCalculator";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import { useAuth } from '@/contexts/auth-context'
+import { loadPoemsFromJSON } from '@/data/poemsLoader'
+import { getMockAnalysisState } from '@/lib/mockAnalysisState'
+import { triggerAnalysisIfNeeded } from '@/lib/triggerAnalysis'
+import { useAppStore } from '@/store/useAppStore'
+import { MRT } from '@/constants/analysis'
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
 import { BlurView } from "expo-blur";
 import * as Haptics from "expo-haptics";
 import React, { useCallback, useEffect, useRef, useState } from "react";
@@ -27,11 +29,12 @@ export default function HomeScreen() {
   const poems = useAppStore((s) => s.poems);
   const currentCardIndex = useAppStore((s) => s.currentCardIndex);
   const responseCount = useAppStore((s) => s.responseCount);
-  const loadAndShufflePoems = useAppStore((s) => s.loadAndShufflePoems);
-  const swipeCard = useAppStore((s) => s.swipeCard);
-  const setUserId = useAppStore((s) => s.setUserId);
-  const getAnalysisResult = useAppStore((s) => s.getAnalysisResult);
-  const shufflePoems = useAppStore((s) => s.shufflePoems);
+  const loadAndShufflePoems = useAppStore((s) => s.loadAndShufflePoems)
+  const loadUserAnalysisState = useAppStore((s) => s.loadUserAnalysisState)
+  const swipeCard = useAppStore((s) => s.swipeCard)
+  const setUserId = useAppStore((s) => s.setUserId)
+  const getAnalysisResult = useAppStore((s) => s.getAnalysisResult)
+  const shufflePoems = useAppStore((s) => s.shufflePoems)
 
   // selector로 현재 카드 구독 → poems/currentCardIndex 변경 시 올바른 카드 반영
   const currentCard = useAppStore((state) => {
@@ -56,12 +59,16 @@ export default function HomeScreen() {
       // 1. userId는 useAuth().user → useEffect에서 setUserId로 동기화됨
 
       // 2. 시 카드 로드 + 셔플 (한 번에 처리해 스토어 타이밍 이슈 방지)
-      const loadedPoems = await loadPoemsFromJSON();
-      loadAndShufflePoems(loadedPoems);
+      const loadedPoems = await loadPoemsFromJSON()
+      loadAndShufflePoems(loadedPoems)
 
-      // Firestore 동기화는 1단계에서 제외 (옵션 A)
+      // Dev: AI 요청(스와이프 이력 50개)만 미리 넣고, 실제 API 호출로 테스트
+      if (__DEV__) {
+        loadUserAnalysisState(getMockAnalysisState(loadedPoems))
+        triggerAnalysisIfNeeded()
+      }
 
-      setIsLoading(false);
+      setIsLoading(false)
     } catch (err: unknown) {
       console.error("Initialization error:", err);
       const errorMessage =
@@ -71,7 +78,7 @@ export default function HomeScreen() {
       setError(errorMessage);
       setIsLoading(false);
     }
-  }, [loadAndShufflePoems]);
+  }, [loadAndShufflePoems, loadUserAnalysisState])
 
   // 초기화
   useEffect(() => {
@@ -114,12 +121,11 @@ export default function HomeScreen() {
     }
   }, [currentCardIndex, poems.length, preloadImages]);
 
-  const handleSwipe = (direction: "right" | "left") => {
-    // 햅틱 피드백
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    swipeCard(direction);
-  };
+  const handleSwipe = (direction: 'right' | 'left') => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+    swipeCard(direction)
+    triggerAnalysisIfNeeded()
+  }
 
   const handleViewResults = () => {
     const result = getAnalysisResult();
@@ -130,17 +136,16 @@ export default function HomeScreen() {
 
   const result = getAnalysisResult();
 
-  // 디버깅: 현재 카드 태그 확인 (Logic만 나오는지 검증용)
   useEffect(() => {
     if (__DEV__ && currentCard) {
-      console.log("Card state updated:", {
+      console.log('Card state updated:', {
         currentCardIndex,
         currentCardId: currentCard.Poem_ID,
-        Kisho_Tag: currentCard.Kisho_Tag,
+        Tag: currentCard.Tag,
         totalPoems: poems.length,
-      });
+      })
     }
-  }, [currentCardIndex, poems, currentCard]);
+  }, [currentCardIndex, poems, currentCard])
 
   if (isLoading) {
     return (

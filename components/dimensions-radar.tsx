@@ -2,55 +2,57 @@ import React from "react";
 import Svg, { Line, Polygon, Text as SvgText } from "react-native-svg";
 
 import { Box } from "@/components/ui/box";
-import { Text } from "@/components/ui/text";
 
-const LABELS = ["개방성", "성실성", "외향성", "친화성", "신경증"] as const;
-const ANGLE_DEG = 90;
-const ANGLE_STEP = 72;
-/** 라벨이 잘리지 않도록 viewBox 여백 */
-const VIEW_PADDING = 32;
+const ANGLE_START_DEG = 90;
+const VIEW_PADDING = 36;
 
 function deg2rad(deg: number) {
   return (deg * Math.PI) / 180;
 }
 
-const DEFAULT_ACCENT = "#DB2777";
-
-interface BigFiveRadarProps {
-  O: number;
-  C: number;
-  E: number;
-  A: number;
-  N: number;
+export interface DimensionsRadarProps {
+  /**
+   * 축 이름 → 0~100 점수 (레이더 차트 전용).
+   * Requires at least 3 dimensions; fewer will render a fallback message.
+   */
+  dimensions: Record<string, number>;
   size?: number;
-  /** 유형별 색상 (미지정 시 primary 계열) */
   accentColor?: string;
 }
 
-export function BigFiveRadar({
-  O,
-  C,
-  E,
-  A,
-  N,
-  size = 200,
-  accentColor = DEFAULT_ACCENT,
-}: BigFiveRadarProps) {
+/** 앱 primary-500 (라이트) — 특징 막대·키워드와 동일 */
+const PRIMARY_COLOR = "#DB2777";
+
+/**
+ * Renders a radar chart for dimension scores. Requires at least 3 dimensions;
+ * fewer than 3 will return null (degenerate polygon).
+ */
+export function DimensionsRadar({
+  dimensions,
+  size = 220,
+  accentColor = PRIMARY_COLOR,
+}: DimensionsRadarProps) {
+  const entries = Object.entries(dimensions);
+  if (entries.length === 0) return null;
+  if (entries.length < 3) return null;
+
   const fillColor = `${accentColor}40`;
   const strokeColor = accentColor;
   const cx = size / 2;
   const cy = size / 2;
-  const r = (size / 2) * 0.85;
+  const r = (size / 2) * 0.78;
+  const n = entries.length;
+  const angleStep = 360 / n;
 
-  const values = [O, C, E, A, N];
+  const values = entries.map(([, v]) => Math.max(0, Math.min(100, v)));
   const points = values.map((v, i) => {
-    const deg = ANGLE_DEG - i * ANGLE_STEP;
+    const deg = ANGLE_START_DEG - i * angleStep;
     const rad = deg2rad(deg);
-    const d = (Math.max(0, Math.min(100, v)) / 100) * r;
+    const d = (v / 100) * r;
     return [cx + d * Math.cos(rad), cy - d * Math.sin(rad)];
   });
-  const outlinePoints = [0, 1, 2, 3, 4].map((i) => {
-    const deg = ANGLE_DEG - i * ANGLE_STEP;
+  const outlinePoints = values.map((_, i) => {
+    const deg = ANGLE_START_DEG - i * angleStep;
     const rad = deg2rad(deg);
     return [cx + r * Math.cos(rad), cy - r * Math.sin(rad)];
   });
@@ -58,20 +60,20 @@ export function BigFiveRadar({
   const pointsStr = points.map((p) => p.join(",")).join(" ");
   const outlineStr = outlinePoints.map((p) => p.join(",")).join(" ");
 
-  const labelRadius = r + 22;
-  const labelCoords = [0, 1, 2, 3, 4].map((i) => {
-    const deg = ANGLE_DEG - i * ANGLE_STEP;
+  const labelRadius = r + 24;
+  const labelCoords = entries.map(([label], i) => {
+    const deg = ANGLE_START_DEG - i * angleStep;
     const rad = deg2rad(deg);
     return {
       x: cx + labelRadius * Math.cos(rad),
       y: cy - labelRadius * Math.sin(rad),
-      label: LABELS[i],
+      label,
     };
   });
 
   const viewSize = size + 2 * VIEW_PADDING;
   return (
-    <Box className="items-center gap-4">
+    <Box className="items-center">
       <Svg
         width={size}
         height={size}
@@ -89,7 +91,7 @@ export function BigFiveRadar({
           stroke={strokeColor}
           strokeWidth={2}
         />
-        {[0, 1, 2, 3, 4].map((i) => (
+        {outlinePoints.map((_, i) => (
           <Line
             key={i}
             x1={cx}
@@ -102,11 +104,11 @@ export function BigFiveRadar({
         ))}
         {labelCoords.map(({ x, y, label }, i) => (
           <SvgText
-            key={label}
+            key={`${label}-${i}`}
             x={x}
             y={y}
             fill="#475569"
-            fontSize={12}
+            fontSize={11}
             fontWeight="500"
             textAnchor="middle"
           >
@@ -114,16 +116,6 @@ export function BigFiveRadar({
           </SvgText>
         ))}
       </Svg>
-      <Box className="flex-row flex-wrap justify-center gap-x-4 gap-y-1">
-        {LABELS.map((label, i) => (
-          <Text
-            key={label}
-            className="text-xs text-typography-600 dark:text-typography-400"
-          >
-            {label} {Math.round(values[i])}%
-          </Text>
-        ))}
-      </Box>
     </Box>
   );
 }

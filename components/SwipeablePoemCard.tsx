@@ -156,7 +156,7 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
             </Box>
             <Box className="mt-4 pt-4 border-t border-white/20">
               <Text className="text-sm font-semibold text-white/80 text-center uppercase tracking-wider">
-                {card.Kisho_Tag}
+                {card.Tag}
               </Text>
             </Box>
           </BlurView>

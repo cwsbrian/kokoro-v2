@@ -19,8 +19,10 @@ export function PreferenceBar({
   rightPercent,
   accentColor,
 }: PreferenceBarProps) {
-  const total = leftPercent + rightPercent
-  const left = total > 0 ? (leftPercent / total) * 100 : 50
+  const sanitizedLeft = Math.max(0, leftPercent)
+  const sanitizedRight = Math.max(0, rightPercent)
+  const total = sanitizedLeft + sanitizedRight
+  const left = total > 0 ? (sanitizedLeft / total) * 100 : 50
   const right = 100 - left
 
   return (

@@ -1,97 +1,57 @@
-// MBTI Types
-export type MBTIType = 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P';
-export type MBTI_Total = Record<MBTIType, number>;
-
-// Big Five Types
-export type BigFiveType = 'O' | 'C' | 'E' | 'A' | 'N';
-export type BigFive_Cumulative = Record<BigFiveType, number>;
-
-// Kishō Types
-export type KishoAxis = 'Ki' | 'Shō' | 'Ten' | 'Ketsu';
-export type KishoTag = 'Inner' | 'Outer' | 'Harmony' | 'Solitude' | 'Feeling' | 'Logic' | 'Flow' | 'Fixed';
-
 // Poem Card Types
 export type PoemType = 'Haiku' | 'Senryu' | 'Single-Line Poem';
 
-export interface MBTI_Impact {
-  I?: number;
-  E?: number;
-  S?: number;
-  N?: number;
-  T?: number;
-  F?: number;
-  J?: number;
-  P?: number;
-}
-
-export interface BigFive_Impact {
-  O?: number;
-  C?: number;
-  E?: number;
-  A?: number;
-  N?: number;
-}
-
 export interface PoemCard {
-  Poem_ID: string;
-  Poem_Type: PoemType;
-  Poem_Text_KR: string;
-  Poem_Text_JP: string;
-  Kisho_Axis: KishoAxis;
-  Kisho_Tag: KishoTag;
-  Content_Category: string;
-  MBTI_Impact: MBTI_Impact;
-  BigFive_Impact: BigFive_Impact;
+  Poem_ID: string
+  Poem_Type: PoemType
+  Poem_Text_KR: string
+  Poem_Text_JP: string
+  Content_Category: string
+  Tag: string // UI 표시용 태그 (기존 Kisho_Tag)
 }
 
-// User Scores Types
-export interface UserScores {
-  MBTI_Total: MBTI_Total;
-  BigFive_Cumulative: BigFive_Cumulative;
-  Response_Count: number;
-  Last_Updated: Date | string;
+// Swipe
+export type SwipeDirection = 'right' | 'left'
+
+export type SwipeResponse = 'like' | 'dislike'
+
+export interface SwipeRecord {
+  poemId: string
+  response: SwipeResponse
+  timestamp?: number
 }
 
-// Swipe Direction
-export type SwipeDirection = 'right' | 'left';
-
-// Calculated Results
-export interface MBTIPreference {
-  E: number; // percentage
-  I: number;
-  S: number;
-  N: number;
-  T: number;
-  F: number;
-  J: number;
-  P: number;
+// AI Analysis Result (Gemini 응답) — 차트용 필드 포함
+export interface AiAnalysisResult {
+  label: string
+  description: string
+  /** 특징 + 강도(0~100) — 바 차트용 */
+  traits?: { name: string; strength: number }[]
+  /** 키워드 + 비중(0~100) — 태그용 */
+  keywords?: { text: string; weight: number }[]
+  summary?: string
+  /** 성향 축별 점수(0~100) — 레이더 차트 전용 */
+  dimensions?: Record<string, number>
+  /** 가치관: 무엇을 중요히 여기는가 (특징과 구분) */
+  values?: { name: string; weight: number }[]
+  /** 이 사람을 한 문장으로 (인용문) */
+  quote?: string
+  /** 이 사람을 대표하는 색상 hex (예: #DB2777) — 차트·강조용 */
+  color?: string
 }
 
-export interface MBTITypeResult {
-  type: string; // e.g., "INFP"
-  preferences: MBTIPreference;
-}
-
-export interface BigFiveSpectrum {
-  O: number; // 0-100%
-  C: number;
-  E: number;
-  A: number;
-  N: number;
-}
-
-export interface KishoTypeResult {
-  Ki: 'Inner' | 'Outer';
-  Shō: 'Harmony' | 'Solitude';
-  Ten: 'Feeling' | 'Logic';
-  Ketsu: 'Flow' | 'Fixed';
-  fullType: string; // e.g., "Inner-Harmony-Feeling-Flow"
-}
-
+// Analysis Result (나 화면 표시용)
 export interface AnalysisResult {
-  mbti: MBTITypeResult;
-  bigFive: BigFiveSpectrum;
-  kisho: KishoTypeResult;
-  canShowResults: boolean; // MRT >= 20
+  canShowResults: boolean
+  aiResult: AiAnalysisResult | null
 }
 
+// User Analysis State (영속화용)
+export interface UserAnalysisState {
+  responseCount: number
+  lastAnalyzedAtSwipeCount: number | null
+  aiAnalysisResult: AiAnalysisResult | null
+  swipeHistory: SwipeRecord[]
+  /** ISO 8601 string for consistent serialization (e.g. from Date.toISOString()) */
+  lastUpdated: string
+}

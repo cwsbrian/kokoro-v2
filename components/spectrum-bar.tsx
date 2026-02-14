@@ -21,6 +21,9 @@ export function SpectrumBar({ label, value }: SpectrumBarProps) {
         <Box
           className="h-full rounded-full bg-primary-500"
           style={{ width: `${pct}%` }}
+          accessibilityRole="progressbar"
+          accessibilityLabel={`${label}: ${Math.round(pct)}%`}
+          accessibilityValue={{ min: 0, max: 100, now: Number(pct) }}
         />
       </Box>
     </Box>
