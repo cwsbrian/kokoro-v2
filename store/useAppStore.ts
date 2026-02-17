@@ -4,9 +4,18 @@ import type {
   PoemCard,
   SwipeDirection,
   SwipeRecord,
+  TodayFortuneResponse,
   UserAnalysisState,
 } from '@/types'
 import { create } from 'zustand'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import {
+  FORTUNE_QUOTA_MESSAGE,
+  getTodayKstYYYYMMDD,
+  requestTodayFortune,
+} from '@/lib/geminiFortune'
+
+const FORTUNE_STORAGE_KEY = '@kokoro/fortune'
 
 function directionToResponse(direction: SwipeDirection): SwipeRecord['response'] {
   return direction === 'right' ? 'like' : 'dislike'
@@ -28,6 +37,12 @@ interface AppState {
   analysisError: string | null
   /** Gemini 이미지 생성 아바타 data URL (계정 화면 표시용) */
   avatarImageDataUrl: string | null
+  /** 오늘의 운세 응답 (KST 기준 오늘 날짜와 쌍) */
+  todayFortune: TodayFortuneResponse | null
+  /** 오늘의 운세 기준일 YYYY-MM-DD (KST) */
+  fortuneDate: string | null
+  isFortuneLoading: boolean
+  fortuneError: string | null
 
   loadPoems: (poems: PoemCard[]) => void
   loadAndShufflePoems: (poems: PoemCard[]) => void
@@ -43,6 +58,8 @@ interface AppState {
   setAnalysisLoading: (loading: boolean) => void
   setAvatarImageDataUrl: (url: string | null) => void
   shufflePoems: () => void
+  fetchTodayFortune: () => Promise<void>
+  setFortuneError: (error: string | null) => void
 }
 
 const initialState = {
@@ -58,6 +75,10 @@ const initialState = {
   isAnalysisLoading: false,
   analysisError: null as string | null,
   avatarImageDataUrl: null as string | null,
+  todayFortune: null as TodayFortuneResponse | null,
+  fortuneDate: null as string | null,
+  isFortuneLoading: false,
+  fortuneError: null as string | null,
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
@@ -167,5 +188,63 @@ export const useAppStore = create<AppState>((set, get) => ({
       ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
     set({ poems: shuffled, currentCardIndex: 0 })
+  },
+
+  setFortuneError: (error) => {
+    set({ fortuneError: error })
+  },
+
+  fetchTodayFortune: async () => {
+    const state = get()
+    const { aiResult } = state.getAnalysisResult()
+    if (!aiResult) return
+
+    const today = getTodayKstYYYYMMDD()
+
+    try {
+      const raw = await AsyncStorage.getItem(FORTUNE_STORAGE_KEY)
+      if (raw) {
+        const parsed = JSON.parse(raw) as {
+          fortuneDate: string
+          todayFortune: TodayFortuneResponse
+        }
+        if (parsed.fortuneDate === today && parsed.todayFortune) {
+          set({
+            todayFortune: parsed.todayFortune,
+            fortuneDate: parsed.fortuneDate,
+            fortuneError: null,
+          })
+          return
+        }
+      }
+    } catch {
+      // ignore stale/invalid storage
+    }
+
+    const apiKey =
+      (typeof process !== 'undefined' && process.env?.EXPO_PUBLIC_GEMINI_API_KEY) || ''
+    if (!apiKey) {
+      set({ fortuneError: 'API 키가 설정되지 않았습니다.' })
+      return
+    }
+
+    set({ isFortuneLoading: true, fortuneError: null })
+    try {
+      const result = await requestTodayFortune(aiResult, today, apiKey)
+      set({ todayFortune: result, fortuneDate: today, fortuneError: null })
+      await AsyncStorage.setItem(
+        FORTUNE_STORAGE_KEY,
+        JSON.stringify({ fortuneDate: today, todayFortune: result })
+      )
+    } catch (e) {
+      const raw = e instanceof Error ? e.message : String(e)
+      const isQuota =
+        raw.includes('429') || raw.includes('quota') || raw.includes('Quota exceeded')
+      set({
+        fortuneError: isQuota ? FORTUNE_QUOTA_MESSAGE : raw || '오늘의 운세를 불러오지 못했어요.',
+      })
+    } finally {
+      set({ isFortuneLoading: false })
+    }
   },
 }))

@@ -55,3 +55,37 @@ export interface UserAnalysisState {
   /** ISO 8601 string for consistent serialization (e.g. from Date.toISOString()) */
   lastUpdated: string
 }
+
+// Today's Fortune (오늘의 운세)
+export type FortuneCategoryId =
+  | 'total'
+  | 'love'
+  | 'money'
+  | 'work'
+  | 'health'
+  | 'relationship'
+  | 'luck'
+  | 'caution'
+
+export interface TodayFortuneLuck {
+  color?: string
+  number?: number
+  direction?: string
+  time?: string
+}
+
+export interface TodayFortuneCategoryItem {
+  summary: string
+  detail?: string
+}
+
+export interface TodayFortuneResponse {
+  total: string
+  love: TodayFortuneCategoryItem
+  money: TodayFortuneCategoryItem
+  work: TodayFortuneCategoryItem
+  health: TodayFortuneCategoryItem
+  relationship: TodayFortuneCategoryItem
+  luck?: TodayFortuneLuck
+  caution?: string
+}
