@@ -1,3 +1,4 @@
+import { NotificationNavigator } from '@/components/notification-navigator';
 import { AuthProvider } from '@/contexts/auth-context';
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
 import '@/global.css';
@@ -20,6 +21,7 @@ export default function RootLayout() {
       <GluestackUIProvider mode={colorScheme === 'dark' ? 'dark' : 'light'}>
         <AuthProvider>
           <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <NotificationNavigator />
             <Stack>
               <Stack.Screen name="index" options={{ headerShown: false }} />
               <Stack.Screen name="onboarding" options={{ headerShown: false }} />

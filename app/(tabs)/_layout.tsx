@@ -1,12 +1,13 @@
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { Platform, StyleSheet, useColorScheme, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { HapticTab } from "@/components/haptic-tab";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { Text } from "@/components/ui/text";
+import { scheduleDailyNotifications } from "@/lib/notifications";
 
 function TabBarBackgroundPoem() {
   return (
@@ -30,6 +31,10 @@ export default function TabLayout() {
   const insets = useSafeAreaInsets();
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
+
+  useEffect(() => {
+    scheduleDailyNotifications().catch(() => {});
+  }, []);
 
   const defaultTabBarStyle = {
     position: "absolute" as const,

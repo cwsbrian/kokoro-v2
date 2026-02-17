@@ -1,10 +1,12 @@
 import { useAuth } from '@/contexts/auth-context'
 import { loadPoemsFromJSON } from '@/data/poemsLoader'
+import { getTodayPoemIndex } from '@/lib/getTodayPoemIndex'
 import { getMockAnalysisState } from '@/lib/mockAnalysisState'
 import { triggerAnalysisIfNeeded } from '@/lib/triggerAnalysis'
 import { useAppStore } from '@/store/useAppStore'
 import { MRT } from '@/constants/analysis'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
+import { useFocusEffect } from 'expo-router'
 import { BlurView } from "expo-blur";
 import * as Haptics from "expo-haptics";
 import React, { useCallback, useEffect, useRef, useState } from "react";
@@ -29,12 +31,16 @@ export default function HomeScreen() {
   const poems = useAppStore((s) => s.poems);
   const currentCardIndex = useAppStore((s) => s.currentCardIndex);
   const responseCount = useAppStore((s) => s.responseCount);
+  const loadPoems = useAppStore((s) => s.loadPoems)
   const loadAndShufflePoems = useAppStore((s) => s.loadAndShufflePoems)
   const loadUserAnalysisState = useAppStore((s) => s.loadUserAnalysisState)
   const swipeCard = useAppStore((s) => s.swipeCard)
   const setUserId = useAppStore((s) => s.setUserId)
   const getAnalysisResult = useAppStore((s) => s.getAnalysisResult)
   const shufflePoems = useAppStore((s) => s.shufflePoems)
+  const pendingPoemId = useAppStore((s) => s.pendingPoemId)
+  const setPendingPoemId = useAppStore((s) => s.setPendingPoemId)
+  const setCurrentCardIndex = useAppStore((s) => s.setCurrentCardIndex)
 
   // selector로 현재 카드 구독 → poems/currentCardIndex 변경 시 올바른 카드 반영
   const currentCard = useAppStore((state) => {
@@ -58,9 +64,16 @@ export default function HomeScreen() {
 
       // 1. userId는 useAuth().user → useEffect에서 setUserId로 동기화됨
 
-      // 2. 시 카드 로드 + 셔플 (한 번에 처리해 스토어 타이밍 이슈 방지)
+      // 2. 시 카드 로드 (알림 진입 시 셔플 안 함 → 알림과 동일한 시 표시)
       const loadedPoems = await loadPoemsFromJSON()
-      loadAndShufflePoems(loadedPoems)
+      const fromNotification = useAppStore.getState().pendingPoemId != null
+      if (fromNotification) {
+        loadPoems(loadedPoems)
+        setCurrentCardIndex(getTodayPoemIndex(loadedPoems))
+        setPendingPoemId(null)
+      } else {
+        loadAndShufflePoems(loadedPoems)
+      }
 
       // Dev: AI 요청(스와이프 이력 50개)만 미리 넣고, 실제 API 호출로 테스트
       if (__DEV__) {
@@ -78,12 +91,26 @@ export default function HomeScreen() {
       setError(errorMessage);
       setIsLoading(false);
     }
-  }, [loadAndShufflePoems, loadUserAnalysisState])
+  }, [loadPoems, loadAndShufflePoems, loadUserAnalysisState, setCurrentCardIndex, setPendingPoemId])
 
   // 초기화
   useEffect(() => {
     initializeApp();
   }, [initializeApp]);
+
+  // 알림으로 진입 후 시 탭에 포커스될 때 해당 시 표시 (앱이 이미 열려 있을 때만; cold start는 initializeApp에서 처리)
+  useFocusEffect(
+    useCallback(() => {
+      if (!pendingPoemId || poems.length === 0) return
+      loadPoemsFromJSON()
+        .then((loadedPoems) => {
+          loadPoems(loadedPoems)
+          setCurrentCardIndex(getTodayPoemIndex(loadedPoems))
+          setPendingPoemId(null)
+        })
+        .catch(() => {})
+    }, [pendingPoemId, poems.length, loadPoems, setCurrentCardIndex, setPendingPoemId]),
+  )
 
   // 이미지 프리로딩 함수
   const preloadImages = useCallback(
