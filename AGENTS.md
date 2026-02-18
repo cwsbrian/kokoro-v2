@@ -31,7 +31,18 @@ npm run lint
 
 # Reset project (moves app/ to app-example/)
 npm run reset-project
+
+# Android App Bundle for Google Play (EAS Build)
+npm run build:android
 ```
+
+### EAS Build (Android App Bundle for Google Play)
+
+1. Install EAS CLI: `npm install -g eas-cli` (or use `npx eas-cli`)
+2. Log in: `eas login`
+3. Ensure `google-services.json` exists at project root (required for Firebase; it is gitignored)
+4. Run: `npm run build:android` or `eas build --platform android --profile production`
+5. Download the `.aab` from [expo.dev](https://expo.dev) → your project → Builds, then upload to Google Play Console (Test and release → Internal testing → Upload).
 
 **Note:** This project does not have tests configured. If adding tests, use Jest with React Native Testing Library.
 

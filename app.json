@@ -14,6 +14,7 @@
       "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
+      "versionCode": 2,
       "googleServicesFile": "./google-services.json",
       "package": "com.cwsbrian.kokoro",
       "adaptiveIcon": {
@@ -48,6 +49,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "94ee3271-1480-4037-abdd-e51b8ea5ea65"
+      }
     }
   }
 }
