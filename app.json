@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "auth",
-    "slug": "auth",
-    "version": "1.0.0",
+    "name": "Kokoro",
+    "slug": "kokoro",
+    "version": "0.0.3",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "auth",
+    "scheme": "kokoro",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -14,7 +14,7 @@
       "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
-      "versionCode": 2,
+      "versionCode": 3,
       "googleServicesFile": "./google-services.json",
       "package": "com.cwsbrian.kokoro",
       "adaptiveIcon": {
@@ -39,22 +39,12 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
-          "dark": {
-            "backgroundColor": "#000000"
-          }
+          "dark": { "backgroundColor": "#000000" }
         }
       ],
       "@react-native-google-signin/google-signin"
     ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
-    },
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "94ee3271-1480-4037-abdd-e51b8ea5ea65"
-      }
-    }
+    "experiments": { "typedRoutes": true, "reactCompiler": true },
+    "extra": { "router": {}, "eas": { "projectId": "94ee3271-1480-4037-abdd-e51b8ea5ea65" } }
   }
 }
