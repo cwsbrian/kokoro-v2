@@ -1,5 +1,5 @@
 import type { AiAnalysisResult } from '@/types'
-import { File, Paths } from 'expo-file-system'
+import * as FileSystem from 'expo-file-system/legacy'
 
 /** Nano Banana — Gemini 2.5 Flash Image (공식 문서 기준) */
 const IMAGE_MODEL = 'gemini-2.5-flash-image'
@@ -9,7 +9,9 @@ function buildAvatarPrompt(result: AiAnalysisResult): string {
     'Create a single cute, simple character avatar illustration.',
     'Style: flat design, minimal details, suitable for a profile picture. No text in the image.',
     `The character should represent: "${result.label}".`,
-    result.description ? `Personality/tone: ${result.description.slice(0, 150)}...` : '',
+    result.description
+      ? `Personality/tone: ${result.description.length > 150 ? result.description.slice(0, 150) + '...' : result.description}`
+      : '',
   ]
   if (result.color) {
     parts.push(`Use ${result.color} as the main accent color for the character or background.`)
@@ -43,14 +45,28 @@ export async function requestAvatarImage(
     },
   }
 
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-goog-api-key': apiKey,
-    },
-    body: JSON.stringify(body),
-  })
+  const controller = new AbortController()
+  const timeoutMs = 15000
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
+  let res: Response
+  try {
+    res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': apiKey,
+      },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    })
+  } catch (err) {
+    clearTimeout(timeoutId)
+    const isAbort = err instanceof Error && err.name === 'AbortError'
+    if (isAbort && __DEV__) console.warn('Avatar image request timed out after', timeoutMs, 'ms')
+    if (isAbort) throw new Error('Avatar request timed out')
+    throw err
+  }
+  clearTimeout(timeoutId)
   if (!res.ok) {
     const err = await res.text()
     if (__DEV__) console.warn('Avatar image request failed:', res.status, err)
@@ -73,11 +89,12 @@ export async function requestAvatarImage(
       const base64 = part.inlineData.data
       const ext = part.inlineData.mimeType === 'image/jpeg' ? 'jpg' : 'png'
       try {
-        const file = new File(Paths.cache, `avatar_${Date.now()}.${ext}`)
-        file.create({ overwrite: true })
-        file.write(base64, { encoding: 'base64' })
-        if (__DEV__) console.warn('[AI response] avatar saved:', file.uri)
-        return file.uri
+        const fileUri = `${FileSystem.cacheDirectory ?? ''}avatar_${Date.now()}.${ext}`
+        await FileSystem.writeAsStringAsync(fileUri, base64, {
+          encoding: FileSystem.EncodingType.Base64,
+        })
+        if (__DEV__) console.warn('[AI response] avatar saved:', fileUri)
+        return fileUri
       } catch (e) {
         if (__DEV__) console.warn('Avatar file write failed:', e)
         return null

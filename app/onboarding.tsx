@@ -6,8 +6,8 @@ import {
   ONBOARDING_SLIDES,
   type OnboardingSlide,
 } from "@/constants/onboarding-slides";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import { useRef, useState } from "react";
@@ -74,8 +74,12 @@ export default function OnboardingScreen() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
-  const completeOnboarding = () => {
-    AsyncStorage.setItem(ONBOARDING_DONE_KEY, "true");
+  const completeOnboarding = async () => {
+    try {
+      await AsyncStorage.setItem(ONBOARDING_DONE_KEY, "true");
+    } catch (error) {
+      console.warn("Failed to persist onboarding state:", error);
+    }
     router.replace("/login");
   };
 
@@ -125,11 +129,7 @@ export default function OnboardingScreen() {
         bounces={false}
         onMomentumScrollEnd={handleMomentumScrollEnd}
         renderItem={({ item }) => (
-          <SlideItem
-            item={item}
-            width={width}
-            paddingBottom={insets.bottom}
-          />
+          <SlideItem item={item} width={width} paddingBottom={insets.bottom} />
         )}
       />
 
@@ -153,15 +153,9 @@ export default function OnboardingScreen() {
           className="active:opacity-70 flex-row items-center gap-1 py-3 px-3"
         >
           <Text size="lg" className="text-primary-500 font-bold">
-            {currentIndex >= ONBOARDING_SLIDES.length - 1
-              ? "시작하기"
-              : "다음"}
+            {currentIndex >= ONBOARDING_SLIDES.length - 1 ? "시작하기" : "다음"}
           </Text>
-          <MaterialIcons
-            name="chevron-right"
-            size={24}
-            color={primaryColor}
-          />
+          <MaterialIcons name="chevron-right" size={24} color={primaryColor} />
         </Pressable>
       </Box>
     </Box>

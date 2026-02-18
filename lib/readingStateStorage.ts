@@ -33,21 +33,28 @@ export function fromStoredReadingState(stored: StoredReadingState): UserAnalysis
     lastAnalyzedAtSwipeCount: stored.lastAnalyzedAtSwipeCount,
     aiAnalysisResult: stored.aiAnalysisResult,
     swipeHistory: stored.swipeHistory ?? [],
-    lastUpdated: stored.lastUpdated,
+    lastUpdated: stored.lastUpdated ? new Date(stored.lastUpdated) : new Date(),
   }
 }
 
 export async function getReadingStateFromDevice(): Promise<UserAnalysisState | null> {
   try {
     const raw = await AsyncStorage.getItem(READING_STATE_KEY)
-    if (!raw) return null
+    if (!raw) {
+      if (__DEV__) console.log('[ReadingState] no device state found')
+      return null
+    }
     const parsed = JSON.parse(raw) as StoredReadingState
-    return fromStoredReadingState(parsed)
-  } catch {
+    const state = fromStoredReadingState(parsed)
+    if (__DEV__) console.log('[ReadingState] loaded from device, responseCount:', state.responseCount)
+    return state
+  } catch (err) {
+    if (__DEV__) console.warn('[ReadingState] device load failed:', err)
     return null
   }
 }
 
-export async function setReadingStateToDevice(state: StoredReadingState): Promise<void> {
-  await AsyncStorage.setItem(READING_STATE_KEY, JSON.stringify(state))
+export async function setReadingStateToDevice(state: UserAnalysisState): Promise<void> {
+  const stored = toStoredReadingState(state)
+  await AsyncStorage.setItem(READING_STATE_KEY, JSON.stringify(stored))
 }

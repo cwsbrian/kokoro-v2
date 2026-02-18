@@ -1,6 +1,6 @@
-import type { AiAnalysisResult, TodayFortuneResponse } from '@/types'
-import { TodayFortuneResponseSchema } from '@/schemas/fortuneSchema'
 import { getTodayKstYYYYMMDD } from '@/lib/getKstDate'
+import { TodayFortuneResponseSchema } from '@/schemas/fortuneSchema'
+import type { AiAnalysisResult, TodayFortuneResponse } from '@/types'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
 const MODEL_ID = 'gemini-2.0-flash'
@@ -94,7 +94,9 @@ export async function requestTodayFortune(
   }
 
   const validated = TodayFortuneResponseSchema.parse(parsed)
-  if (__DEV__) console.warn('[fortune] response:', JSON.stringify(validated, null, 2))
+  if (process.env.NODE_ENV === 'development') {
+    console.warn('[fortune] response:', JSON.stringify(validated, null, 2))
+  }
   return validated
 }
 

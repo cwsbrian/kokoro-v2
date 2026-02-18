@@ -199,10 +199,21 @@ export default function AccountScreen() {
         ) : (
           (() => {
             const accentColor = aiResult.color ?? "#DB2777";
-            const withAlpha = (hex: string, alpha: number) => {
-              const r = parseInt(hex.slice(1, 3), 16);
-              const g = parseInt(hex.slice(3, 5), 16);
-              const b = parseInt(hex.slice(5, 7), 16);
+            const withAlpha = (hex: string, alpha: number): string => {
+              const normalized = hex.replace(/^#/, '').trim();
+              const full =
+                normalized.length === 3
+                  ? normalized
+                      .split('')
+                      .map((c) => c + c)
+                      .join('')
+                  : normalized;
+              if (!/^[0-9A-Fa-f]{6}$/.test(full)) {
+                return `rgba(219,39,119,${alpha})`;
+              }
+              const r = parseInt(full.slice(0, 2), 16);
+              const g = parseInt(full.slice(2, 4), 16);
+              const b = parseInt(full.slice(4, 6), 16);
               return `rgba(${r},${g},${b},${alpha})`;
             };
             return (

@@ -17,26 +17,30 @@ export function ReadingStateSync() {
   const loadUserAnalysisState = useAppStore((s) => s.loadUserAnalysisState)
   const appStateRef = useRef<AppStateStatus>(AppState.currentState)
 
-  // 1) 앱 마운트 시 기기에서 읽기 상태 복원
+  // 읽기 상태 복원: 로그인 시 Firebase 우선, 없으면 기기; 비로그인 시 기기만. Firebase가 항상 승자.
   useEffect(() => {
     let cancelled = false
-    getReadingStateFromDevice().then((state) => {
-      if (cancelled || !state) return
-      loadUserAnalysisState(state)
-    })
-    return () => {
-      cancelled = true
+    const run = async () => {
+      if (user?.uid) {
+        const state = await getReadingStateFromFirebase(user.uid)
+        if (cancelled) return
+        if (state) {
+          loadUserAnalysisState(state)
+          if (__DEV__) console.log('[ReadingState] applied from Firebase, responseCount:', state.responseCount)
+          return
+        }
+        const deviceState = await getReadingStateFromDevice()
+        if (cancelled || !deviceState) return
+        loadUserAnalysisState(deviceState)
+        if (__DEV__) console.log('[ReadingState] no Firebase doc, applied from device')
+      } else {
+        const deviceState = await getReadingStateFromDevice()
+        if (cancelled || !deviceState) return
+        loadUserAnalysisState(deviceState)
+        if (__DEV__) console.log('[ReadingState] applied from device')
+      }
     }
-  }, [loadUserAnalysisState])
-
-  // 2) 로그인 시 Firebase에서 읽기 상태 불러와서 덮어쓰기
-  useEffect(() => {
-    if (!user?.uid) return
-    let cancelled = false
-    getReadingStateFromFirebase(user.uid).then((state) => {
-      if (cancelled || !state) return
-      loadUserAnalysisState(state)
-    })
+    run()
     return () => {
       cancelled = true
     }
@@ -52,7 +56,10 @@ export function ReadingStateSync() {
       if (wentToBackground && user?.uid) {
         const state = useAppStore.getState()
         const stored = toStoredReadingState(state)
-        setReadingStateToFirebase(user.uid, stored).catch(() => {})
+        setReadingStateToFirebase(user.uid, stored).catch((err) => {
+          if (__DEV__) console.warn('[ReadingState] Firebase sync on background failed:', err)
+        })
+        if (__DEV__) console.log('[ReadingState] syncing to Firebase on background')
       }
     })
     return () => subscription.remove()

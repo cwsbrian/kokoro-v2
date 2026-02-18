@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  useColorScheme,
 } from 'react-native';
 import { Link, router } from 'expo-router';
 
+import { Colors } from '@/constants/theme';
 import { Box } from '@/components/ui/box';
 import { Heading } from '@/components/ui/heading';
 import { Text } from '@/components/ui/text';
@@ -20,6 +22,17 @@ export default function RegisterScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const { signUp } = useAuth();
   const toast = useToast();
+  const colorScheme = useColorScheme() ?? 'light';
+  const placeholderColor = colorScheme === 'dark' ? Colors.dark.icon : Colors.light.icon;
+  const isMountedRef = useRef(true);
+  const delayTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+      if (delayTimeoutRef.current) clearTimeout(delayTimeoutRef.current);
+    };
+  }, []);
 
   const handleRegister = async () => {
     if (!email || !password || !confirmPassword) {
@@ -73,8 +86,10 @@ export default function RegisterScreen() {
           </Toast>
         ),
       });
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      router.replace('/login');
+      await new Promise<void>((resolve) => {
+        delayTimeoutRef.current = setTimeout(() => resolve(), 800);
+      });
+      if (isMountedRef.current) router.replace('/login');
     } catch (error: any) {
       let errorMessage = '회원가입에 실패했습니다.';
       if (error.code === 'auth/email-already-in-use') {
@@ -111,7 +126,7 @@ export default function RegisterScreen() {
         <TextInput
           className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="이메일"
-          placeholderTextColor="#9CA3AF"
+          placeholderTextColor={placeholderColor}
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -121,7 +136,7 @@ export default function RegisterScreen() {
         <TextInput
           className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="비밀번호 (6자 이상)"
-          placeholderTextColor="#9CA3AF"
+          placeholderTextColor={placeholderColor}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -130,7 +145,7 @@ export default function RegisterScreen() {
         <TextInput
           className="h-12 rounded-lg border border-outline-200 bg-background-50 px-4 text-typography-900 dark:text-typography-0 dark:bg-background-800 dark:border-outline-700"
           placeholder="비밀번호 확인"
-          placeholderTextColor="#9CA3AF"
+          placeholderTextColor={placeholderColor}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           secureTextEntry

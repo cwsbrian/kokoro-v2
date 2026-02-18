@@ -1,9 +1,10 @@
-import { BlurView } from "expo-blur";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import React, { useEffect, useState } from "react";
-import { StyleSheet, useWindowDimensions } from "react-native";
 import { Box } from "@/components/ui/box";
 import { Text } from "@/components/ui/text";
+import type { PoemCard as PoemCardType, SwipeDirection } from "@/types";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { BlurView } from "expo-blur";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, useWindowDimensions } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   interpolate,
@@ -15,7 +16,6 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
-import type { PoemCard as PoemCardType, SwipeDirection } from "@/types";
 
 type SwipeFeedback = "like" | "dislike" | "";
 

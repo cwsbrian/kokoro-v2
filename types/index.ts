@@ -52,20 +52,22 @@ export interface UserAnalysisState {
   lastAnalyzedAtSwipeCount: number | null
   aiAnalysisResult: AiAnalysisResult | null
   swipeHistory: SwipeRecord[]
-  /** ISO 8601 string for consistent serialization (e.g. from Date.toISOString()) */
-  lastUpdated: string
+  lastUpdated: Date
 }
 
 // Today's Fortune (오늘의 운세)
-export type FortuneCategoryId =
-  | 'total'
+/** Categories that map to TodayFortuneCategoryItem (uniform shape) */
+export type UniformFortuneCategoryId =
   | 'love'
   | 'money'
   | 'work'
   | 'health'
   | 'relationship'
-  | 'luck'
-  | 'caution'
+
+/** Total/luck/caution have different shapes in TodayFortuneResponse */
+export type SpecialFortuneCategoryId = 'total' | 'luck' | 'caution'
+
+export type FortuneCategoryId = UniformFortuneCategoryId | SpecialFortuneCategoryId
 
 export interface TodayFortuneLuck {
   color?: string

@@ -132,14 +132,13 @@ export default function MoreScreen() {
               </Text>
             </Pressable>
           ) : null}
-          <Pressable
-            onPress={() => storeLink && openUrl(storeLink)}
-            className={ROW_CLASS}
-          >
-            <Text className="text-base font-medium text-typography-900">
-              스토어에서 보기
-            </Text>
-          </Pressable>
+          {storeLink ? (
+            <Pressable onPress={() => openUrl(storeLink)} className={ROW_CLASS}>
+              <Text className="text-base font-medium text-typography-900">
+                스토어에서 보기
+              </Text>
+            </Pressable>
+          ) : null}
         </Box>
 
         {/* 버전 */}

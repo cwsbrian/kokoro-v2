@@ -64,33 +64,37 @@ export async function scheduleDailyNotifications(): Promise<void> {
   const poemIndex = getTodayPoemIndex(poems)
   const poemId = poems.length > 0 ? poems[poemIndex].Poem_ID : undefined
 
-  await Notifications.scheduleNotificationAsync({
-    identifier: DAILY_FORTUNE_ID,
-    content: {
-      title: '오늘의 운세',
-      body: '오늘 하루 운세를 확인해 보세요.',
-      data: { type: 'fortune' as NotificationScreenType },
-    },
-    trigger: {
-      type: Notifications.SchedulableTriggerInputTypes.DAILY,
-      hour: FORTUNE_HOUR,
-      minute: FORTUNE_MINUTE,
-    },
-  })
+  try {
+    await Notifications.scheduleNotificationAsync({
+      identifier: DAILY_FORTUNE_ID,
+      content: {
+        title: '오늘의 운세',
+        body: '오늘 하루 운세를 확인해 보세요.',
+        data: { type: 'fortune' as NotificationScreenType },
+      },
+      trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.DAILY,
+        hour: FORTUNE_HOUR,
+        minute: FORTUNE_MINUTE,
+      },
+    })
 
-  await Notifications.scheduleNotificationAsync({
-    identifier: DAILY_POEM_ID,
-    content: {
-      title: '오늘의 시',
-      body: poemBody,
-      data: { type: 'poem' as NotificationScreenType, poemId },
-    },
-    trigger: {
-      type: Notifications.SchedulableTriggerInputTypes.DAILY,
-      hour: POEM_HOUR,
-      minute: POEM_MINUTE,
-    },
-  })
+    await Notifications.scheduleNotificationAsync({
+      identifier: DAILY_POEM_ID,
+      content: {
+        title: '오늘의 시',
+        body: poemBody,
+        data: { type: 'poem' as NotificationScreenType, poemId },
+      },
+      trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.DAILY,
+        hour: POEM_HOUR,
+        minute: POEM_MINUTE,
+      },
+    })
+  } catch (error) {
+    console.error('Failed to schedule daily notifications:', error)
+  }
 }
 
 /** 테스트: 운세 알림 즉시 발송 (탭 시 운세 탭으로 이동) */

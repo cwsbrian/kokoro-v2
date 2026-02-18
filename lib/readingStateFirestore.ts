@@ -17,9 +17,10 @@ export async function getReadingStateFromFirebase(uid: string): Promise<UserAnal
       lastAnalyzedAtSwipeCount: data.lastAnalyzedAtSwipeCount ?? null,
       aiAnalysisResult: data.aiAnalysisResult ?? null,
       swipeHistory: data.swipeHistory ?? [],
-      lastUpdated: data.lastUpdated ?? new Date().toISOString(),
+      lastUpdated: data.lastUpdated ? new Date(data.lastUpdated) : new Date(),
     }
-  } catch {
+  } catch (err) {
+    console.error('[ReadingState] Firebase load failed:', err)
     return null
   }
 }
@@ -30,4 +31,5 @@ export async function setReadingStateToFirebase(
 ): Promise<void> {
   const ref = doc(db, COLLECTION, uid, DOC_PATH, 'data')
   await setDoc(ref, state)
+  if (__DEV__) console.log('[ReadingState] synced to Firebase, responseCount:', state.responseCount)
 }

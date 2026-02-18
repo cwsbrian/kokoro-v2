@@ -1,22 +1,27 @@
-import { Box } from '@/components/ui/box';
-import { Heading } from '@/components/ui/heading';
-import { Text } from '@/components/ui/text';
-import { Toast, ToastDescription, ToastTitle, useToast } from '@/components/ui/toast';
-import { useAuth } from '@/contexts/auth-context';
-import { FontAwesome } from '@expo/vector-icons';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { Link, router } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { Box } from "@/components/ui/box";
+import { Heading } from "@/components/ui/heading";
+import { Text } from "@/components/ui/text";
+import {
+  Toast,
+  ToastDescription,
+  ToastTitle,
+  useToast,
+} from "@/components/ui/toast";
+import { useAuth } from "@/contexts/auth-context";
+import { FontAwesome } from "@expo/vector-icons";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import { Link, router } from "expo-router";
+import { useEffect, useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
   TextInput,
-  TouchableOpacity
-} from 'react-native';
+  TouchableOpacity,
+} from "react-native";
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { signIn, signInWithGoogle } = useAuth();
   const toast = useToast();
@@ -24,11 +29,13 @@ export default function LoginScreen() {
   const handleLogin = async () => {
     if (!email || !password) {
       toast.show({
-        placement: 'top',
+        placement: "top",
         render: () => (
           <Toast action="error" variant="outline">
             <ToastTitle>오류</ToastTitle>
-            <ToastDescription>이메일과 비밀번호를 입력해주세요.</ToastDescription>
+            <ToastDescription>
+              이메일과 비밀번호를 입력해주세요.
+            </ToastDescription>
           </Toast>
         ),
       });
@@ -38,20 +45,20 @@ export default function LoginScreen() {
     setIsLoading(true);
     try {
       await signIn(email, password);
-      router.replace('/(tabs)');
+      router.replace("/(tabs)");
     } catch (error: any) {
-      let errorMessage = '로그인에 실패했습니다.';
-      if (error.code === 'auth/user-not-found') {
-        errorMessage = '등록되지 않은 이메일입니다.';
-      } else if (error.code === 'auth/wrong-password') {
-        errorMessage = '비밀번호가 올바르지 않습니다.';
-      } else if (error.code === 'auth/invalid-email') {
-        errorMessage = '올바른 이메일 형식이 아닙니다.';
-      } else if (error.code === 'auth/invalid-credential') {
-        errorMessage = '이메일 또는 비밀번호가 올바르지 않습니다.';
+      let errorMessage = "로그인에 실패했습니다.";
+      if (error.code === "auth/user-not-found") {
+        errorMessage = "등록되지 않은 이메일입니다.";
+      } else if (error.code === "auth/wrong-password") {
+        errorMessage = "비밀번호가 올바르지 않습니다.";
+      } else if (error.code === "auth/invalid-email") {
+        errorMessage = "올바른 이메일 형식이 아닙니다.";
+      } else if (error.code === "auth/invalid-credential") {
+        errorMessage = "이메일 또는 비밀번호가 올바르지 않습니다.";
       }
       toast.show({
-        placement: 'top',
+        placement: "top",
         render: () => (
           <Toast action="error" variant="outline">
             <ToastTitle>로그인 실패</ToastTitle>
@@ -70,15 +77,15 @@ export default function LoginScreen() {
       const userInfo = await GoogleSignin.signIn();
 
       const tokens = await GoogleSignin.getTokens();
-      console.log('Google tokens:', tokens);
-      console.log('User info:', userInfo);
+      console.log("Google tokens:", tokens);
+      console.log("User info:", userInfo);
 
       if (tokens.idToken) {
         await signInWithGoogle(tokens.idToken);
-        router.replace('/(tabs)');
+        router.replace("/(tabs)");
       } else {
         toast.show({
-          placement: 'top',
+          placement: "top",
           render: () => (
             <Toast action="error" variant="outline">
               <ToastTitle>구글 로그인 실패</ToastTitle>
@@ -88,17 +95,16 @@ export default function LoginScreen() {
         });
       }
     } catch (error: any) {
-      const code = error?.code ?? '';
+      const code = error?.code ?? "";
       const msg = error?.message ?? String(error);
-      __DEV__ && console.warn('Google Sign-In error', { code, message: msg });
+      __DEV__ && console.warn("Google Sign-In error", { code, message: msg });
       toast.show({
-        placement: 'top',
+        placement: "top",
         render: () => (
           <Toast action="error" variant="outline">
             <ToastTitle>구글 로그인 실패</ToastTitle>
             <ToastDescription>
-              {msg}
-              {code ? ` (코드: ${code})` : ''}
+              구글 로그인 중 오류가 발생했습니다. 다시 시도해주세요.
             </ToastDescription>
           </Toast>
         ),
@@ -114,7 +120,7 @@ export default function LoginScreen() {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1 bg-background-0"
     >
       <Box className="flex-1 justify-center px-6 gap-4">
@@ -152,7 +158,7 @@ export default function LoginScreen() {
           disabled={isLoading}
         >
           <Text className="text-white text-base font-semibold">
-            {isLoading ? '로그인 중...' : '로그인'}
+            {isLoading ? "로그인 중..." : "로그인"}
           </Text>
         </TouchableOpacity>
 
@@ -163,7 +169,7 @@ export default function LoginScreen() {
         >
           <FontAwesome name="google" size={20} color="#DB4437" />
           <Text className="text-gray-900 dark:text-white text-base font-semibold">
-            {isLoading ? '구글 로그인 중...' : 'Google로 계속하기'}
+            {isLoading ? "구글 로그인 중..." : "Google로 계속하기"}
           </Text>
         </TouchableOpacity>
 

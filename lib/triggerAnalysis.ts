@@ -1,8 +1,8 @@
-import type { AiAnalysisResult } from '@/types'
 import { MRT } from '@/constants/analysis'
 import { requestAnalysis } from '@/lib/gemini'
 import { requestAvatarImage } from '@/lib/geminiAvatar'
 import { useAppStore } from '@/store/useAppStore'
+import type { AiAnalysisResult } from '@/types'
 import { Image } from 'react-native'
 
 const REANALYZE_INTERVAL = 50
@@ -52,7 +52,7 @@ export async function triggerAnalysisIfNeeded(): Promise<void> {
 
   try {
     const result = await requestAnalysis(state.swipeHistory, state.poems, apiKey)
-    const prev = state.aiAnalysisResult
+    const prev = useAppStore.getState().aiAnalysisResult
     useAppStore.getState().setAiAnalysisResult(result)
     useAppStore.getState().setLastAnalyzedAtSwipeCount(state.responseCount)
     useAppStore.getState().setAnalysisError(null)

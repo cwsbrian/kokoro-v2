@@ -21,6 +21,6 @@ export function getMockAnalysisState(poems: PoemCard[]): UserAnalysisState {
     lastAnalyzedAtSwipeCount: null,
     aiAnalysisResult: null,
     swipeHistory,
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: new Date(),
   }
 }

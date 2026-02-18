@@ -17,9 +17,9 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Box } from "@/components/ui/box";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
-import type { FortuneCategoryId, TodayFortuneCategoryItem } from "@/types";
+import type { FortuneCategoryId, UniformFortuneCategoryId } from "@/types";
 
-const CARD_CATEGORY_IDS: FortuneCategoryId[] = [
+const CARD_CATEGORY_IDS: UniformFortuneCategoryId[] = [
   "love",
   "money",
   "work",
@@ -283,7 +283,7 @@ export default function FortuneScreen() {
         {/* 카테고리 카드: 아이콘 포인트 컬러, 카드 왼쪽 얇은 라인 */}
         {CARD_CATEGORY_IDS.map((id) => {
           const cat = FORTUNE_CATEGORIES.find((c) => c.id === id);
-          const item = todayFortune[id] as TodayFortuneCategoryItem | undefined;
+          const item = todayFortune[id];
           if (!cat || !item) return null;
           const isExpanded = expandedId === id;
           const hasDetail = !!item.detail?.trim();

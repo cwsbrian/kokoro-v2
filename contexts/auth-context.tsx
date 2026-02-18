@@ -54,7 +54,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = async () => {
-    setUser(null);
     await signOut(auth);
   };
 

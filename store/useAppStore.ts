@@ -14,17 +14,23 @@ import {
   getTodayKstYYYYMMDD,
   requestTodayFortune,
 } from '@/lib/geminiFortune'
-import {
-  toStoredReadingState,
-  setReadingStateToDevice,
-} from '@/lib/readingStateStorage'
+import { setReadingStateToDevice } from '@/lib/readingStateStorage'
 
 const FORTUNE_STORAGE_KEY = '@kokoro/fortune'
 
 function persistReadingStateToDevice(get: () => AppState): void {
   const state = get()
-  const stored = toStoredReadingState(state)
-  setReadingStateToDevice(stored).catch(() => {})
+  const userState: UserAnalysisState = {
+    responseCount: state.responseCount,
+    lastAnalyzedAtSwipeCount: state.lastAnalyzedAtSwipeCount,
+    aiAnalysisResult: state.aiAnalysisResult,
+    swipeHistory: state.swipeHistory,
+    lastUpdated: state.lastUpdated ?? new Date(),
+  }
+  setReadingStateToDevice(userState).catch((err) => {
+    if (__DEV__) console.warn('[ReadingState] device save failed:', err)
+  })
+  if (__DEV__) console.log('[ReadingState] saving to device, responseCount:', state.responseCount)
 }
 
 function directionToResponse(direction: SwipeDirection): SwipeRecord['response'] {
@@ -147,7 +153,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       lastAnalyzedAtSwipeCount: state.lastAnalyzedAtSwipeCount,
       aiAnalysisResult: state.aiAnalysisResult,
       swipeHistory: state.swipeHistory ?? [],
-      lastUpdated: state.lastUpdated ? new Date(state.lastUpdated) : null,
+      lastUpdated: state.lastUpdated instanceof Date ? state.lastUpdated : state.lastUpdated ? new Date(state.lastUpdated) : null,
     })
   },
 
