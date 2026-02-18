@@ -18,7 +18,7 @@ import { Text } from "@/components/ui/text";
 const SECTION_HEADER =
   "text-sm font-semibold text-typography-400 uppercase tracking-wide";
 const ROW_CLASS =
-  "mt-3 overflow-hidden rounded-xl border-l-2 border-outline-200 bg-background-50 p-4 dark:border-outline-700 dark:bg-background-800";
+  "mt-3 overflow-hidden rounded-xl border-l-2 border-outline-200 bg-background-50 p-4 dark:border-outline-700 dark:bg-background-100";
 
 function openUrl(url: string) {
   Linking.openURL(url).catch(() => {});
@@ -76,7 +76,7 @@ export default function MoreScreen() {
         showsVerticalScrollIndicator={false}
       >
         <Box className="pb-2 pt-6">
-          <Text className="text-2xl font-bold ">더보기</Text>
+          <Text className="text-2xl font-bold text-typography-900">더보기</Text>
           <Text className="mt-1 text-base text-typography-400">
             설정 및 기타 메뉴
           </Text>
@@ -95,7 +95,7 @@ export default function MoreScreen() {
                 onPress={handleTestFortune}
                 disabled={fortuneLoading}
               >
-                <Text className="text-center font-semibold text-typography-0">
+                <Text className="text-center font-semibold text-typography-0 dark:text-typography-900">
                   {fortuneLoading ? "발송 중…" : "운세 알림 보내기"}
                 </Text>
               </Pressable>
@@ -104,7 +104,7 @@ export default function MoreScreen() {
                 onPress={handleTestPoem}
                 disabled={poemLoading}
               >
-                <Text className="text-center font-semibold text-typography-0">
+                <Text className="text-center font-semibold text-typography-0 dark:text-typography-900">
                   {poemLoading ? "발송 중…" : "오늘의 시 알림 보내기"}
                 </Text>
               </Pressable>
@@ -117,7 +117,7 @@ export default function MoreScreen() {
           <Text className={SECTION_HEADER}>정보</Text>
           {termsUrl ? (
             <Pressable onPress={() => openUrl(termsUrl)} className={ROW_CLASS}>
-              <Text className="text-base font-medium text-typography-900 dark:text-typography-0">
+              <Text className="text-base font-medium text-typography-900">
                 이용약관
               </Text>
             </Pressable>
@@ -127,7 +127,7 @@ export default function MoreScreen() {
               onPress={() => openUrl(privacyUrl)}
               className={ROW_CLASS}
             >
-              <Text className="text-base font-medium text-typography-900 dark:text-typography-0">
+              <Text className="text-base font-medium text-typography-900">
                 개인정보처리방침
               </Text>
             </Pressable>
@@ -136,7 +136,7 @@ export default function MoreScreen() {
             onPress={() => storeLink && openUrl(storeLink)}
             className={ROW_CLASS}
           >
-            <Text className="text-base font-medium text-typography-900 dark:text-typography-0">
+            <Text className="text-base font-medium text-typography-900">
               스토어에서 보기
             </Text>
           </Pressable>
@@ -153,7 +153,7 @@ export default function MoreScreen() {
             disabled={logoutLoading}
             className="min-w-[200px] rounded-xl bg-error-500 px-8 py-3"
           >
-            <Text className="text-center font-semibold text-typography-0">
+            <Text className="text-center font-semibold text-typography-0 dark:text-typography-900">
               {logoutLoading ? "로그아웃 중…" : "로그아웃"}
             </Text>
           </Pressable>

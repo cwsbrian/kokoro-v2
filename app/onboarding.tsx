@@ -50,7 +50,7 @@ function SlideItem({
 
         <Heading
           size="2xl"
-          className="text-typography-900 dark:text-typography-0 font-bold text-center mt-3"
+          className="text-typography-900 font-bold text-center mt-3"
         >
           {item.title}
         </Heading>

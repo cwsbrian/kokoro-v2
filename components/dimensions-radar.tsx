@@ -1,4 +1,5 @@
 import React from "react";
+import { useColorScheme } from "react-native";
 import Svg, { Line, Polygon, Text as SvgText } from "react-native-svg";
 
 import { Box } from "@/components/ui/box";
@@ -32,6 +33,9 @@ export function DimensionsRadar({
   size = 220,
   accentColor = PRIMARY_COLOR,
 }: DimensionsRadarProps) {
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
+
   const entries = Object.entries(dimensions);
   if (entries.length === 0) return null;
   if (entries.length < 3) return null;
@@ -82,7 +86,7 @@ export function DimensionsRadar({
         <Polygon
           points={outlineStr}
           fill="none"
-          stroke="rgba(148, 163, 184, 0.4)"
+          stroke={isDark ? "rgba(248, 250, 252, 0.35)" : "rgba(148, 163, 184, 0.4)"}
           strokeWidth={1}
         />
         <Polygon
@@ -98,7 +102,7 @@ export function DimensionsRadar({
             y1={cy}
             x2={outlinePoints[i][0]}
             y2={outlinePoints[i][1]}
-            stroke="rgba(148, 163, 184, 0.3)"
+            stroke={isDark ? "rgba(248, 250, 252, 0.25)" : "rgba(148, 163, 184, 0.3)"}
             strokeWidth={1}
           />
         ))}
@@ -107,8 +111,8 @@ export function DimensionsRadar({
             key={`${label}-${i}`}
             x={x}
             y={y}
-            fill="#475569"
-            fontSize={11}
+            fill={isDark ? "#f5f5f5" : "#475569"}
+            fontSize={15}
             fontWeight="500"
             textAnchor="middle"
           >

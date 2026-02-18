@@ -150,7 +150,7 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
               )}
             </Animated.View>
             <Box className="flex-1 justify-center items-center">
-              <Text className="text-2xl font-bold text-typography-0 leading-9 text-center">
+              <Text className="text-2xl font-bold text-typography-0 dark:text-typography-900 leading-9 text-center">
                 {card.Poem_Text_KR}
               </Text>
             </Box>

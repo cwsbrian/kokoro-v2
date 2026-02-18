@@ -94,7 +94,7 @@ export default function FortuneScreen() {
             <MaterialIcons name="touch-app" size={40} color="#64748B" />
           </Box>
           <Text
-            className="text-center text-xl font-bold text-typography-0"
+            className="text-center text-xl font-bold text-typography-900"
             accessibilityLabel="운세를 보려면 먼저 시 스와이프가 필요합니다"
           >
             먼저 시를 스와이프해 나를 분석해 주세요
@@ -142,7 +142,7 @@ export default function FortuneScreen() {
           <Box className="mb-6 h-16 w-16 items-center justify-center rounded-full bg-error-500/20">
             <MaterialIcons name="error-outline" size={40} color="#EF4444" />
           </Box>
-          <Text className="text-center text-xl font-bold text-typography-0">
+          <Text className="text-center text-xl font-bold text-typography-900">
             오늘의 운세를 불러오지 못했어요
           </Text>
           <Text className="mt-3 text-center text-base text-typography-400">
@@ -191,7 +191,7 @@ export default function FortuneScreen() {
           }}
           accessibilityLabel={`총운: ${todayFortune.total}`}
         >
-          <Text className="text-lg font-medium leading-relaxed text-typography-700 dark:text-typography-200">
+          <Text className="text-lg font-medium leading-relaxed text-typography-700 dark:text-typography-900">
             {todayFortune.total}
           </Text>
         </Box>
@@ -291,7 +291,7 @@ export default function FortuneScreen() {
             <Pressable
               key={id}
               onPress={() => setExpandedId((prev) => (prev === id ? null : id))}
-              className="mt-3 overflow-hidden rounded-xl border-l-2 bg-background-50 p-4 dark:bg-background-800"
+              className="mt-3 overflow-hidden rounded-xl border-l-2 bg-background-50 p-4 dark:bg-background-100"
               style={{ borderLeftColor: withAlpha(FORTUNE_ACCENT, 0.4) }}
               accessibilityLabel={`${cat.name}: ${item.summary}`}
               accessibilityState={{ expanded: isExpanded }}
@@ -316,11 +316,11 @@ export default function FortuneScreen() {
                   />
                 )}
               </Box>
-              <Text className="mt-2 text-base leading-relaxed text-typography-700 dark:text-typography-200">
+              <Text className="mt-2 text-base leading-relaxed text-typography-700 dark:text-typography-900">
                 {item.summary}
               </Text>
               {hasDetail && isExpanded && (
-                <Text className="mt-2 text-sm leading-relaxed text-typography-500 dark:text-typography-400">
+                <Text className="mt-2 text-sm leading-relaxed text-typography-500 dark:text-typography-600">
                   {item.detail}
                 </Text>
               )}
@@ -331,11 +331,11 @@ export default function FortuneScreen() {
         {/* 주의: 왼쪽 경고 톤 라인 */}
         {todayFortune.caution?.trim() && (
           <Box
-            className="mt-6 rounded-xl border-l-4 bg-background-50 py-3 pl-4 pr-4 dark:bg-background-800"
+            className="mt-6 rounded-xl border-l-4 bg-background-50 py-3 pl-4 pr-4 dark:bg-background-100"
             style={{ borderLeftColor: withAlpha("#D97706", 0.8) }}
             accessibilityLabel={`주의: ${todayFortune.caution}`}
           >
-            <Text className="text-sm leading-relaxed text-typography-700 dark:text-typography-200">
+            <Text className="text-sm leading-relaxed text-typography-700 dark:text-typography-900">
               {todayFortune.caution}
             </Text>
           </Box>

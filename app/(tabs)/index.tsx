@@ -178,7 +178,7 @@ export default function HomeScreen() {
     return (
       <Box className="flex-1 justify-center items-center bg-background-dark">
         <ActivityIndicator size="large" color="#FFFFFF" />
-        <Text className="mt-4 text-base text-typography-0">로딩 중...</Text>
+        <Text className="mt-4 text-base text-typography-0 dark:text-typography-900">로딩 중...</Text>
       </Box>
     );
   }
@@ -191,7 +191,7 @@ export default function HomeScreen() {
           className="bg-primary-500 px-6 py-3 rounded-lg"
           onPress={initializeApp}
         >
-          <Text className="text-typography-0 text-base font-semibold">
+          <Text className="text-typography-0 dark:text-typography-900 text-base font-semibold">
             다시 시도
           </Text>
         </Pressable>
@@ -202,7 +202,7 @@ export default function HomeScreen() {
   if (!currentCard) {
     return (
       <Box className="flex-1 justify-center items-center bg-background-dark p-6">
-        <Text className="text-lg text-typography-0 text-center mb-6">
+        <Text className="text-lg text-typography-0 dark:text-typography-900 text-center mb-6">
           모든 시 카드를 확인했습니다.
         </Text>
         <Pressable
@@ -211,7 +211,7 @@ export default function HomeScreen() {
             shufflePoems();
           }}
         >
-          <Text className="text-typography-0 text-base font-semibold">
+          <Text className="text-typography-0 dark:text-typography-900 text-base font-semibold">
             다시 시작
           </Text>
         </Pressable>
@@ -236,7 +236,7 @@ export default function HomeScreen() {
         {/* Header */}
         <Box className="flex-row justify-between items-center px-5 pt-[60px] pb-5">
           <Box className="flex-row items-center gap-3">
-            <Text className="text-sm text-typography-0 bg-black/50 px-2 py-1 rounded-xl">
+            <Text className="text-sm text-typography-0 dark:text-typography-900 bg-black/50 px-2 py-1 rounded-xl">
               {responseCount >= MRT ? responseCount : `${responseCount}/${MRT}`}{" "}
               회
             </Text>
@@ -249,7 +249,7 @@ export default function HomeScreen() {
               onPress={handleViewResults}
               disabled={!result.canShowResults}
             >
-              <Text className="text-typography-0 text-sm font-semibold">
+              <Text className="text-typography-0 dark:text-typography-900 text-sm font-semibold">
                 결과
               </Text>
             </Pressable>

@@ -120,7 +120,7 @@ export default function AccountScreen() {
             <Box className="mb-6 h-16 w-16 items-center justify-center rounded-full bg-typography-200/20">
               <MaterialIcons name="touch-app" size={40} color="#64748B" />
             </Box>
-            <Text className="text-center text-xl font-bold text-typography-0">
+            <Text className="text-center text-xl font-bold text-typography-900">
               아직 결과를 만들기엔 스와이프가 부족해요
             </Text>
             <Text className="mt-3 text-center text-base text-typography-400">
@@ -148,7 +148,7 @@ export default function AccountScreen() {
                     color="#EF4444"
                   />
                 </Box>
-                <Text className="text-center text-xl font-bold text-typography-0">
+                <Text className="text-center text-xl font-bold text-typography-900">
                   분석에 실패했어요
                 </Text>
                 <Text className="mt-3 text-center text-base text-typography-400">
@@ -231,19 +231,15 @@ export default function AccountScreen() {
                   {aiResult.label}
                 </Text>
 
-                <Box className="mt-6 rounded-xl bg-background-50 p-4 dark:bg-background-800">
-                  <Text className="text-sm leading-relaxed text-typography-700 dark:text-typography-200">
+                <Box className="mt-6 rounded-xl bg-background-50 p-4 dark:bg-background-100">
+                  <Text className="text-sm leading-relaxed text-typography-700 dark:text-typography-900">
                     {aiResult.description}
                   </Text>
                 </Box>
 
-                <Button
-                  className="mt-4"
-                  size="lg"
-                  onPress={handleShare}
-                >
-                  <ButtonIcon as={ShareIcon} />
-                  <ButtonText>공유하기</ButtonText>
+                <Button className="mt-4" size="lg" onPress={handleShare}>
+                  <ButtonIcon as={ShareIcon} color="#FFFFFF" />
+                  <ButtonText className="text-white">공유하기</ButtonText>
                 </Button>
 
                 {aiResult.keywords?.length ? (
@@ -277,10 +273,10 @@ export default function AccountScreen() {
                         {aiResult.traits.map((trait, i) => (
                           <Box key={i}>
                             <Box className="mb-1 flex-row items-center justify-between">
-                              <Text className="text-sm text-typography-700 dark:text-typography-200">
+                              <Text className="text-sm text-typography-700 dark:text-typography-900">
                                 {trait.name}
                               </Text>
-                              <Text className="text-xs text-typography-500">
+                              <Text className="text-xs text-typography-700 dark:text-typography-900">
                                 {trait.strength}
                               </Text>
                             </Box>
@@ -309,11 +305,9 @@ export default function AccountScreen() {
                       {aiResult.values.map((v, i) => (
                         <Box
                           key={i}
-                          className="flex-row items-center gap-1.5 rounded-full border border-outline-300 bg-background-200/80 px-3 py-1.5 dark:border-outline-500 dark:bg-background-400/50"
+                          className="flex-row items-center gap-1.5 rounded-full border border-outline-300 bg-background-200/80 px-3 py-1.5 "
                         >
-                          <Text className="text-xs font-medium text-typography-800 dark:text-typography-100">
-                            {v.name}
-                          </Text>
+                          <Text className="text-xs font-medium">{v.name}</Text>
                         </Box>
                       ))}
                     </Box>
@@ -326,7 +320,7 @@ export default function AccountScreen() {
                     <Box className="mt-8 rounded-xl">
                       <DimensionsRadar
                         dimensions={aiResult.dimensions}
-                        size={340}
+                        size={400}
                         accentColor={aiResult.color}
                       />
                     </Box>
@@ -336,10 +330,10 @@ export default function AccountScreen() {
                 {aiResult.quote ? (
                   <>
                     <Box
-                      className="mt-3 rounded-xl border-l-4 bg-background-50 py-3 pl-4 pr-4 dark:bg-background-800"
+                      className="mt-3 rounded-xl border-l-4 bg-background-50 py-3 pl-4 pr-4 dark:bg-background-100"
                       style={{ borderLeftColor: withAlpha(accentColor, 0.6) }}
                     >
-                      <Text className="text-sm italic leading-relaxed text-typography-700 dark:text-typography-200">
+                      <Text className="text-sm italic leading-relaxed text-typography-700 dark:text-typography-900">
                         {'"'}
                         {aiResult.quote}
                         {'"'}

@@ -76,10 +76,7 @@ export default function TabLayout() {
         tabBarLabelStyle: { textAlign: "center" },
         tabBarIconStyle: { marginBottom: 0 },
         tabBarLabel: ({ color, children }) => (
-          <Text
-            className="text-center text-xs"
-            style={{ color }}
-          >
+          <Text className="text-center text-xs" style={{ color }}>
             {children}
           </Text>
         ),
@@ -107,7 +104,9 @@ export default function TabLayout() {
         options={{
           title: "운세",
           tabBarActiveTintColor: PRIMARY_500[isDark ? "dark" : "light"],
-          tabBarInactiveTintColor: isDark ? DEFAULT_TAB_INACTIVE_DARK : DEFAULT_TAB_INACTIVE,
+          tabBarInactiveTintColor: isDark
+            ? DEFAULT_TAB_INACTIVE_DARK
+            : DEFAULT_TAB_INACTIVE,
           tabBarStyle: defaultTabBarStyle,
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
@@ -123,7 +122,9 @@ export default function TabLayout() {
         options={{
           title: "나",
           tabBarActiveTintColor: PRIMARY_500[isDark ? "dark" : "light"],
-          tabBarInactiveTintColor: isDark ? DEFAULT_TAB_INACTIVE_DARK : DEFAULT_TAB_INACTIVE,
+          tabBarInactiveTintColor: isDark
+            ? DEFAULT_TAB_INACTIVE_DARK
+            : DEFAULT_TAB_INACTIVE,
           tabBarStyle: defaultTabBarStyle,
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
@@ -139,7 +140,9 @@ export default function TabLayout() {
         options={{
           title: "더보기",
           tabBarActiveTintColor: PRIMARY_500[isDark ? "dark" : "light"],
-          tabBarInactiveTintColor: isDark ? DEFAULT_TAB_INACTIVE_DARK : DEFAULT_TAB_INACTIVE,
+          tabBarInactiveTintColor: isDark
+            ? DEFAULT_TAB_INACTIVE_DARK
+            : DEFAULT_TAB_INACTIVE,
           tabBarStyle: defaultTabBarStyle,
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
