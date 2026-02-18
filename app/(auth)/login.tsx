@@ -88,12 +88,18 @@ export default function LoginScreen() {
         });
       }
     } catch (error: any) {
+      const code = error?.code ?? '';
+      const msg = error?.message ?? String(error);
+      __DEV__ && console.warn('Google Sign-In error', { code, message: msg });
       toast.show({
         placement: 'top',
         render: () => (
           <Toast action="error" variant="outline">
             <ToastTitle>구글 로그인 실패</ToastTitle>
-            <ToastDescription>{error.message}</ToastDescription>
+            <ToastDescription>
+              {msg}
+              {code ? ` (코드: ${code})` : ''}
+            </ToastDescription>
           </Toast>
         ),
       });
