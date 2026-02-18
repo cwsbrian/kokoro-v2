@@ -17,3 +17,13 @@ export const storeLink = Platform.select({
   android: PLAY_STORE_URL,
   default: APP_STORE_URL,
 })
+
+/** 이용약관 URL. Set EXPO_PUBLIC_TERMS_URL in .env when published. */
+export const termsUrl =
+  (typeof process !== 'undefined' && process.env?.EXPO_PUBLIC_TERMS_URL) ||
+  ''
+
+/** 개인정보처리방침 URL. Set EXPO_PUBLIC_PRIVACY_URL in .env when published. */
+export const privacyUrl =
+  (typeof process !== 'undefined' && process.env?.EXPO_PUBLIC_PRIVACY_URL) ||
+  ''
