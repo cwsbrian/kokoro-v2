@@ -1,4 +1,5 @@
 import { NotificationNavigator } from "@/components/notification-navigator";
+import { ReadingStateSync } from "@/components/reading-state-sync";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { AuthProvider } from "@/contexts/auth-context";
 import "@/global.css";
@@ -28,6 +29,7 @@ export default function RootLayout() {
         mode={colorScheme.colorScheme === "dark" ? "dark" : "light"}
       >
         <AuthProvider>
+          <ReadingStateSync />
           <ThemeProvider
             value={
               colorScheme.colorScheme === "dark" ? DarkTheme : DefaultTheme

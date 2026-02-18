@@ -5,6 +5,7 @@ import {
   getReactNativePersistence,
   GoogleAuthProvider,
 } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
@@ -22,3 +23,4 @@ export const auth = initializeAuth(app, {
   persistence: getReactNativePersistence(ReactNativeAsyncStorage),
 });
 export const googleProvider = new GoogleAuthProvider();
+export const db = getFirestore(app);

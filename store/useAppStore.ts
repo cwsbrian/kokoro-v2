@@ -14,8 +14,18 @@ import {
   getTodayKstYYYYMMDD,
   requestTodayFortune,
 } from '@/lib/geminiFortune'
+import {
+  toStoredReadingState,
+  setReadingStateToDevice,
+} from '@/lib/readingStateStorage'
 
 const FORTUNE_STORAGE_KEY = '@kokoro/fortune'
+
+function persistReadingStateToDevice(get: () => AppState): void {
+  const state = get()
+  const stored = toStoredReadingState(state)
+  setReadingStateToDevice(stored).catch(() => {})
+}
 
 function directionToResponse(direction: SwipeDirection): SwipeRecord['response'] {
   return direction === 'right' ? 'like' : 'dislike'
@@ -124,6 +134,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       currentCardIndex: nextIndex,
       lastUpdated: new Date(),
     })
+    persistReadingStateToDevice(get)
   },
 
   setUserId: (userId) => {
@@ -166,10 +177,12 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   setAiAnalysisResult: (result) => {
     set({ aiAnalysisResult: result })
+    persistReadingStateToDevice(get)
   },
 
   setLastAnalyzedAtSwipeCount: (count) => {
     set({ lastAnalyzedAtSwipeCount: count })
+    persistReadingStateToDevice(get)
   },
 
   setAnalysisError: (error) => {
