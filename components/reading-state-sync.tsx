@@ -56,10 +56,10 @@ export function ReadingStateSync() {
       if (wentToBackground && user?.uid) {
         const state = useAppStore.getState()
         const stored = toStoredReadingState(state)
+        if (__DEV__) console.log('[ReadingState] syncing to Firebase on background, responseCount:', stored.responseCount)
         setReadingStateToFirebase(user.uid, stored).catch((err) => {
-          if (__DEV__) console.warn('[ReadingState] Firebase sync on background failed:', err)
+          console.error('[ReadingState] Firebase sync on background failed:', err)
         })
-        if (__DEV__) console.log('[ReadingState] syncing to Firebase on background')
       }
     })
     return () => subscription.remove()
