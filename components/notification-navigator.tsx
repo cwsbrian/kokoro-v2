@@ -15,8 +15,15 @@ function handleNotificationResponse(
   if (type === "fortune") {
     router.replace("/(tabs)/fortune");
   } else if (type === "poem") {
-    const poemId = typeof data?.poemId === "string" ? data.poemId : null;
-    if (poemId) useAppStore.getState().setPendingPoemId(poemId);
+    const raw = data?.poemId;
+    const poemId =
+      typeof raw === "number"
+        ? raw
+        : typeof raw === "string"
+          ? parseInt(raw, 10)
+          : null;
+    if (poemId != null && !Number.isNaN(poemId))
+      useAppStore.getState().setPendingPoemId(poemId);
     router.replace("/(tabs)");
   }
 }

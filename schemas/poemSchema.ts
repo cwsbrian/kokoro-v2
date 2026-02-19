@@ -2,10 +2,10 @@ import { z } from 'zod'
 
 // Poem Card Schema (tag만 유지, MBTI/BigFive/Kisho_Axis 제거)
 export const PoemCardSchema = z.object({
-  Poem_ID: z.string().regex(/^P\d+$/),
+  Poem_ID: z.number(),
   Poem_Type: z.enum(['Haiku', 'Senryu', 'Single-Line Poem']),
   Poem_Text_KR: z.string().min(1),
-  Poem_Text_JP: z.string(),
+  Poem_Text_JP: z.string().optional().default(''),
   Content_Category: z.string(),
   Tag: z.string(),
 })
@@ -16,7 +16,7 @@ export const PoemCardsSchema = z.array(PoemCardSchema)
 export const SwipeResponseSchema = z.enum(['like', 'dislike'])
 
 export const SwipeRecordSchema = z.object({
-  poemId: z.string(),
+  poemId: z.number(),
   response: SwipeResponseSchema,
   timestamp: z.number().optional(),
 })

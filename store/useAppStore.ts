@@ -60,7 +60,7 @@ interface AppState {
   isFortuneLoading: boolean
   fortuneError: string | null
   /** 알림에서 시 탭 진입 시 표시할 시 ID (로드 후 currentCardIndex로 반영) */
-  pendingPoemId: string | null
+  pendingPoemId: number | null
 
   loadPoems: (poems: PoemCard[]) => void
   loadAndShufflePoems: (poems: PoemCard[]) => void
@@ -78,7 +78,7 @@ interface AppState {
   shufflePoems: () => void
   fetchTodayFortune: () => Promise<void>
   setFortuneError: (error: string | null) => void
-  setPendingPoemId: (poemId: string | null) => void
+  setPendingPoemId: (poemId: number | null) => void
   setCurrentCardIndex: (index: number) => void
 }
 
@@ -99,7 +99,7 @@ const initialState = {
   fortuneDate: null as string | null,
   isFortuneLoading: false,
   fortuneError: null as string | null,
-  pendingPoemId: null as string | null,
+  pendingPoemId: null as number | null,
 }
 
 export const useAppStore = create<AppState>((set, get) => ({

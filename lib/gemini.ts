@@ -5,7 +5,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 
 const MODEL_ID = 'gemini-2.0-flash'
 /** API 프롬프트용: 최근 N개 스와이프만 전달 (입력 길이 줄여 출력 여유 확보) */
-const PROMPT_SWIPE_WINDOW = 30
+const PROMPT_SWIPE_WINDOW = 50
 /** API 프롬프트용: 시 한 편당 최대 문자 수 (MAX_TOKENS 방지) */
 const PROMPT_POEM_MAX_CHARS = 120
 

@@ -2,7 +2,6 @@ import { MRT } from "@/constants/analysis";
 import { useAuth } from "@/contexts/auth-context";
 import { loadPoemsFromJSON } from "@/data/poemsLoader";
 import { getTodayPoemIndex } from "@/lib/getTodayPoemIndex";
-import { getMockAnalysisState } from "@/lib/mockAnalysisState";
 import { triggerAnalysisIfNeeded } from "@/lib/triggerAnalysis";
 import { useAppStore } from "@/store/useAppStore";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
@@ -33,7 +32,6 @@ export default function HomeScreen() {
   const responseCount = useAppStore((s) => s.responseCount);
   const loadPoems = useAppStore((s) => s.loadPoems);
   const loadAndShufflePoems = useAppStore((s) => s.loadAndShufflePoems);
-  const loadUserAnalysisState = useAppStore((s) => s.loadUserAnalysisState);
   const swipeCard = useAppStore((s) => s.swipeCard);
   const setUserId = useAppStore((s) => s.setUserId);
   const getAnalysisResult = useAppStore((s) => s.getAnalysisResult);
@@ -75,11 +73,6 @@ export default function HomeScreen() {
         loadAndShufflePoems(loadedPoems);
       }
 
-      // Dev: AI 요청(스와이프 이력 50개)만 미리 넣고, 실제 API 호출로 테스트
-      if (__DEV__) {
-        loadUserAnalysisState(getMockAnalysisState(loadedPoems));
-        triggerAnalysisIfNeeded();
-      }
 
       setIsLoading(false);
     } catch (err: unknown) {
@@ -94,7 +87,6 @@ export default function HomeScreen() {
   }, [
     loadPoems,
     loadAndShufflePoems,
-    loadUserAnalysisState,
     setCurrentCardIndex,
     setPendingPoemId,
   ]);

@@ -1,802 +1,386 @@
 [
   {
-    "Poem_ID": "P001",
+    "Poem_ID": 1,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "묵묵히 응시하는 거울 속의 나에게, 누가 답할까.",
-    "Poem_Text_JP": "鏡に向かいて、誰に問う。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Inner"
-  },
-  {
-    "Poem_ID": "P002",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "붐비는 전철, 모두가 다른 종착역을 꿈꾼다.",
-    "Poem_Text_JP": "満員電車、皆ちがう駅を夢見る。",
-    "Content_Category": "Urban & Environment",
-    "Tag": "Outer"
-  },
-  {
-    "Poem_ID": "P003",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "완벽히 닫힌 문 앞에서, 왜 자꾸만 뒤돌아보는가.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Inner"
-  },
-  {
-    "Poem_ID": "P004",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "어둠 속에서 반짝이는 별들, 이름 모를 우주를 본다.",
-    "Poem_Text_JP": "暗闇に星、名もなき宇宙を見る。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Outer"
-  },
-  {
-    "Poem_ID": "P005",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "타인과의 대화가 끝나면, 그제야 내 말이 시작된다.",
-    "Poem_Text_JP": "人の話終われば、自分の言葉始まる。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Inner"
-  },
-  {
-    "Poem_ID": "P006",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "함께 걷는 발자국이, 때로는 짐처럼 느껴진다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Solitude"
-  },
-  {
-    "Poem_ID": "P007",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "강물 위의 배들이 하나로 묶여, 비로소 항구가 된다.",
-    "Poem_Text_JP": "川の船、一つに結ばれ、港となる。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P008",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "혼자 먹는 밥은 빨리 식지만, 후회는 남지 않는다.",
-    "Poem_Text_JP": "一人飯、冷めるは早し、後悔は無し。",
-    "Content_Category": "Urban & Environment",
-    "Tag": "Solitude"
-  },
-  {
-    "Poem_ID": "P009",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "당신의 고통을 이해하지 못해도, 곁에 머물겠다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P010",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "꽃잎이 떨어지는 순간, 비로소 세상의 무심함을 깨닫는다.",
-    "Poem_Text_JP": "花落ちて、世の無関心を悟る。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Feeling"
-  },
-  {
-    "Poem_ID": "P011",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "계산이 끝난 후에야, 사랑도 오류가 없음을 안다.",
-    "Poem_Text_JP": "計算終えて、愛もエラーなしと知る。",
+    "Poem_Text_KR": "거미줄 사상\n고독의 미로를 짜네\n빛, 그림자 속에",
     "Content_Category": "Abstract & Philosophy",
-    "Tag": "Logic"
+    "Tag": "Logic",
+    "Poem_Text_JP": "蜘蛛の思想\n孤独の迷宮織りなす\n光、影の中"
   },
   {
-    "Poem_ID": "P012",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "지는 해의 색깔이 완벽한 슬픔을 말해주네.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Nature & Season",
-    "Tag": "Feeling"
-  },
-  {
-    "Poem_ID": "P013",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "깨어진 유리 조각이 햇빛을 반사하는 각도, 그것이 진리다.",
-    "Poem_Text_JP": "破片の角、光を反射し、それが真実。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P014",
+    "Poem_ID": 2,
     "Poem_Type": "Senryu",
-    "Poem_Text_KR": "오래된 약속을 지키기 위해, 오늘 하루를 희생한다.",
-    "Poem_Text_JP": "古い約束守るため、今日を犠牲にする。",
+    "Poem_Text_KR": "춤추는 발길\n내일은 오늘을 잊네\n순간의 영원",
     "Content_Category": "Psychology & Contemplation",
+    "Tag": "Flow",
+    "Poem_Text_JP": "踊る足跡\n明日は今日を忘れる\n瞬間の永遠"
+  },
+  {
+    "Poem_ID": 3,
+    "Poem_Type": "Single-Line Poem",
+    "Poem_Text_KR": "침묵 속 도구, 완벽을 해체하다.",
+    "Content_Category": "Abstract & Philosophy",
     "Tag": "Fixed"
   },
   {
-    "Poem_ID": "P015",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "흐르는 강물에 두 번 발을 담글 수 없음을 안다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Nature & Season",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P016",
+    "Poem_ID": 4,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "백 년 된 고목의 뿌리, 흔들리지 않는 믿음의 무게.",
-    "Poem_Text_JP": "百年の根、揺るぎない重さ。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Fixed"
+    "Poem_Text_KR": "거울 속 미소\n타인의 빛을 담을 때\n내가 비로소",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Harmony",
+    "Poem_Text_JP": "鏡の微笑\n他者の光を宿す時\n我、今初めて"
   },
   {
-    "Poem_ID": "P017",
+    "Poem_ID": 5,
     "Poem_Type": "Senryu",
-    "Poem_Text_KR": "미래의 계획은 없다. 지금의 발걸음만이 다음 길을 만든다.",
-    "Poem_Text_JP": "未来計画なし、今が次を作る。",
+    "Poem_Text_KR": "생각의 강물\n흐르다 멈춘 그 자리\n무한의 고요",
     "Content_Category": "Abstract & Philosophy",
-    "Tag": "Flow"
+    "Tag": "Inner",
+    "Poem_Text_JP": "思考の川波\n流れ止まるその場所に\n無限の静寂"
   },
   {
-    "Poem_ID": "P018",
+    "Poem_ID": 6,
     "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "어쩌면 나는, 그저 홀로 서 있는 나무를 부러워한다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Solitude"
-  },
-  {
-    "Poem_ID": "P019",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "수많은 얼굴들이 스쳐 지나가도, 나는 나만을 기억한다.",
-    "Poem_Text_JP": "多くの顔過ぎ去りても、我は我のみを覚える。",
-    "Content_Category": "Urban & Environment",
-    "Tag": "Inner"
-  },
-  {
-    "Poem_ID": "P020",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "나의 그림자는 나를 버리지 않는다, 가장 믿을 수 있는 동반자.",
-    "Poem_Text_JP": "影は裏切らぬ、一番の相棒。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Solitude"
-  },
-  {
-    "Poem_ID": "P021",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "지켜보는 것만이 사랑이다. 가까이 가지 않고.",
-    "Poem_Text_JP": "見つめるのみ愛、近づかず。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Solitude"
-  },
-  {
-    "Poem_ID": "P022",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "모두가 웃을 때, 나는 왜 눈물이 나려 하는가.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Feeling"
-  },
-  {
-    "Poem_ID": "P023",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "도시의 불빛이 밤하늘의 별들을 모두 지워버렸다.",
-    "Poem_Text_JP": "街の光、星を消し去る。",
-    "Content_Category": "Urban & Environment",
-    "Tag": "Outer"
-  },
-  {
-    "Poem_ID": "P024",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "논리적이지 않은 아름다움은, 나를 불안하게 한다.",
-    "Poem_Text_JP": "論理無き美しさは、私を不安にする。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P025",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "이유 없이 시작되는 하루가, 가장 설레는 법이다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P026",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "버려진 의자 위에도, 새로운 햇살은 공평하게 내린다.",
-    "Poem_Text_JP": "捨てられた椅子にも、新しい日差し公平に降る。",
-    "Content_Category": "Urban & Environment",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P027",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "모두가 멈춘 순간, 나는 비로소 숨을 쉰다.",
-    "Poem_Text_JP": "皆止まる瞬間、私は息をする。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Inner"
-  },
-  {
-    "Poem_ID": "P028",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "진정한 자유는 홀로 걷는 길에 있다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Solitude"
-  },
-  {
-    "Poem_ID": "P029",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "손을 잡고 함께 보는 눈송이, 각자의 마음속에 다른 풍경.",
-    "Poem_Text_JP": "手を取り雪、心に違う景色。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P030",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "차가운 숫자가 때로는 위로보다 더 따뜻하다.",
-    "Poem_Text_JP": "冷たい数字が、慰めより温かい。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P031",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "내일의 해가 오늘보다 더 맑을 것이라는 믿음.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P032",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "낡은 달력의 마지막 장, 버리지 못하는 과거의 기록.",
-    "Poem_Text_JP": "古い暦の最後、捨てられぬ過去の記録。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Fixed"
-  },
-  {
-    "Poem_ID": "P033",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "타인의 이야기에 쉽게 눈물 흘리는 나를 이해할 수 없다.",
-    "Poem_Text_JP": "他人の話に泣く、自分を理解できない。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Feeling"
-  },
-  {
-    "Poem_ID": "P034",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "내가 없어도 세상은 완벽하게 돌아갈 것이다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Outer"
-  },
-  {
-    "Poem_ID": "P035",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "군중 속의 고독, 모든 관계의 시작점.",
-    "Poem_Text_JP": "群衆の孤独、全ての関係の始まり。",
-    "Content_Category": "Urban & Environment",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P036",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "계획 없이 떠난 여행길, 그것이 가장 정확한 길이었다.",
-    "Poem_Text_JP": "計画無しの旅路、それが最も正確な道。",
-    "Content_Category": "Urban & Environment",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P037",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "미래를 대비하는 사람들의 불안이 나를 편안하게 한다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Outer"
-  },
-  {
-    "Poem_ID": "P038",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "만약의 상황을 대비하여, 우산을 두 개 챙긴다.",
-    "Poem_Text_JP": "万が一に備え、傘を二本。",
+    "Poem_Text_KR": "질서의 벽돌, 허물어져야 비로소 형태를 이룬다.",
     "Content_Category": "Urban & Environment",
     "Tag": "Fixed"
   },
   {
-    "Poem_ID": "P039",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "정해진 규칙을 깰 때마다, 나는 해방감을 느낀다.",
-    "Poem_Text_JP": "決められたルール破るたび、解放感。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P040",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "진실은 항상 차갑고, 아름다움은 항상 뜨겁다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P041",
+    "Poem_ID": 7,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "길가에 핀 작은 꽃 하나, 우주의 모든 색을 담고 있다.",
-    "Poem_Text_JP": "道端の花、宇宙の色を抱く。",
+    "Poem_Text_KR": "흔들리는 숲\n뿌리는 더 깊이 박혀\n침묵의 외침",
     "Content_Category": "Nature & Season",
-    "Tag": "Feeling"
+    "Tag": "Solitude",
+    "Poem_Text_JP": "揺れる森\n根はより深く張られ\n沈黙の叫び"
   },
   {
-    "Poem_ID": "P042",
+    "Poem_ID": 8,
     "Poem_Type": "Senryu",
-    "Poem_Text_KR": "혼자 가는 길에, 타인의 시선은 그림자일 뿐이다.",
-    "Poem_Text_JP": "一人の道、他人の視線は影のみ。",
+    "Poem_Text_KR": "말 없는 방랑\n발자국은 사라져도\n길은 더 선명",
     "Content_Category": "Psychology & Contemplation",
-    "Tag": "Solitude"
+    "Tag": "Flow",
+    "Poem_Text_JP": "言葉なき放浪\n足跡は消えても\n道はより鮮明"
   },
   {
-    "Poem_ID": "P043",
+    "Poem_ID": 9,
     "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "모두를 만족시키려는 노력은, 나를 투명하게 만든다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P044",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "타인이 울면 나도 울고, 그 눈물에 나의 슬픔을 담는다.",
-    "Poem_Text_JP": "他泣けば我も泣く、涙に我の悲しみ。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P045",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "정해진 마감일만이 내 삶의 유일한 질서다.",
-    "Poem_Text_JP": "決められた締め切り、我が人生の唯一の秩序。",
-    "Content_Category": "Urban & Environment",
-    "Tag": "Fixed"
-  },
-  {
-    "Poem_ID": "P046",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "가장 아름다운 것은 항상 비합리적인 곳에 있다.",
-    "Poem_Text_JP": "",
+    "Poem_Text_KR": "감정의 파동, 정지된 순간 영원하다.",
     "Content_Category": "Abstract & Philosophy",
     "Tag": "Feeling"
   },
   {
-    "Poem_ID": "P047",
+    "Poem_ID": 10,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "창밖의 세상은 빠르게 움직인다. 나는 여기서 멈춰 서서 본다.",
-    "Poem_Text_JP": "窓の外速し。我はここに止まりて見る。",
+    "Poem_Text_KR": "빛 없는 새벽\n어둠이 품은 씨앗\n태양이 되네",
+    "Content_Category": "Nature & Season",
+    "Tag": "Inner",
+    "Poem_Text_JP": "光なき夜明け\n闇が抱く種\n太陽となる"
+  },
+  {
+    "Poem_ID": 11,
+    "Poem_Type": "Senryu",
+    "Poem_Text_KR": "계산된 친절\n마음은 이미 멀지만\n가까운 거리",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Logic",
+    "Poem_Text_JP": "計算された親切\n心は遠くても\n近い距離感"
+  },
+  {
+    "Poem_ID": 12,
+    "Poem_Type": "Single-Line Poem",
+    "Poem_Text_KR": "모두의 시선, 그 안에서 비로소 투명해진다.",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Outer"
+  },
+  {
+    "Poem_ID": 13,
+    "Poem_Type": "Haiku",
+    "Poem_Text_KR": "빈 잔의 울림\n채워짐을 거부하며\n가장 충만해",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Solitude",
+    "Poem_Text_JP": "空杯の響き\n満たされるを拒み\n最も満ちる"
+  },
+  {
+    "Poem_ID": 14,
+    "Poem_Type": "Senryu",
+    "Poem_Text_KR": "미래의 설계\n지금은 단지 어둠이\n더 환히 비춰",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Fixed",
+    "Poem_Text_JP": "未来の設計\n今はただ闇が\nより明るく照らす"
+  },
+  {
+    "Poem_ID": 15,
+    "Poem_Type": "Single-Line Poem",
+    "Poem_Text_KR": "멈춰선 시간, 모든 것이 흐르는 순간이다.",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Flow"
+  },
+  {
+    "Poem_ID": 16,
+    "Poem_Type": "Haiku",
+    "Poem_Text_KR": "고독한 탑에\n모든 길 모여들지만\n홀로 서있네",
     "Content_Category": "Urban & Environment",
-    "Tag": "Inner"
+    "Tag": "Solitude",
+    "Poem_Text_JP": "孤独な塔に\n全ての道集まるが\n一人立つ"
   },
   {
-    "Poem_ID": "P048",
+    "Poem_ID": 17,
     "Poem_Type": "Senryu",
-    "Poem_Text_KR": "복잡한 규칙 없이, 본능이 이끄는 대로만 움직인다.",
-    "Poem_Text_JP": "複雑なルールなし、本能のまま動く。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Flow"
+    "Poem_Text_KR": "웃음 속 가면\n슬픔을 감출수록 더\n진실을 보여",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Outer",
+    "Poem_Text_JP": "笑顔の仮面\n悲しみを隠すほど\n真実を見せる"
   },
   {
-    "Poem_ID": "P049",
+    "Poem_ID": 18,
     "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "모든 행동에는 숨겨진 논리가 있으며, 그것을 찾는 것이 즐겁다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P050",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "나만의 세계가 가장 안전하다. 그 안에서 나는 왕이다.",
-    "Poem_Text_JP": "我の世界安全なり、その中では王。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Solitude"
-  },
-  {
-    "Poem_ID": "P051",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "새로운 사람들과의 만남이, 낡은 나를 씻어준다.",
-    "Poem_Text_JP": "新しい出会い、古い私を洗い流す。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Outer"
-  },
-  {
-    "Poem_ID": "P052",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "나는 타인의 눈을 통해 나를 완성한다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P053",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "아침 안개 속에 홀로 핀 꽃, 그 이름도 묻지 않는다.",
-    "Poem_Text_JP": "朝霧に花、名も問わぬ。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Solitude"
-  },
-  {
-    "Poem_ID": "P054",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "내가 정한 순서대로만 일이 진행되어야 안심이 된다.",
-    "Poem_Text_JP": "決めた順序のみ、安心なり。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Fixed"
-  },
-  {
-    "Poem_ID": "P055",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "모든 것은 흐른다. 잡으려던 손을 놓고 강물만 바라본다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Nature & Season",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P056",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "지나간 시간이 완벽하게 정리될 때까지, 나는 앞으로 가지 않는다.",
-    "Poem_Text_JP": "過ぎた時整理まで、前には行かぬ。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Fixed"
-  },
-  {
-    "Poem_ID": "P057",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "감동적인 이야기를 들으면, 그 이야기가 나의 역사가 된다.",
-    "Poem_Text_JP": "感動話聞けば、それが私の歴史。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Feeling"
-  },
-  {
-    "Poem_ID": "P058",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "논리적 오류는 감정적 고통보다 더 괴롭다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P059",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "아무리 아름다운 풍경도, 직접 찍은 사진이 아니면 의미 없다.",
-    "Poem_Text_JP": "美景も、自分の写真でなければ意味無し。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Outer"
-  },
-  {
-    "Poem_ID": "P060",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "함께 웃는 사람이 많을수록, 나는 안전함을 느낀다.",
-    "Poem_Text_JP": "共に笑う人多ければ、安全なり。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P061",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "의미를 묻지 마라. 느껴지는 대로 행동하라.",
-    "Poem_Text_JP": "",
+    "Poem_Text_KR": "감각의 감옥, 자유로워야 비로소 감동한다.",
     "Content_Category": "Abstract & Philosophy",
     "Tag": "Feeling"
   },
   {
-    "Poem_ID": "P062",
+    "Poem_ID": 19,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "오래된 습관이 주는 안락함, 새로운 도전은 필요 없다.",
-    "Poem_Text_JP": "古き習慣の安楽、新しい挑戦いらぬ。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Fixed"
-  },
-  {
-    "Poem_ID": "P063",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "잠 못 이루는 밤, 내일의 할 일을 미리 걱정한다.",
-    "Poem_Text_JP": "眠れぬ夜、明日の用を心配する。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P064",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "파도에 휩쓸려도 좋다, 나는 항상 움직이고 싶다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Nature & Season",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P065",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "타인의 작은 기쁨을 보는 것이 나의 가장 큰 행복이다.",
-    "Poem_Text_JP": "他人の小さな喜び、我が最大幸福。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P066",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "내 안의 목소리 외에는, 세상 모든 소리는 배경 음악일 뿐이다.",
-    "Poem_Text_JP": "内の声以外、世の音はBGM。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Inner"
-  },
-  {
-    "Poem_ID": "P067",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "새로운 이론을 접할 때, 세상이 확장되는 기분이다.",
-    "Poem_Text_JP": "",
+    "Poem_Text_KR": "흩어지는 글\n무의미 속에 새겨진\n영원한 의미",
     "Content_Category": "Abstract & Philosophy",
-    "Tag": "Outer"
+    "Tag": "Logic",
+    "Poem_Text_JP": "散る文字\n無意味に刻まれた\n永遠の意味"
   },
   {
-    "Poem_ID": "P068",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "홀로 걷는 새벽, 도시의 불빛은 나를 위한 무대 조명.",
-    "Poem_Text_JP": "一人歩く夜明け、街灯は私の舞台。",
+    "Poem_ID": 20,
+    "Poem_Type": "Senryu",
+    "Poem_Text_KR": "질서의 혼돈\n정해진 길을 걸어도\n새로운 풍경",
     "Content_Category": "Urban & Environment",
-    "Tag": "Outer"
+    "Tag": "Fixed",
+    "Poem_Text_JP": "秩序の混沌\n定められた道を歩むも\n新たな風景"
   },
   {
-    "Poem_ID": "P069",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "감정을 절제하는 것은, 내가 나를 지키는 방식이다.",
-    "Poem_Text_JP": "感情の節制、私が私を守る方法。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P070",
+    "Poem_ID": 21,
     "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "약속되지 않은 것은, 영원히 오지 않아도 괜찮다.",
-    "Poem_Text_JP": "",
+    "Poem_Text_KR": "밤의 침묵, 모든 소리가 가장 크게 울리는 시간.",
+    "Content_Category": "Nature & Season",
+    "Tag": "Inner"
+  },
+  {
+    "Poem_ID": 22,
+    "Poem_Type": "Haiku",
+    "Poem_Text_KR": "어둠의 심장\n빛은 거기서 태어나\n다시 빛이 돼",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Inner",
+    "Poem_Text_JP": "闇の心臓\n光はそこから生まれ\n再び光に"
+  },
+  {
+    "Poem_ID": 23,
+    "Poem_Type": "Senryu",
+    "Poem_Text_KR": "타인의 행복\n내 기쁨의 거울 되어\n슬픔을 보네",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Harmony",
+    "Poem_Text_JP": "他者の幸福\n我が喜びの鏡と化し\n悲しみを見る"
+  },
+  {
+    "Poem_ID": 24,
+    "Poem_Type": "Single-Line Poem",
+    "Poem_Text_KR": "자유로운 틀, 가장 엄격한 규칙 속에 피어난다.",
     "Content_Category": "Abstract & Philosophy",
     "Tag": "Flow"
   },
   {
-    "Poem_ID": "P071",
+    "Poem_ID": 25,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "모든 실패는 과거의 계획 부족이 만들어낸 결과다.",
-    "Poem_Text_JP": "失敗は過去の計画不足の果て。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Logic"
+    "Poem_Text_KR": "바람이 쓴 시\n들려주지 않아도\n마음 울리네",
+    "Content_Category": "Nature & Season",
+    "Tag": "Feeling",
+    "Poem_Text_JP": "風が書く詩\n聞かせずとも\n心に響く"
   },
   {
-    "Poem_ID": "P072",
+    "Poem_ID": 26,
     "Poem_Type": "Senryu",
-    "Poem_Text_KR": "친절은 무기이다. 적에게도 미소를 지어라.",
-    "Poem_Text_JP": "親切は武器、敵にも微笑み。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Harmony"
+    "Poem_Text_KR": "논리의 정원\n무질서의 씨앗 심어\n새로운 진리",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Logic",
+    "Poem_Text_JP": "論理の庭園\n無秩序の種を蒔き\n新たな真理"
   },
   {
-    "Poem_ID": "P073",
+    "Poem_ID": 27,
     "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "오래된 지도를 따라가는 것이, 가장 빠른 길이다.",
-    "Poem_Text_JP": "",
+    "Poem_Text_KR": "변화 없는 움직임, 영원히 멈춰 서 있는 춤.",
     "Content_Category": "Abstract & Philosophy",
     "Tag": "Fixed"
   },
   {
-    "Poem_ID": "P074",
+    "Poem_ID": 28,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "폭풍우 친 뒤의 바다, 그 혼란함 속에 생명이 깃든다.",
-    "Poem_Text_JP": "嵐後の海、その混沌に命が宿る。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Flow"
+    "Poem_Text_KR": "군중 속 홀로\n가장 깊은 교감은\n침묵의 대화",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Solitude",
+    "Poem_Text_JP": "群衆の中一人\n最も深い共感は\n沈黙の対話"
   },
   {
-    "Poem_ID": "P075",
+    "Poem_ID": 29,
     "Poem_Type": "Senryu",
-    "Poem_Text_KR": "감정을 숨기려 할수록, 눈빛은 더 많은 것을 말한다.",
-    "Poem_Text_JP": "感情隠すほど、眼差しは多く語る。",
-    "Content_Category": "Psychology & Contemplation",
+    "Poem_Text_KR": "정해진 규칙\n그 안에서 깨달은\n무한한 자유",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Fixed",
+    "Poem_Text_JP": "定められた規則\nその中で悟る\n無限の自由"
+  },
+  {
+    "Poem_ID": 30,
+    "Poem_Type": "Single-Line Poem",
+    "Poem_Text_KR": "보이지 않는 길, 걷지 않아야 비로소 열린다.",
+    "Content_Category": "Abstract & Philosophy",
     "Tag": "Inner"
   },
   {
-    "Poem_ID": "P076",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "내가 발 딛지 않은 세상이 더 넓고 흥미롭다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Outer"
-  },
-  {
-    "Poem_ID": "P077",
+    "Poem_ID": 31,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "모두가 모인 강가에서, 나는 내 그림자만 바라본다.",
-    "Poem_Text_JP": "皆集う川辺で、影のみを見る。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Solitude"
+    "Poem_Text_KR": "마음의 거울\n세상을 비추지만\n자신을 가려",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Outer",
+    "Poem_Text_JP": "心の鏡\n世界を映すが\n自身を隠す"
   },
   {
-    "Poem_ID": "P078",
+    "Poem_ID": 32,
     "Poem_Type": "Senryu",
-    "Poem_Text_KR": "타인의 작은 실수에 마음이 흔들려 하루를 망친다.",
-    "Poem_Text_JP": "他人の小さなミスで、一日を台無し。",
+    "Poem_Text_KR": "불확실한 강\n가장 확실한 방향\n흐르지 않는 것",
+    "Content_Category": "Nature & Season",
+    "Tag": "Flow",
+    "Poem_Text_JP": "不確かな川\n最も確かな方向\n流れぬこと"
+  },
+  {
+    "Poem_ID": 33,
+    "Poem_Type": "Single-Line Poem",
+    "Poem_Text_KR": "감정의 바다, 가장 깊은 곳에서 고요하다.",
     "Content_Category": "Psychology & Contemplation",
     "Tag": "Feeling"
   },
   {
-    "Poem_ID": "P079",
+    "Poem_ID": 34,
+    "Poem_Type": "Haiku",
+    "Poem_Text_KR": "닫힌 문 앞에\n모든 길이 시작되고\n다시 끝이 나",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Fixed",
+    "Poem_Text_JP": "閉じた扉の前に\n全ての道始まり\nまた終わりゆく"
+  },
+  {
+    "Poem_ID": 35,
+    "Poem_Type": "Senryu",
+    "Poem_Text_KR": "말 없는 미소\n천 개의 의미 품어도\n텅 비어 있네",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Harmony",
+    "Poem_Text_JP": "言葉なき微笑\n千の意味を抱くも\n空虚なまま"
+  },
+  {
+    "Poem_ID": 36,
     "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "논리적 근거 없이 시작된 일은, 결국 무너진다.",
-    "Poem_Text_JP": "",
+    "Poem_Text_KR": "논리의 끝, 감성이 비로소 진실을 말한다.",
     "Content_Category": "Abstract & Philosophy",
     "Tag": "Logic"
   },
   {
-    "Poem_ID": "P080",
+    "Poem_ID": 37,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "과거는 거대한 닻이다. 나는 그 무게를 감수한다.",
-    "Poem_Text_JP": "過去は巨大な錨、その重さに耐える。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Fixed"
-  },
-  {
-    "Poem_ID": "P081",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "규칙을 이해했으면, 이제 내 방식대로 어기면 된다.",
-    "Poem_Text_JP": "ルール理解せば、あとは我が道に破る。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P082",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "나의 방은 나의 우주다. 외부인은 필요 없다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Inner"
-  },
-  {
-    "Poem_ID": "P083",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "타인이 그린 지도 위에서 길을 잃는 것이 두렵지 않다.",
-    "Poem_Text_JP": "人の地図で迷う、恐れず。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Outer"
-  },
-  {
-    "Poem_ID": "P084",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "모두의 슬픔을 짊어지고, 나는 혼자 웃는다.",
-    "Poem_Text_JP": "皆の悲しみ背負い、私は一人笑う。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Harmony"
-  },
-  {
-    "Poem_ID": "P085",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "진정한 공감은 논리적 설명을 필요로 하지 않는다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Feeling"
-  },
-  {
-    "Poem_ID": "P086",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "흐르는 물처럼 살아간다. 아무도 내 깊이를 알지 못한다.",
-    "Poem_Text_JP": "流れる水のように、誰も深さ知らぬ。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Flow"
-  },
-  {
-    "Poem_ID": "P087",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "정돈된 책장만이 나에게 평화를 가져다준다.",
-    "Poem_Text_JP": "整頓された書棚のみ、私に平和をもたらす。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Fixed"
-  },
-  {
-    "Poem_ID": "P088",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "내 안의 논리 시스템이 무너질 때, 나는 울부짖는다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P089",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "구름이 가득해도 괜찮다. 내가 그 위에 별을 그린다.",
-    "Poem_Text_JP": "雲多くてもよし。上に星を描く。",
-    "Content_Category": "Nature & Season",
-    "Tag": "Inner"
-  },
-  {
-    "Poem_ID": "P090",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "경쟁은 성장의 유일한 연료이다.",
-    "Poem_Text_JP": "競争は成長の唯一の燃料。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Solitude"
-  },
-  {
-    "Poem_ID": "P091",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "타인을 향한 나의 모든 말은, 사실 나 자신에게 하는 말이다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Inner"
-  },
-  {
-    "Poem_ID": "P092",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "새로운 곳에 대한 두려움보다, 오래된 곳의 지루함이 더 크다.",
-    "Poem_Text_JP": "新しい所への恐怖より、古い場所の退屈。",
+    "Poem_Text_KR": "도시의 고요\n모든 소음 사라져도\n더 시끄럽네",
     "Content_Category": "Urban & Environment",
-    "Tag": "Outer"
+    "Tag": "Solitude",
+    "Poem_Text_JP": "都市の静寂\n全ての音消え去れど\nより騒がしい"
   },
   {
-    "Poem_ID": "P093",
+    "Poem_ID": 38,
     "Poem_Type": "Senryu",
-    "Poem_Text_KR": "나의 의무를 다했을 때, 비로소 세상의 모든 빛을 볼 수 있다.",
-    "Poem_Text_JP": "我が義務を果たし、世の光を見る。",
-    "Content_Category": "Abstract & Philosophy",
-    "Tag": "Fixed"
+    "Poem_Text_KR": "생각의 감옥\n자유를 찾을수록 더\n갇혀 버리네",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Inner",
+    "Poem_Text_JP": "思考の監獄\n自由を求めるほど\n閉じ込められる"
   },
   {
-    "Poem_ID": "P094",
+    "Poem_ID": 39,
     "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "나는 불확실성 속에서 가장 큰 확신을 느낀다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Abstract & Philosophy",
+    "Poem_Text_KR": "흐르는 물, 가장 견고한 바위를 깎는다.",
+    "Content_Category": "Nature & Season",
     "Tag": "Flow"
   },
   {
-    "Poem_ID": "P095",
+    "Poem_ID": 40,
     "Poem_Type": "Haiku",
-    "Poem_Text_KR": "타인의 평화로운 얼굴이, 나의 불안함을 잠재운다.",
-    "Poem_Text_JP": "人の穏やかな顔、私の不安を鎮める。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Harmony"
+    "Poem_Text_KR": "가벼운 날개\n하늘을 날지만 결국\n땅으로 돌아",
+    "Content_Category": "Nature & Season",
+    "Tag": "Outer",
+    "Poem_Text_JP": "軽い翼\n空を飛ぶが結局\n地へ帰る"
   },
   {
-    "Poem_ID": "P096",
+    "Poem_ID": 41,
     "Poem_Type": "Senryu",
-    "Poem_Text_KR": "작은 행복을 위해, 커다란 가능성을 포기할 수 있다.",
-    "Poem_Text_JP": "小さな幸せのため、大きな可能性を諦める。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Fixed"
-  },
-  {
-    "Poem_ID": "P097",
-    "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "모든 만남은 헤어짐의 서론이다. 담담히 받아들인다.",
-    "Poem_Text_JP": "",
+    "Poem_Text_KR": "완벽한 계획\n허점이 채워질수록\n더 완벽해져",
     "Content_Category": "Abstract & Philosophy",
-    "Tag": "Solitude"
+    "Tag": "Logic",
+    "Poem_Text_JP": "完璧な計画\n欠点が埋まるほど\nより完璧に"
   },
   {
-    "Poem_ID": "P098",
-    "Poem_Type": "Haiku",
-    "Poem_Text_KR": "감정의 소용돌이 속에서도, 나는 냉정한 이유를 찾는다.",
-    "Poem_Text_JP": "感情の渦中でも、冷静な理由を探す。",
-    "Content_Category": "Psychology & Contemplation",
-    "Tag": "Logic"
-  },
-  {
-    "Poem_ID": "P099",
-    "Poem_Type": "Senryu",
-    "Poem_Text_KR": "나는 사소한 것에서 큰 기쁨을 찾는다. 그게 나만의 우주다.",
-    "Poem_Text_JP": "些細な事に喜び、それが我が宇宙。",
+    "Poem_ID": 42,
+    "Poem_Type": "Single-Line Poem",
+    "Poem_Text_KR": "사랑의 부재, 그 자체로 충만한 존재.",
     "Content_Category": "Psychology & Contemplation",
     "Tag": "Feeling"
   },
   {
-    "Poem_ID": "P100",
+    "Poem_ID": 43,
+    "Poem_Type": "Haiku",
+    "Poem_Text_KR": "영원한 지금\n모든 과거 미래는\n한 점에 서네",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Fixed",
+    "Poem_Text_JP": "永遠の今\n全ての過去未来は\n一点に立つ"
+  },
+  {
+    "Poem_ID": 44,
+    "Poem_Type": "Senryu",
+    "Poem_Text_KR": "거울의 세상\n내 모습을 찾으려다\n남을 보았네",
+    "Content_Category": "Psychology & Contemplation",
+    "Tag": "Outer",
+    "Poem_Text_JP": "鏡の世界\n己の姿を探し\n他者を見た"
+  },
+  {
+    "Poem_ID": 45,
     "Poem_Type": "Single-Line Poem",
-    "Poem_Text_KR": "햇살이 쏟아지는 거리, 모든 에너지가 나를 향해 온다.",
-    "Poem_Text_JP": "",
-    "Content_Category": "Urban & Environment",
-    "Tag": "Outer"
+    "Poem_Text_KR": "텅 빈 공간, 모든 가능성이 숨 쉬는 곳.",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Solitude"
+  },
+  {
+    "Poem_ID": 46,
+    "Poem_Type": "Haiku",
+    "Poem_Text_KR": "뿌리 없는 나무\n가장 높이 자라나\n하늘을 받쳐",
+    "Content_Category": "Nature & Season",
+    "Tag": "Flow",
+    "Poem_Text_JP": "根無しの木\n最も高く育ち\n空を支える"
+  },
+  {
+    "Poem_ID": 47,
+    "Poem_Type": "Senryu",
+    "Poem_Text_KR": "진실의 무게\n가벼워질수록 더\n깊이 가라앉아",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Logic",
+    "Poem_Text_JP": "真実の重さ\n軽くなるほど\n深く沈む"
+  },
+  {
+    "Poem_ID": 48,
+    "Poem_Type": "Single-Line Poem",
+    "Poem_Text_KR": "모든 것을 담은 침묵, 그 안에서 비로소 소리가 들린다.",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Inner"
+  },
+  {
+    "Poem_ID": 49,
+    "Poem_Type": "Haiku",
+    "Poem_Text_KR": "빛 없는 그림자\n존재를 지워버려도\n형태는 남네",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Fixed",
+    "Poem_Text_JP": "光なき影\n存在を消しても\n形は残る"
+  },
+  {
+    "Poem_ID": 50,
+    "Poem_Type": "Senryu",
+    "Poem_Text_KR": "혼돈의 조화\n서로 다른 음들이\n하나의 노래",
+    "Content_Category": "Abstract & Philosophy",
+    "Tag": "Harmony",
+    "Poem_Text_JP": "混沌の調和\n異なる音たちが\n一つの歌に"
   }
 ]

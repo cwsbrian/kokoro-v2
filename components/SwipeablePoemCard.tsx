@@ -150,6 +150,9 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
               )}
             </Animated.View>
             <Box className="flex-1 justify-center items-center">
+              <Text className="text-md text-white/60 text-center mb-5">
+                {card.Poem_Type}
+              </Text>
               <Text className="text-2xl font-bold text-typography-0 dark:text-typography-900 leading-9 text-center">
                 {card.Poem_Text_KR}
               </Text>
@@ -157,6 +160,9 @@ export const SwipeablePoemCard: React.FC<SwipeablePoemCardProps> = ({
             <Box className="mt-4 pt-4 border-t border-white/20">
               <Text className="text-sm font-semibold text-white/80 text-center uppercase tracking-wider">
                 {card.Tag}
+              </Text>
+              <Text className="text-sm text-white/50 text-center mt-1.5">
+                {card.Content_Category}
               </Text>
             </Box>
           </BlurView>

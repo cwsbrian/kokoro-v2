@@ -2,10 +2,10 @@
 export type PoemType = 'Haiku' | 'Senryu' | 'Single-Line Poem';
 
 export interface PoemCard {
-  Poem_ID: string
+  Poem_ID: number
   Poem_Type: PoemType
   Poem_Text_KR: string
-  Poem_Text_JP: string
+  Poem_Text_JP?: string
   Content_Category: string
   Tag: string // UI 표시용 태그 (기존 Kisho_Tag)
 }
@@ -16,7 +16,7 @@ export type SwipeDirection = 'right' | 'left'
 export type SwipeResponse = 'like' | 'dislike'
 
 export interface SwipeRecord {
-  poemId: string
+  poemId: number
   response: SwipeResponse
   timestamp?: number
 }
