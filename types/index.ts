@@ -1,5 +1,5 @@
 // Poem Card Types
-export type PoemType = 'Haiku' | 'Senryu' | 'Single-Line Poem';
+export type PoemType = '단문시' | '하이쿠' | '센류';
 
 export interface PoemCard {
   Poem_ID: number

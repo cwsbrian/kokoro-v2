@@ -3,7 +3,7 @@ import { z } from 'zod'
 // Poem Card Schema (tag만 유지, MBTI/BigFive/Kisho_Axis 제거)
 export const PoemCardSchema = z.object({
   Poem_ID: z.number(),
-  Poem_Type: z.enum(['Haiku', 'Senryu', 'Single-Line Poem']),
+  Poem_Type: z.enum(['단문시', '하이쿠', '센류']),
   Poem_Text_KR: z.string().min(1),
   Poem_Text_JP: z.string().optional().default(''),
   Content_Category: z.string(),
