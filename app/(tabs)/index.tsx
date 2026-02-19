@@ -21,6 +21,18 @@ const getImageUrl = (index: number) => {
   return `https://picsum.photos/1080/1920?random=${index}`;
 };
 
+/** 오늘의 시를 첫 장으로, 나머지는 랜덤 순서 (Fisher–Yates) */
+function poemsWithTodayFirst<T>(poems: T[], todayIndex: number): T[] {
+  if (poems.length <= 1) return [...poems]
+  const first = poems[todayIndex]
+  const rest = poems.filter((_, i) => i !== todayIndex)
+  for (let i = rest.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[rest[i], rest[j]] = [rest[j], rest[i]]
+  }
+  return [first, ...rest]
+}
+
 export default function HomeScreen() {
   const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
@@ -62,12 +74,14 @@ export default function HomeScreen() {
 
       // 1. userId는 useAuth().user → useEffect에서 setUserId로 동기화됨
 
-      // 2. 시 카드 로드 (알림 진입 시 셔플 안 함 → 알림과 동일한 시 표시)
+      // 2. 시 카드 로드 (알림 진입 시: 오늘의 시 첫 장, 나머지 랜덤 / 일반: 전부 랜덤)
       const loadedPoems = await loadPoemsFromJSON();
       const fromNotification = useAppStore.getState().pendingPoemId != null;
       if (fromNotification) {
-        loadPoems(loadedPoems);
-        setCurrentCardIndex(getTodayPoemIndex(loadedPoems));
+        const todayIndex = getTodayPoemIndex(loadedPoems);
+        const ordered = poemsWithTodayFirst(loadedPoems, todayIndex);
+        loadPoems(ordered);
+        setCurrentCardIndex(0);
         setPendingPoemId(null);
       } else {
         loadAndShufflePoems(loadedPoems);
@@ -102,8 +116,10 @@ export default function HomeScreen() {
       if (!pendingPoemId || poems.length === 0) return;
       loadPoemsFromJSON()
         .then((loadedPoems) => {
-          loadPoems(loadedPoems);
-          setCurrentCardIndex(getTodayPoemIndex(loadedPoems));
+          const todayIndex = getTodayPoemIndex(loadedPoems);
+          const ordered = poemsWithTodayFirst(loadedPoems, todayIndex);
+          loadPoems(ordered);
+          setCurrentCardIndex(0);
           setPendingPoemId(null);
         })
         .catch((err) => {
