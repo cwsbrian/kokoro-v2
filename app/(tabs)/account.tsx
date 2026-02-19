@@ -5,7 +5,8 @@ import { useAppStore } from "@/store/useAppStore";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, Share } from "react-native";
+import { Image } from "expo-image";
+import { ScrollView, Share } from "react-native";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -226,8 +227,9 @@ export default function AccountScreen() {
                     {avatarImageDataUrl ? (
                       <Image
                         source={{ uri: avatarImageDataUrl }}
-                        style={{ width: 200, height: 200, borderRadius: 100 }}
-                        resizeMode="cover"
+                        className="rounded-full"
+                        style={{ width: 200, height: 200 }}
+                        contentFit="cover"
                       />
                     ) : (
                       <MaterialIcons name="person" size={48} color="#64748B" />

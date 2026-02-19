@@ -2,8 +2,6 @@ import { MRT } from '@/constants/analysis'
 import { requestAnalysis } from '@/lib/gemini'
 import { requestAvatarImage } from '@/lib/geminiAvatar'
 import { useAppStore } from '@/store/useAppStore'
-import type { AiAnalysisResult } from '@/types'
-import { Image } from 'react-native'
 
 const REANALYZE_INTERVAL = 50
 
@@ -25,25 +23,6 @@ export async function triggerAnalysisIfNeeded(): Promise<void> {
   useAppStore.getState().setAnalysisError(null)
   useAppStore.getState().setAnalysisLoading(true)
 
-  const preloadEnabled =
-    typeof process !== 'undefined' &&
-    process.env?.EXPO_PUBLIC_PRELOAD_API_RESPONSE === 'true'
-  if (__DEV__ && preloadEnabled) {
-    try {
-      const result = require('@/lib/dev-ai-response.json') as AiAnalysisResult
-      useAppStore.getState().setAiAnalysisResult(result)
-      useAppStore.getState().setLastAnalyzedAtSwipeCount(state.responseCount)
-      useAppStore.getState().setAnalysisError(null)
-      const resolved = Image.resolveAssetSource(
-        require('@/assets/dev-avatar.png')
-      )
-      useAppStore.getState().setAvatarImageDataUrl(resolved?.uri ?? null)
-    } finally {
-      useAppStore.getState().setAnalysisLoading(false)
-    }
-    return
-  }
-
   if (!apiKey) {
     useAppStore.getState().setAnalysisError('API 키가 설정되지 않았습니다.')
     useAppStore.getState().setAnalysisLoading(false)
@@ -61,7 +40,9 @@ export async function triggerAnalysisIfNeeded(): Promise<void> {
       .then((url) => {
         if (url) useAppStore.getState().setAvatarImageDataUrl(url)
       })
-      .catch(() => {})
+      .catch((e) => {
+        if (__DEV__) console.warn('Avatar image request failed:', e)
+      })
     if (
       prev &&
       (prev.label !== result.label || prev.description !== result.description)

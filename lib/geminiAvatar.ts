@@ -89,12 +89,15 @@ export async function requestAvatarImage(
       const base64 = part.inlineData.data
       const ext = part.inlineData.mimeType === 'image/jpeg' ? 'jpg' : 'png'
       try {
-        const fileUri = `${FileSystem.cacheDirectory ?? ''}avatar_${Date.now()}.${ext}`
+        const dir = FileSystem.cacheDirectory ?? ''
+        const fileUri = `${dir}avatar_${Date.now()}.${ext}`
         await FileSystem.writeAsStringAsync(fileUri, base64, {
           encoding: FileSystem.EncodingType.Base64,
         })
-        if (__DEV__) console.warn('[AI response] avatar saved:', fileUri)
-        return fileUri
+        // iOS/RN Image는 로컬 파일에 file:// 필요할 수 있음
+        const uri = fileUri.startsWith('file://') ? fileUri : `file://${fileUri}`
+        if (__DEV__) console.warn('[AI response] avatar saved:', uri)
+        return uri
       } catch (e) {
         if (__DEV__) console.warn('Avatar file write failed:', e)
         return null

@@ -1,7 +1,7 @@
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
 import React, { useEffect } from "react";
-import { Platform, StyleSheet, useColorScheme, View } from "react-native";
+import { StyleSheet, useColorScheme, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { HapticTab } from "@/components/haptic-tab";
@@ -48,8 +48,8 @@ export default function TabLayout() {
     shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.08,
     shadowRadius: 8,
-    paddingTop: 12,
-    paddingBottom: (Platform.OS === "ios" ? insets.bottom : 16) + 12,
+    paddingTop: 20,
+
   };
 
   const poemTabBarStyle = {
@@ -63,7 +63,7 @@ export default function TabLayout() {
     borderRadius: 28,
     overflow: "hidden" as const,
     justifyContent: "center" as const,
-    paddingTop: insets.bottom,
+    paddingTop: insets.bottom - 8,
   };
 
   return (
