@@ -1,5 +1,12 @@
 import { useAuth } from '@/contexts/auth-context'
 import {
+  downloadAvatarUrlToDevice,
+  getAvatarFromDevice,
+  getAvatarUrlFromFirestore,
+  isLocalAvatarFileAvailable,
+  setAvatarToDevice,
+} from '@/lib/avatarStorage'
+import {
   getReadingStateFromFirebase,
   setReadingStateToFirebase,
 } from '@/lib/readingStateFirestore'
@@ -16,6 +23,7 @@ import { AppState, type AppStateStatus } from 'react-native'
 export function ReadingStateSync() {
   const { user } = useAuth()
   const loadUserAnalysisState = useAppStore((s) => s.loadUserAnalysisState)
+  const setAvatarImageDataUrl = useAppStore((s) => s.setAvatarImageDataUrl)
   const appStateRef = useRef<AppStateStatus>(AppState.currentState)
 
   // 읽기 상태 복원: 로그인 시 Firebase와 기기 데이터를 비교. 기기가 더 많으면 기기 사용 후 Firebase에 업로드
@@ -73,16 +81,44 @@ export function ReadingStateSync() {
       } else {
         // 비로그인: 기기 데이터만 사용
         const deviceState = await getReadingStateFromDevice()
-        if (cancelled || !deviceState) return
-        loadUserAnalysisState(deviceState)
-        if (__DEV__) console.log('[ReadingState] applied from device (not logged in), responseCount:', deviceState.responseCount)
+        if (!cancelled && deviceState) {
+          loadUserAnalysisState(deviceState)
+          if (__DEV__) console.log('[ReadingState] applied from device (not logged in), responseCount:', deviceState.responseCount)
+        }
+      }
+      if (cancelled) return
+
+      // 프로필 아바타 복원: 기기에 로컬 파일이 있으면 그대로 사용, 없으면 Firebase URL로 다운로드 후 기기에 저장해 계속 사용
+      const deviceAvatar = await getAvatarFromDevice()
+      if (deviceAvatar?.startsWith('file://') && (await isLocalAvatarFileAvailable(deviceAvatar))) {
+        setAvatarImageDataUrl(deviceAvatar)
+        if (__DEV__) console.log('[Avatar] restored from device (local file)')
+      } else {
+        const firebaseUrl =
+          deviceAvatar?.startsWith('http')
+            ? deviceAvatar
+            : user?.uid
+              ? await getAvatarUrlFromFirestore(user.uid)
+              : null
+        if (firebaseUrl) {
+          try {
+            const localUri = await downloadAvatarUrlToDevice(firebaseUrl)
+            await setAvatarToDevice(localUri)
+            setAvatarImageDataUrl(localUri)
+            if (__DEV__) console.log('[Avatar] downloaded from Firebase and saved to device')
+          } catch (e) {
+            if (__DEV__) console.warn('[Avatar] download failed, using URL:', e)
+            setAvatarImageDataUrl(firebaseUrl)
+            await setAvatarToDevice(firebaseUrl)
+          }
+        }
       }
     }
     run()
     return () => {
       cancelled = true
     }
-  }, [user?.uid, loadUserAnalysisState])
+  }, [user?.uid, loadUserAnalysisState, setAvatarImageDataUrl])
 
   // 2) 앱이 백그라운드/종료 시 Firebase에 현재 상태 저장
   useEffect(() => {

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Kokoro",
     "slug": "auth",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "kokoro",
@@ -14,7 +14,7 @@
       "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
-      "versionCode": 5,
+      "versionCode": 6,
       "googleServicesFile": "./google-services.json",
       "package": "com.cwsbrian.kokoro",
       "adaptiveIcon": {

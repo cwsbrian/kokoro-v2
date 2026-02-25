@@ -1,9 +1,18 @@
 import { MRT } from '@/constants/analysis'
+import {
+  countAvatarPool,
+  downloadAvatarUrlToDevice,
+  getRandomAvatarFromPool,
+  isAvatarPoolOverLimit,
+  setAvatarToDevice,
+  setAvatarUrlToFirestore,
+  uploadAvatarToPool,
+} from '@/lib/avatarStorage'
 import { requestAnalysis } from '@/lib/gemini'
 import { requestAvatarImage } from '@/lib/geminiAvatar'
 import { useAppStore } from '@/store/useAppStore'
 
-const REANALYZE_INTERVAL = 50
+const REANALYZE_INTERVAL = __DEV__ ? 5 : 50
 
 export async function triggerAnalysisIfNeeded(): Promise<void> {
   const state = useAppStore.getState()
@@ -36,13 +45,43 @@ export async function triggerAnalysisIfNeeded(): Promise<void> {
     useAppStore.getState().setLastAnalyzedAtSwipeCount(state.responseCount)
     useAppStore.getState().setAnalysisError(null)
     useAppStore.getState().setAvatarImageDataUrl(null)
-    requestAvatarImage(apiKey, result)
-      .then((url) => {
-        if (url) useAppStore.getState().setAvatarImageDataUrl(url)
-      })
-      .catch((e) => {
-        if (__DEV__) console.warn('Avatar image request failed:', e)
-      })
+    const poolCount = await countAvatarPool()
+    const userId = useAppStore.getState().userId
+
+    const applyAvatar = async (localUri: string, firestoreUrl: string) => {
+      useAppStore.getState().setAvatarImageDataUrl(localUri)
+      await setAvatarToDevice(localUri)
+      if (userId) await setAvatarUrlToFirestore(userId, firestoreUrl)
+    }
+
+    if (isAvatarPoolOverLimit(poolCount)) {
+      const downloadUrl = await getRandomAvatarFromPool()
+      if (downloadUrl) {
+        try {
+          const localUri = await downloadAvatarUrlToDevice(downloadUrl)
+          await applyAvatar(localUri, downloadUrl)
+        } catch (e) {
+          if (__DEV__) console.warn('Avatar download to device failed:', e)
+          useAppStore.getState().setAvatarImageDataUrl(downloadUrl)
+          await setAvatarToDevice(downloadUrl)
+          if (userId) await setAvatarUrlToFirestore(userId, downloadUrl)
+        }
+      }
+    } else {
+      requestAvatarImage(apiKey, result)
+        .then(async (localUri) => {
+          if (!localUri) return
+          try {
+            const downloadUrl = await uploadAvatarToPool(localUri)
+            await applyAvatar(localUri, downloadUrl)
+          } catch (e) {
+            if (__DEV__) console.warn('Avatar pool upload failed:', e)
+          }
+        })
+        .catch((e) => {
+          if (__DEV__) console.warn('Avatar image request failed:', e)
+        })
+    }
     if (
       prev &&
       (prev.label !== result.label || prev.description !== result.description)
