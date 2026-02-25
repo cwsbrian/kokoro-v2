@@ -56,7 +56,8 @@ export default function MoreScreen() {
     setLogoutLoading(true);
     try {
       await logout();
-      router.replace("/");
+      // 로그인 화면으로 직접 이동 (인덱스 리다이렉트 타이밍 이슈 회피)
+      router.replace("/(auth)/login");
     } finally {
       setLogoutLoading(false);
     }

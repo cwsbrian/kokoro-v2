@@ -55,6 +55,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = async () => {
     await signOut(auth);
+    // 콘텍스트에 user가 null로 반영될 때까지 대기 (리다이렉트 타이밍 이슈 방지)
+    await new Promise<void>((resolve) => {
+      const unsub = onAuthStateChanged(auth, (u) => {
+        if (u === null) {
+          unsub();
+          resolve();
+        }
+      });
+      setTimeout(() => {
+        unsub();
+        resolve();
+      }, 3000);
+    });
   };
 
   return (
