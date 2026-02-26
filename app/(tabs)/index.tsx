@@ -23,14 +23,14 @@ const getImageUrl = (index: number) => {
 
 /** 오늘의 시를 첫 장으로, 나머지는 랜덤 순서 (Fisher–Yates) */
 function poemsWithTodayFirst<T>(poems: T[], todayIndex: number): T[] {
-  if (poems.length <= 1) return [...poems]
-  const first = poems[todayIndex]
-  const rest = poems.filter((_, i) => i !== todayIndex)
+  if (poems.length <= 1) return [...poems];
+  const first = poems[todayIndex];
+  const rest = poems.filter((_, i) => i !== todayIndex);
   for (let i = rest.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[rest[i], rest[j]] = [rest[j], rest[i]]
+    const j = Math.floor(Math.random() * (i + 1));
+    [rest[i], rest[j]] = [rest[j], rest[i]];
   }
-  return [first, ...rest]
+  return [first, ...rest];
 }
 
 export default function HomeScreen() {
@@ -87,7 +87,6 @@ export default function HomeScreen() {
         loadAndShufflePoems(loadedPoems);
       }
 
-
       setIsLoading(false);
     } catch (err: unknown) {
       console.error("Initialization error:", err);
@@ -98,12 +97,7 @@ export default function HomeScreen() {
       setError(errorMessage);
       setIsLoading(false);
     }
-  }, [
-    loadPoems,
-    loadAndShufflePoems,
-    setCurrentCardIndex,
-    setPendingPoemId,
-  ]);
+  }, [loadPoems, loadAndShufflePoems, setCurrentCardIndex, setPendingPoemId]);
 
   // 초기화
   useEffect(() => {
