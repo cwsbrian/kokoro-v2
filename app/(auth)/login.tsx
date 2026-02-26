@@ -126,7 +126,7 @@ export default function LoginScreen() {
       <Box className="flex-1 justify-center px-6 gap-4">
         <Box className="items-center mb-8">
           <Heading size="3xl" className="text-center">
-            Kokoro
+            코코로
           </Heading>
           <Text className="text-typography-500 text-sm mt-2 text-center italic">
             한 편의 시로 그려내는 당신이라는 세계
